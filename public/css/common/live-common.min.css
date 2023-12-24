@@ -1,0 +1,465 @@
+body {
+    font-family: Lato, sans-serif;
+    margin: 0;
+    padding: 0
+}
+
+a {
+    text-decoration: none
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin: 0;
+    padding: 0
+}
+
+.body {
+    position: relative
+}
+
+::-moz-placeholder {
+    color: #718096;
+    opacity: 1
+}
+
+:-ms-input-placeholder {
+    color: #718096;
+    opacity: 1
+}
+
+::placeholder {
+    color: #718096;
+    opacity: 1
+}
+
+label {
+    color: #1a202c;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 22px
+}
+
+input.blue-input {
+    background-color: #edf2f7;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    height: 24px;
+    line-height: 22px;
+    padding: 10px
+}
+
+input.blue-input:focus-visible {
+    border: none;
+    outline: none
+}
+
+input.checkbox {
+    height: 20px;
+    width: 20px
+}
+
+.align-item-center {
+    align-items: center;
+    display: flex;
+    flex: 1;
+    justify-content: center
+}
+
+.title {
+    color: #1a202c;
+    font-size: 40px;
+    font-weight: 600;
+    line-height: 48px
+}
+
+.stretch {
+    align-items: center;
+    display: flex;
+    justify-content: space-between
+}
+
+.header {
+    background: linear-gradient(#2139a5, #3c5be7);;
+    gap: 12px;
+    height: 84px;
+    justify-items: center;
+    overflow: hidden;
+    position: relative;
+    width: 100%
+}
+
+.header .bg-header {
+    height: auto;
+    left: 65%;
+    -o-object-fit: cover;
+    object-fit: cover;
+    opacity: .1;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 60%
+}
+
+.header.big-header {
+    height: 195px
+}
+
+.header .header-right {
+    display: flex
+}
+
+.header .header-content {
+    height: 44px;
+    margin: auto;
+    padding: 20px 0;
+    position: relative;
+    width: 1136px;
+    z-index: 1
+}
+
+.header .live_football_on_tv_home-title {
+    color: #fff;
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 34px;
+    padding: 0 16px;
+    text-align: center
+}
+
+.logo_247sport {
+    height: 40px;
+    width: auto
+}
+
+.one-line-text {
+    -webkit-line-clamp: 1
+}
+
+.one-line-text,
+.two-line-text {
+    -webkit-box-orient: vertical;
+    display: -webkit-box;
+    overflow: hidden
+}
+
+.two-line-text {
+    -webkit-line-clamp: 2
+}
+
+.menu-popup {
+    background-color: #fff;
+    bottom: 0;
+    display: none;
+    left: 0;
+    overflow: auto;
+    padding: 16px;
+    position: fixed;
+    right: 0;
+    top: 0;
+    z-index: 1000
+}
+
+.menu-popup .header-popup {
+    display: flex;
+    justify-content: flex-end
+}
+
+.menu-popup .menu {
+    display: flex;
+    flex-direction: column
+}
+
+.menu-popup .login,
+.menu-popup .menu .menu-item {
+    border-bottom: 1px solid #edf2f7;
+    color: #1a202c;
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 24px;
+    padding: 18px 0
+}
+
+.menu-popup .login {
+    align-items: center;
+    display: flex
+}
+
+.menu-popup .login a {
+    color: #1a202c
+}
+
+.header-right-mobile {
+    display: none
+}
+
+.cursor-pointer {
+    cursor: pointer
+}
+
+.header .menu {
+    align-items: center;
+    display: flex;
+    justify-content: space-between
+}
+
+.header .menu-item {
+    color: #fff;
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 24px;
+    padding: 8px
+}
+
+.header .menu-item.active {
+    border-bottom: 3px solid #edd036;
+    color: #edd036;
+    margin-bottom: -4px
+}
+
+.header .login {
+    align-items: center;
+    display: flex;
+    margin-left: 64px
+}
+
+.header .sign-up {
+    color: #fff;
+    font-size: 16px;
+    line-height: 20px
+}
+
+.footer {
+    background-color: #342222;
+    display: flex;
+    padding: 32px;
+    width: calc(100% - 64px)
+}
+
+.footer>* {
+    flex: 1
+}
+
+@media (max-width:940px) {
+    .footer {
+        display: flex;
+        flex-direction: column
+    }
+
+    .footer>*+* {
+        margin-top: 20px
+    }
+}
+
+.footer .text {
+    color: #fff;
+    font-size: 16px;
+    line-height: 20px;
+    margin-top: 8px
+}
+
+.footer .footer-nav {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 24px;
+    width: 740px
+}
+
+.footer .web-pages {
+    flex-wrap: wrap;
+    padding-left: 200px;
+    text-align: left
+}
+
+@media (max-width:1200px) {
+    .footer .web-pages {
+        padding-left: 100px
+    }
+}
+
+@media (max-width:940px) {
+    .footer .web-pages {
+        display: flex;
+        padding-left: 0
+    }
+}
+
+.footer .web-pages a {
+    color: #fff;
+    display: block;
+    margin-right: 10px
+}
+
+.footer .list-hot-match-footer {
+    text-align: left
+}
+
+.show {
+    display: unset !important
+}
+
+.show#calendar-minimized {
+    display: flex !important
+}
+
+.show.modal-container {
+    display: grid !important
+}
+
+.show.tab-panel {
+    display: flex !important
+}
+
+.hide {
+    display: none !important
+}
+
+.row {
+    align-items: center;
+    display: flex
+}
+
+.gap {
+    gap: 12px
+}
+
+.modal-container {
+    background-color: rgba(0, 0, 0, .5);
+    bottom: 0;
+    display: grid;
+    left: 0;
+    place-items: center;
+    position: fixed;
+    right: 0;
+    top: 0;
+    z-index: 1040
+}
+
+.modal-container .close-icon {
+    cursor: pointer
+}
+
+.modal-container .modal {
+    background: #fff;
+    border-radius: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px
+}
+
+.modal-container .modal .modal-header {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    padding: 16px
+}
+
+.modal-container .modal .modal-footer {
+    align-items: center;
+    display: flex;
+    justify-content: flex-end
+}
+
+::-webkit-scrollbar {
+    height: 5px;
+    width: 7px
+}
+
+::-webkit-scrollbar-track {
+    border-radius: 10px;
+    box-shadow: inset 0 0 5px grey
+}
+
+::-webkit-scrollbar-thumb {
+    background: #556479;
+    border-radius: 10px
+}
+
+.top-of-site-link {
+    bottom: 115px;
+    display: none;
+    position: fixed;
+    right: 30px;
+    text-align: center
+}
+
+.item-hot-match-footer {
+    color: #fff;
+    display: inline-block;
+    margin-right: 20px
+}
+
+.about_247sport_content_container .show-content,
+.about_league_content_container .show-content,
+.about_team_content_container .show-content {
+    margin-top: 20px;
+    max-height: 300px;
+    overflow: hidden;
+    position: relative
+}
+
+.about_247sport_content_container .show-content .container-opacity,
+.about_league_content_container .show-content .container-opacity,
+.about_team_content_container .show-content .container-opacity {
+    background-image: linear-gradient(#0f172a00, #f9f7f7);
+    bottom: 0;
+    height: 150px;
+    position: absolute;
+    width: 100%
+}
+
+.about_247sport_content_container .btn-show-hide,
+.about_league_content_container .btn-show-hide,
+.about_team_content_container .btn-show-hide {
+    color: #f91e4e;
+    cursor: pointer;
+    margin-top: 30px;
+    padding: 10px;
+    text-align: center
+}
+
+.about_247sport_content_container .btn-show-hide:after,
+.about_league_content_container .btn-show-hide:after,
+.about_team_content_container .btn-show-hide:after {
+    content: "Show more"
+}
+
+.about_247sport_content_container.is-show .show-content,
+.about_league_content_container.is-show .show-content,
+.about_team_content_container.is-show .show-content {
+    max-height: unset !important
+}
+
+.about_247sport_content_container.is-show .show-content .container-opacity,
+.about_league_content_container.is-show .show-content .container-opacity,
+.about_team_content_container.is-show .show-content .container-opacity {
+    display: none
+}
+
+.about_247sport_content_container.is-show .btn-show-hide:after,
+.about_league_content_container.is-show .btn-show-hide:after,
+.about_team_content_container.is-show .btn-show-hide:after {
+    content: "Hide"
+}
+
+.social-list {
+    display: flex;
+    font-size: 30px;
+    margin-top: 15px;
+    position: relative
+}
+
+.social-list .item-social {
+    cursor: pointer;
+    margin: 0 8px
+}
+
+.social-list .item-social a {
+    color: #fff
+}

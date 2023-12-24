@@ -1,0 +1,516 @@
+.body-wrapper {
+    background-color: #f9f7f7
+}
+
+.body {
+    margin: 0 auto;
+    padding: 40px;
+    width: 1136px
+}
+
+.calendar-container {
+    background-color: #fff;
+    border-radius: 16px;
+    box-shadow: 0 20px 20px rgba(209, 62, 52, .06);
+    margin-top: -120px;
+    padding: 20px 20px 0
+}
+
+.calendar-title {
+    color: #1a202c;
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 22px;
+    margin-bottom: 8px;
+    text-align: center
+}
+
+.calendar-items {
+    display: flex;
+    overflow-y: auto
+}
+
+.calendar-item {
+    align-items: center;
+    cursor: pointer;
+    display: flex;
+    flex: 14.2%;
+    flex-direction: column;
+    height: 80px;
+    justify-content: center;
+    min-width: 80px
+}
+
+.calendar-item.active {
+    background: linear-gradient(180deg, rgba(209, 62, 52, 0), rgba(209, 62, 52, .1));
+    border-bottom: 3px solid #d13e34;
+}
+
+.calendar-item.active.active-no-bg {
+    background: unset;
+    border: none
+}
+
+.calendar-day {
+    color: #718096;
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 38px
+}
+
+.active .calendar-day {
+    color: #d13e34
+}
+
+.calendar-day-of-week {
+    color: #718096;
+    font-size: 16px;
+    line-height: 18px
+}
+
+.active .calendar-day-of-week {
+    color: #d13e34
+}
+
+.calendar-expanded .top {
+    cursor: pointer;
+    display: flex;
+    justify-content: flex-end
+}
+
+.calendar-expanded .top .end {
+    width: 14.1%
+}
+
+.calendar-expanded .bottom {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 16px;
+    padding-bottom: 12px
+}
+
+.calendar-expanded .bottom .day-of-week {
+    color: #1a202c;
+    font-size: 12px;
+    line-height: 14px;
+    text-align: center
+}
+
+.icon-calendar-container {
+    background-color: rgba(209, 62, 52, .1);
+    border-radius: 50%;
+    height: 60px;
+    width: 60px
+}
+
+.tabs {
+    display: flex;
+    height: 44px;
+    margin-bottom: 16px;
+    margin-top: 25px
+}
+
+.tabs>*+* {
+    margin-left: 16px
+}
+
+.tab {
+    background-color: #fff;
+    border-radius: 16px;
+    box-shadow: 0 1px 3px rgba(209, 62, 52, .1);
+    color: #1a202c;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 20px;
+    padding: 12px 16px
+}
+
+.active.tab {
+    background-color: #80c974;
+    color: #fff
+}
+
+.categories-container {
+    display: flex
+}
+
+.categories-container>*+* {
+    margin-left: 24px
+}
+
+#categories-container-1 {
+    flex: 2
+}
+
+@media (max-width:1280px) {
+    #categories-container-1 {
+        width: 100%
+    }
+}
+
+.categories {
+    display: flex;
+    flex-direction: column
+}
+
+.categories>*+* {
+    margin-top: 24px
+}
+
+.category {
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 1px 3px rgba(209, 62, 52, .1);
+    padding: 24px
+}
+
+.category-title {
+    align-items: center;
+    border-bottom: 1px solid #4a5568;
+    display: flex;
+    padding-bottom: 20px
+}
+
+.category-title .logo {
+    border-radius: 50%;
+    height: 48px;
+    -o-object-fit: contain;
+    object-fit: contain;
+    width: 48px
+}
+
+.category-title .live-streaming-matches-text {
+    color: #1a202c;
+    font-size: 20px;
+    font-weight: 900;
+    line-height: 24px;
+    margin-left: 16px
+}
+
+.category-row {
+    border-bottom: 1px solid #edf2f7;
+    display: flex;
+    min-height: 70px;
+    text-align: center
+}
+
+.category-row.hot .item.center .top {
+    color: #d13e34;
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 22px
+}
+
+.category-row.hot .item .team-name {
+    color: #d13e34
+}
+
+.category-row .center-area {
+    display: flex;
+    flex: 1
+}
+
+.category-row:hover {
+    background-color: rgba(237, 242, 247, .8);
+    border-radius: 12px;
+    margin: 0 -12px;
+    padding-left: 12px;
+    padding-right: 12px
+}
+
+.category-row .item {
+    align-items: center;
+    display: flex;
+    overflow: hidden
+}
+
+.category-row .item.start {
+    width: 80px
+}
+
+.category-row .item.live_football_game_team {
+    flex: 1;
+    justify-content: flex-end
+}
+
+.category-row .item.center {
+    align-items: center;
+    justify-content: center;
+    width: 50px
+}
+
+.category-row .item.center .top {
+    color: #1a202c;
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 22px
+}
+
+.category-row .item.center .bottom {
+    color: #4a5568;
+    font-size: 14px;
+    line-height: 17px
+}
+
+.category-row .item.right-team {
+    flex: 1
+}
+
+.category-row .item.end {
+    justify-content: flex-end;
+    width: 80px
+}
+
+.category-row .item .team-name {
+    color: #1a202c;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 19px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap
+}
+
+.category-row .item .team-logo {
+    height: 32px;
+    margin: 0 8px;
+    -o-object-fit: cover;
+    object-fit: cover;
+    width: 32px
+}
+
+.watch-btn {
+    background: #d13e34;
+    border: none;
+    border-radius: 1000px;
+    color: #fff;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 700;
+    height: 32px;
+    line-height: 19px;
+    padding: 6px 12px
+}
+
+.filter-container {
+    align-self: flex-start;
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 1px 3px rgba(209, 62, 52, .1);
+    flex: 1;
+    gap: 32px;
+    grid-template-columns: 1fr;
+    padding: 24px
+}
+
+.filter-container-mobile {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 20px
+}
+
+.filter-group .top_stream_leagues_title {
+    color: #1a202c;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 19px;
+    margin-bottom: 10px
+}
+
+.filter-row {
+    align-items: center;
+    cursor: pointer;
+    display: flex;
+    padding: 6px 0
+}
+
+.filter-row:hover {
+    background-color: rgba(237, 242, 247, .8);
+    border-radius: 12px;
+    margin: 0 -12px;
+    padding: 6px 12px
+}
+
+.filter-row .logo {
+    border-radius: 50%;
+    height: 40px;
+    margin-right: 12px;
+    -o-object-fit: cover;
+    object-fit: cover;
+    width: 40px
+}
+
+.filter-row .text {
+    color: #1a202c;
+    font-size: 16px;
+    line-height: 19px
+}
+
+.info {
+    margin-top: 36px
+}
+
+.info .title {
+    font-size: 18px;
+    line-height: 22px
+}
+
+.info .text {
+    font-size: 16px;
+    line-height: 22px
+}
+
+.current-match {
+    background-color: #fff;
+    border-radius: 16px;
+    box-shadow: 0 1px 3px rgba(209, 62, 52, .1);
+    display: flex;
+    flex-direction: column;
+    gap: 72px;
+    margin-bottom: 30px;
+    padding: 24px
+}
+
+.current-match .match {
+    display: flex;
+    flex-direction: column;
+    gap: 24px
+}
+
+.current-match .match .top_next_match_title {
+    color: #1a202c;
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 29px
+}
+
+.current-match .match .match-info {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    width: 600px
+}
+
+.current-match .match .match-info .team {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    margin-top: 32px
+}
+
+.current-match .match .match-info .team .team-logo {
+    height: 124px;
+    -o-object-fit: cover;
+    object-fit: cover;
+    width: 124px
+}
+
+.current-match .match .match-info .team .team-name {
+    color: #1a202c;
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 29px;
+    margin-top: 16px;
+    text-align: center
+}
+
+.current-match .match .match-info .center {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    gap: 6px
+}
+
+.current-match .match .match-info .center .league {
+    color: #1a202c;
+    font-size: 16px;
+    line-height: 19px;
+    text-align: center
+}
+
+.current-match .match .match-info .center .time {
+    color: #1a202c;
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 29px
+}
+
+.match-type {
+    display: flex;
+    justify-content: center
+}
+
+.match-type>a {
+    color: #fff
+}
+
+.match-type>a.active {
+    color: #f5d928;
+    font-weight: 700
+}
+
+.match-type>*+* {
+    margin-left: 15px
+}
+
+.search-container {
+    align-items: center;
+    display: flex;
+    justify-content: flex-end
+}
+
+@media (max-width:1030px) {
+    .search-container {
+        margin-top: 10px
+    }
+}
+
+.search-container input[type=text] {
+    background: #cdcdcd;
+    border: 0;
+    border-radius: 8px;
+    color: #333;
+    height: 34px;
+    outline: 0;
+    padding: 0 10px
+}
+
+@media (max-width:1030px) {
+    .search-container input[type=text] {
+        flex: 1
+    }
+}
+
+.search-container button {
+    background-color: #80c974;
+    border: 0;
+    border-radius: 8px;
+    color: #fff;
+    font-weight: 700;
+    height: 34px;
+    margin-left: 5px;
+    padding: 0 15px
+}
+
+.bingmovie-banner {
+    display: block !important;
+    margin-top: 25px
+}
+
+.bingmovie-banner img {
+    display: none !important
+}
+
+@media (min-width:975px) {
+    .bingmovie-banner img.img-banner-web {
+        display: block !important
+    }
+}
+
+@media (max-width:975px) {
+    .bingmovie-banner img.img-banner-mobile {
+        display: block !important
+    }
+}
