@@ -16,7 +16,7 @@
               font-weight: 600 !important;
             "
           >
-            Loading...aa
+            Loading...
             <img
               src="/img/spinner.gif"
               alt="Image not Found"
