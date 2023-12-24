@@ -9,47 +9,37 @@
 
 <url>
   <loc>https://sportyclub.live/cricket</loc>
-  <lastmod>2023-10-22T08:07:06+00:00</lastmod>
+  <lastmod>2023-12-24T21:35:00+00:00</lastmod>
   <priority>1.00</priority>
 </url>
 <url>
-  <loc>https://sportyclub.live/cricket/today-live-cricket-matches</loc>
-  <lastmod>2023-10-22T08:07:06+00:00</lastmod>
+  <loc>https://sportyclub.live/cricket/today/live/match/list</loc>
+  <lastmod>2023-12-24T21:35:00+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://sportyclub.live/cricket/today-upcoming-cricket-matches</loc>
-  <lastmod>2023-10-22T08:07:06+00:00</lastmod>
+  <loc>https://sportyclub.live/cricket/upcoming/matches</loc>
+  <lastmod>2023-12-24T21:35:00+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://sportyclub.live/cricket/previous/matches</loc>
+  <lastmod>2023-12-24T21:35:00+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://sportyclub.live/cricket/news/list</loc>
-  <lastmod>2023-10-22T08:07:06+00:00</lastmod>
+  <lastmod>2023-12-24T21:35:00+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://sportyclub.live/about-us</loc>
-  <lastmod>2023-10-22T08:07:06+00:00</lastmod>
+  <loc>https://sportyclub.live/cricket/teams/list</loc>
+  <lastmod>2023-12-24T21:35:00+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://sportyclub.live/terms-of-service</loc>
-  <lastmod>2023-10-22T08:07:06+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://sportyclub.live/privacy-policy</loc>
-  <lastmod>2023-10-22T08:07:06+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://sportyclub.live/contact-us</loc>
-  <lastmod>2023-10-22T08:07:06+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://sportyclub.live/disclaimer</loc>
-  <lastmod>2023-10-22T08:07:06+00:00</lastmod>
+  <loc>https://sportyclub.live/cricket/top/league/list</loc>
+  <lastmod>2023-12-24T21:35:00+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 
