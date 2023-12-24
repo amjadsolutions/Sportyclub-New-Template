@@ -13,7 +13,7 @@
             margin-top: 10px !important;
           "
         >
-          Loading...aaaasa
+          Loading...
           <img
             src="/img/spinner.gif"
             alt="Image not Found"
