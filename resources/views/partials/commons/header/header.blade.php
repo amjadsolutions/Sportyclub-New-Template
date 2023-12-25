@@ -5,7 +5,7 @@
         <div class="container">
             {{-- logo --}}
             <a class="navbar-brand" href="{{ route('/') }}">
-                <img src="/img/sporty_club.png" alt="logo" style="margin-top:-40px">
+                <img src="/img/sporty_club.png" alt="logo" style="margin-top:-40px;width:60%">
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas"
                 data-bs-target="#offcanvasRightmobile">
