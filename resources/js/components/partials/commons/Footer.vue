@@ -42,7 +42,10 @@
             <a href="cricket/top/league/list"> Hot Leagues </a>
           </li>
           <li>
-            <a href="/"> Cricket Matches </a>
+            <a href="/cricket/previous/matches"> Previous Matches </a>
+          </li>
+          <li>
+            <a href="/cricket/upcoming/matches"> Upcoming Matches </a>
           </li>
           <li>
             <a href="/cricket/news/list"> Cricket News </a>

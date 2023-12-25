@@ -158,8 +158,8 @@ export default {
                 // Access or manipulate each <a> element
                 linksInsideParagraph[j].href = "";
                 linksInsideParagraph[j].style.color = "black";
-                linksInsideParagraph[j].style.textDecoration  = "none";
-                linksInsideParagraph[j].style.fontWeight   = "bold";
+                linksInsideParagraph[j].style.textDecoration = "none";
+                linksInsideParagraph[j].style.fontWeight = "bold";
               }
             }
           }, 1000);

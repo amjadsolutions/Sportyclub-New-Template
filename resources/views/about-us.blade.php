@@ -75,6 +75,7 @@
                 </div>
             </div>
         </div>
+      
     </section>
     {{-- end::page contents --}}
 @endsection
