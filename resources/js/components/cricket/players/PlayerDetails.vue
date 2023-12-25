@@ -156,10 +156,11 @@ export default {
               // Loop through each <a> element inside the current <p> element
               for (var j = 0; j < linksInsideParagraph.length; j++) {
                 // Access or manipulate each <a> element
-                linksInsideParagraph[j].href = "#";
+                linksInsideParagraph[j].href = "";
+                linksInsideParagraph[j].style.color = "red";
               }
             }
-          }, 3000);
+          }, 2000);
         });
     },
 
