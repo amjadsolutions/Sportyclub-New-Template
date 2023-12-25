@@ -43,7 +43,11 @@
               <h2 class="comon-heading m-0">
                 {{ teamDetails.name }}
               </h2>
-              <p class="mt-3 pe-lg-3" v-html="teamContents"></p>
+              <p
+                class="mt-3 pe-lg-3"
+                id="team-contents"
+                v-html="teamContents"
+              ></p>
             </div>
           </div>
         </div>
@@ -195,24 +199,27 @@ export default {
             "Sofascore",
             "Sportyclub"
           );
+
+          setTimeout(() => {
+            var paragraphs = document.getElementsByTagName("p");
+            // Loop through each <p> element
+            for (var i = 0; i < paragraphs.length; i++) {
+              // Get all <a> elements inside the current <p> element
+              var linksInsideParagraph =
+                paragraphs[i].getElementsByTagName("a");
+              // Loop through each <a> element inside the current <p> element
+              for (var j = 0; j < linksInsideParagraph.length; j++) {
+                // Access or manipulate each <a> element
+                linksInsideParagraph[j].href = "#";
+              }
+            }
+          }, 3000);
         });
     },
 
     // method to player details
     getPlayerDetails(playerId, slug) {
       window.open("/cricket/" + slug + "/player/details/" + playerId, "_blank");
-    },
-    // method to check player photo
-    checkPlayerPhoto(playerId) {
-      axios
-        .get("https://api.sofascore.app/api/v1/player/" + playerId + "/image")
-        .then((response) => {
-          this.defaultPlayerPhoto =
-            "https://api.sofascore.app/api/v1/player/" + playerId + "/image";
-        })
-        .catch((error) => {
-          this.defaultPlayerPhoto = "/img/default/player-default.png";
-        });
     },
 
     // method to get meta contents of team

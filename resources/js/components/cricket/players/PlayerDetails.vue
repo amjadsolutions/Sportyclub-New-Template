@@ -17,7 +17,7 @@
                   font-weight: 600 !important;
                 "
               >
-                Loading...
+                Loading...12
                 <img
                   src="/img/spinner.gif"
                   alt="Image not Found"
@@ -146,6 +146,20 @@ export default {
             "Sofascore",
             "Sportyclub"
           );
+          setTimeout(() => {
+            var paragraphs = document.getElementsByTagName("p");
+            // Loop through each <p> element
+            for (var i = 0; i < paragraphs.length; i++) {
+              // Get all <a> elements inside the current <p> element
+              var linksInsideParagraph =
+                paragraphs[i].getElementsByTagName("a");
+              // Loop through each <a> element inside the current <p> element
+              for (var j = 0; j < linksInsideParagraph.length; j++) {
+                // Access or manipulate each <a> element
+                linksInsideParagraph[j].href = "#";
+              }
+            }
+          }, 3000);
         });
     },
 

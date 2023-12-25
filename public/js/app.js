@@ -20349,6 +20349,19 @@ __webpack_require__.r(__webpack_exports__);
         _this2.playerContentsHeadings = response.data.content.heading;
         _this2.changeLeagueText = _this2.changeLeagueText.replaceAll("sofascore.com", "sportyclub.live");
         _this2.playerContents = _this2.changeLeagueText.replaceAll("Sofascore", "Sportyclub");
+        setTimeout(function () {
+          var paragraphs = document.getElementsByTagName("p");
+          // Loop through each <p> element
+          for (var i = 0; i < paragraphs.length; i++) {
+            // Get all <a> elements inside the current <p> element
+            var linksInsideParagraph = paragraphs[i].getElementsByTagName("a");
+            // Loop through each <a> element inside the current <p> element
+            for (var j = 0; j < linksInsideParagraph.length; j++) {
+              // Access or manipulate each <a> element
+              linksInsideParagraph[j].href = "#";
+            }
+          }
+        }, 3000);
       });
     },
     // method to get meta contents
@@ -20518,24 +20531,28 @@ __webpack_require__.r(__webpack_exports__);
         _this2.changeLeagueText = response.data.content.about;
         _this2.changeLeagueText = _this2.changeLeagueText.replaceAll("sofascore.com", "sportyclub.live");
         _this2.teamContents = _this2.changeLeagueText.replaceAll("Sofascore", "Sportyclub");
+        setTimeout(function () {
+          var paragraphs = document.getElementsByTagName("p");
+          // Loop through each <p> element
+          for (var i = 0; i < paragraphs.length; i++) {
+            // Get all <a> elements inside the current <p> element
+            var linksInsideParagraph = paragraphs[i].getElementsByTagName("a");
+            // Loop through each <a> element inside the current <p> element
+            for (var j = 0; j < linksInsideParagraph.length; j++) {
+              // Access or manipulate each <a> element
+              linksInsideParagraph[j].href = "#";
+            }
+          }
+        }, 3000);
       });
     },
     // method to player details
     getPlayerDetails: function getPlayerDetails(playerId, slug) {
       window.open("/cricket/" + slug + "/player/details/" + playerId, "_blank");
     },
-    // method to check player photo
-    checkPlayerPhoto: function checkPlayerPhoto(playerId) {
-      var _this3 = this;
-      axios__WEBPACK_IMPORTED_MODULE_0___default().get("https://api.sofascore.app/api/v1/player/" + playerId + "/image").then(function (response) {
-        _this3.defaultPlayerPhoto = "https://api.sofascore.app/api/v1/player/" + playerId + "/image";
-      })["catch"](function (error) {
-        _this3.defaultPlayerPhoto = "/img/default/player-default.png";
-      });
-    },
     // method to get meta contents of team
     getTeamContentsMeta: function getTeamContentsMeta(teamId) {
-      var _this4 = this;
+      var _this3 = this;
       axios__WEBPACK_IMPORTED_MODULE_0___default().get("".concat(this.BASE_SERVER_URI, "/api/cricket/sofascore/teams/contents/meta/").concat(teamId)).then(function (response) {
         $("title").text(response.data.contents.title);
         $("link[rel='canonical']").attr("href", response.data.contents.url);
@@ -20553,15 +20570,15 @@ __webpack_require__.r(__webpack_exports__);
 
         // end::meta og
 
-        _this4.loading = false;
+        _this3.loading = false;
       });
     },
     // method to get team linups
     getTeamSquad: function getTeamSquad(teamId) {
-      var _this5 = this;
+      var _this4 = this;
       axios__WEBPACK_IMPORTED_MODULE_0___default().get("".concat(this.BASE_SERVER_URI, "/api/cricket/sofascore/teams/squad/").concat(teamId)).then(function (response) {
-        _this5.teamSquad = response.data.players;
-        _this5.loading = false;
+        _this4.teamSquad = response.data.players;
+        _this4.loading = false;
       });
     }
   }
@@ -24710,7 +24727,7 @@ var _hoisted_6 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementV
     "font-family": "Barlow Condensed, sans-seri0 !important",
     "font-weight": "600 !important"
   }
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Loading... "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Loading...12 "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
   src: "/img/spinner.gif",
   alt: "Image not Found",
   style: {
@@ -25196,6 +25213,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     }
   }, null, 8 /* PROPS */, _hoisted_12)])])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), !$data.loading ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_13, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h2", _hoisted_14, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.teamDetails.name), 1 /* TEXT */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", {
     "class": "mt-3 pe-lg-3",
+    id: "team-contents",
     innerHTML: $data.teamContents
   }, null, 8 /* PROPS */, _hoisted_15)])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)])])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" begin team squad "), !$data.loading ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_16, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_17, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" begin::home players "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_18, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h1", _hoisted_19, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.teamDetails.name) + " Squad", 1 /* TEXT */)]), ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($data.teamSquad, function (player) {
     return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", {
