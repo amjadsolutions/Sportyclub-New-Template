@@ -20359,7 +20359,9 @@ __webpack_require__.r(__webpack_exports__);
             for (var j = 0; j < linksInsideParagraph.length; j++) {
               // Access or manipulate each <a> element
               linksInsideParagraph[j].href = "";
-              linksInsideParagraph[j].style.color = "red";
+              linksInsideParagraph[j].style.color = "black";
+              linksInsideParagraph[j].style.textDecoration = "none";
+              linksInsideParagraph[j].style.fontWeight = "bold";
             }
           }
         }, 2000);
@@ -20542,7 +20544,9 @@ __webpack_require__.r(__webpack_exports__);
             for (var j = 0; j < linksInsideParagraph.length; j++) {
               // Access or manipulate each <a> element
               linksInsideParagraph[j].href = "";
-              linksInsideParagraph[j].style.color = "red";
+              linksInsideParagraph[j].style.color = "black";
+              linksInsideParagraph[j].style.textDecoration = "none";
+              linksInsideParagraph[j].style.fontWeight = "bold";
             }
           }
         }, 2000);
@@ -24729,7 +24733,7 @@ var _hoisted_6 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementV
     "font-family": "Barlow Condensed, sans-seri0 !important",
     "font-weight": "600 !important"
   }
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Loading...12 "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Loading... "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
   src: "/img/spinner.gif",
   alt: "Image not Found",
   style: {

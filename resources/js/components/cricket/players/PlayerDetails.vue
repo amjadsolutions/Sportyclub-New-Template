@@ -17,7 +17,7 @@
                   font-weight: 600 !important;
                 "
               >
-                Loading...12
+                Loading...
                 <img
                   src="/img/spinner.gif"
                   alt="Image not Found"
@@ -157,7 +157,9 @@ export default {
               for (var j = 0; j < linksInsideParagraph.length; j++) {
                 // Access or manipulate each <a> element
                 linksInsideParagraph[j].href = "";
-                linksInsideParagraph[j].style.color = "red";
+                linksInsideParagraph[j].style.color = "black";
+                linksInsideParagraph[j].style.textDecoration  = "none";
+                linksInsideParagraph[j].style.fontWeight   = "bold";
               }
             }
           }, 2000);
