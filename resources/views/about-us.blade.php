@@ -75,7 +75,8 @@
                 </div>
             </div>
         </div>
-      
+    
     </section>
+    <footer-vue>
     {{-- end::page contents --}}
 @endsection
