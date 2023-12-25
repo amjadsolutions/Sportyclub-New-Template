@@ -19788,7 +19788,7 @@ __webpack_require__.r(__webpack_exports__);
     // method to render live,upcoming or finish match page.
     getMatchDetails: function getMatchDetails(id, homeTeam, awayTeam, status) {
       var team = homeTeam.toLowerCase() + "-vs-" + awayTeam.toLowerCase();
-      if (this.liveMatches.includes(status) || this.liveendedMatches.includes(status) || this.upcomingMatches.includes(status)) {
+      if (this.liveMatches.includes(status) || this.liveendedMatches.includes(status)) {
         window.open("/cricket/today/live/match/" + team + "/" + id, "_blank");
       } else if (this.upcomingMatches.includes(status)) {
         window.open("/cricket/today/upcoming/match/" + team + "/" + id, "_blank");
