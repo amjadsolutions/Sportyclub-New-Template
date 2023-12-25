@@ -117,7 +117,7 @@
                   <tr
                     style="cursor: pointer"
                     class="odd"
-                    v-for="(match, index) in matchList"
+                    v-for="match in matchList"
                     :key="match.id"
                     v-on:click="
                       getMatchDetails(
@@ -177,12 +177,7 @@
                         </a>
                       </td>
                     </template>
-                    <!-- if data is not available -->
-                    <template v-else>
-                      <tr v-if="index < 1">
-                        <td colspan="4">Temporarily No Data</td>
-                      </tr>
-                    </template>
+         
                   </tr>
                 </tbody>
               </table>
