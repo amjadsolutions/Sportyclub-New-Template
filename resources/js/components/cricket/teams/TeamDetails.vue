@@ -216,7 +216,7 @@ export default {
                 linksInsideParagraph[j].style.fontWeight = "bold";
               }
             }
-          }, 2000);
+          }, 1000);
         });
     },
 

@@ -20364,7 +20364,7 @@ __webpack_require__.r(__webpack_exports__);
               linksInsideParagraph[j].style.fontWeight = "bold";
             }
           }
-        }, 2000);
+        }, 1000);
       });
     },
     // method to get meta contents
@@ -20549,7 +20549,7 @@ __webpack_require__.r(__webpack_exports__);
               linksInsideParagraph[j].style.fontWeight = "bold";
             }
           }
-        }, 2000);
+        }, 1000);
       });
     },
     // method to player details
