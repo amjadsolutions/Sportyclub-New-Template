@@ -335,6 +335,7 @@ export default {
         .then((response) => {
           this.matchDetails = response.data.events;
           this.loading = false;
+          this.isEmpty = this.matchDetails.length;
         });
     },
 

@@ -19873,6 +19873,7 @@ __webpack_require__.r(__webpack_exports__);
       axios__WEBPACK_IMPORTED_MODULE_0___default().get("".concat(this.BASE_SERVER_URI, "/api/cricket/sofascore/today/all/matches/").concat(formattedDate)).then(function (response) {
         _this2.matchDetails = response.data.events;
         _this2.loading = false;
+        _this2.isEmpty = _this2.matchDetails.length;
       });
     },
     // method to get team details
