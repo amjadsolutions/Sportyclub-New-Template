@@ -15,7 +15,7 @@
                   font-weight: 600 !important;
                 "
               >
-               Loading...
+                Loading...
                 <img
                   src="/img/spinner.gif"
                   alt="Image not Found"
@@ -132,7 +132,7 @@
                   </thead>
                   <!-- end::table header -->
                   <!-- begin::table body-->
-                  <tbody>
+                  <tbody v-if="isEmpty > 0">
                     <tr
                       class="odd"
                       style="cursor: pointer"
@@ -262,6 +262,11 @@
                       </td>
                     </tr>
                   </tbody>
+                  <tbody v-else>
+                    <tr class="odd" style="cursor: pointer">
+                      <td class="sorting_1" colspan="4">Currently no Match is Live, Check <a href="/cricket/upcoming/matches">Upcoming</a> or <a href="/cricket/previous/matches">Finished</a></td>
+                    </tr>
+                  </tbody>
                   <!-- end::table body -->
                 </table>
               </div>
@@ -292,6 +297,7 @@ export default {
       finishMatches: [100],
       upcomingMatches: [0],
       liveendedMatches: [143],
+      isEmpty: null,
     };
   },
   mounted() {
@@ -307,6 +313,7 @@ export default {
         .get(`${this.BASE_SERVER_URI}/api/cricket/sofascore/today/live/matches`)
         .then((response) => {
           this.matchDetails = response.data.events;
+          this.isEmpty = this.matchDetails.length;
           this.loading = false;
         });
     },

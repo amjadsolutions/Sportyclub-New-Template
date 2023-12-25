@@ -1,5 +1,6 @@
 {{-- begin::desktop version --}}
-<header class="float-start w-100" style="margin-top: -4px !important">
+<header class="float-start w-100">
+    {{-- style="margin-top: -4px !important" --}}
     <nav class="navbar navbar-expand-lg navbar-light ">
         <div class="container">
             {{-- logo --}}
@@ -88,7 +89,7 @@
                             style="color: white;background-color: rgb(7,31,64) !important"> Previous Matches </a>
                     </li>
 
-                       <li>
+                    <li>
                         <a href="{{ route('cricket/news/list') }}"
                             style="color: white;background-color: rgb(7,31,64) !important"> Latest News</a>
                     </li>
@@ -107,9 +108,11 @@
             {{-- begin::social icons --}}
             <ul class="side-media">
                 <li> <a href="https://www.facebook.com/sportyclub.lives"> <i class="fab fa-facebook-f"></i> </a> </li>
-                <li> <a href="https://www.linkedin.com/in/sportyclub-live-5852392a5/"> <i class="fab fa-instagram"></i> </a> </li>
-                <li> <a href="https://www.instagram.com/sportyclub_live/"> <i class="fab fa-google-plus-g"></i> </a> </li>
- 
+                <li> <a href="https://www.linkedin.com/in/sportyclub-live-5852392a5/"> <i class="fab fa-instagram"></i>
+                    </a> </li>
+                <li> <a href="https://www.instagram.com/sportyclub_live/"> <i class="fab fa-google-plus-g"></i> </a>
+                </li>
+
             </ul>
             {{-- end::social icons --}}
         </div>

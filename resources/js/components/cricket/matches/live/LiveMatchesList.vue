@@ -529,7 +529,7 @@
                     <!-- end:: finished matchess -->
                   </div>
                   <!-- begin::top leagues -->
-                  <div class="col-lg-4">
+                  <div class="col-lg-4" style="margin-top: 35px !important;">
                     <div class="table-div-left mt-2">
                       <h4>Top Leagues</h4>
                       <div id="seri2_wrapper" class="dataTables_wrapper">
