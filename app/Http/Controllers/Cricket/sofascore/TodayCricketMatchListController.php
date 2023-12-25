@@ -18,7 +18,7 @@ class TodayCricketMatchListController extends Controller
     // method to return live match details view
     public function todayLiveMatchDetails()
     {
-        return view('cricket/today/live/match/list');
+        return view('category.cricket.matches.live-match-details');
     }
        // method to return upcoming match list view
        public function todayUpcomingMatchList()

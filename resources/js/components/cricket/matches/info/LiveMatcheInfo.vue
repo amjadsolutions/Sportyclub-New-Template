@@ -42,7 +42,7 @@
                       id="pills-tab"
                       role="tablist"
                     >
-                      <li class="nav-item" role="presentation">
+                      <li class="nav-item" role="presentation" v-on:click="changeServer('https://crichdstreaming.xyz/embed2.php?id=ptvsp')">
                         <button
                           class="nav-link active"
                           id="pills-home-tab"
@@ -54,7 +54,7 @@
                           <i class="fas fa-calendar-alt"></i> Server 1
                         </button>
                       </li>
-                      <li class="nav-item" role="presentation">
+                      <li class="nav-item" role="presentation" v-on:click="changeServer('//stream.crichd.vip/update/skys1.php')">
                         <button
                           class="nav-link"
                           id="pills-profile-tab"
@@ -63,10 +63,10 @@
                           type="button"
                           role="tab"
                         >
-                          <i class="fas fa-calendar-alt"></i>Server 2
+                          <i class="fas fa-calendar-alt"></i> Server 2
                         </button>
                       </li>
-                      <li class="nav-item" role="presentation">
+                      <li class="nav-item" role="presentation" v-on:click="changeServer('//stream.crichd.vip/update/sspsl.php')">
                         <button
                           class="nav-link"
                           data-bs-toggle="pill"
@@ -78,7 +78,7 @@
                         </button>
                       </li>
 
-                      <li class="nav-item" role="presentation">
+                      <li class="nav-item" role="presentation" v-on:click="changeServer('//stream.crichd.vip/update/ssgrandstand.php')">
                         <button
                           class="nav-link"
                           data-bs-toggle="pill"
@@ -108,7 +108,7 @@
                         <figure style="width: 100% !important; height: 400px">
                           <iframe
                             gesture="media"
-                            src="https://crichdstreaming.xyz/embed2.php?id=ptvsp"
+                            :src="currentServer"
                             height="400"
                             width="350"
                           ></iframe>
@@ -378,7 +378,7 @@
                           <iframe
                             gesture="media"
                             allow="encrypted-media"
-                            src="https://crichdstreaming.xyz/embed2.php?id=ptvsp"
+                            :src="currentServer"
                             height="400"
                             width="750"
                             title="Iframe Example"
@@ -442,6 +442,7 @@
                                       >
                                         {{ matchDetails.event.homeTeam.name }}
                                       </p>
+                                      s
                                       <p
                                         style="font-size: 14px"
                                         v-if="
@@ -825,6 +826,7 @@ export default {
       matchH2H: null,
       playerInfo: null,
       currentBatters: null,
+      currentServer: "https://crichdstreaming.xyz/embed2.php?id=ptvsp",
       liveMatches: [20, 21, 22, 45],
     };
   },
@@ -943,6 +945,11 @@ export default {
         });
     },
 
+    // method to change server
+    changeServer(server)
+    {
+      this.currentServer = server;
+    },
     // method to get team details
     getTeamDetails(teamId, slug) {
       window.open("/cricket/" + slug + "/team/details/" + teamId, "_blank");

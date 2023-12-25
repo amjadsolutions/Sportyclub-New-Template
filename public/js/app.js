@@ -19376,6 +19376,7 @@ __webpack_require__.r(__webpack_exports__);
       matchH2H: null,
       playerInfo: null,
       currentBatters: null,
+      currentServer: "https://crichdstreaming.xyz/embed2.php?id=ptvsp",
       liveMatches: [20, 21, 22, 45]
     };
   },
@@ -19453,6 +19454,10 @@ __webpack_require__.r(__webpack_exports__);
           _this4.seasonStandings = "";
         }
       });
+    },
+    // method to change server
+    changeServer: function changeServer(server) {
+      this.currentServer = server;
     },
     // method to get team details
     getTeamDetails: function getTeamDetails(teamId, slug) {
@@ -19783,7 +19788,7 @@ __webpack_require__.r(__webpack_exports__);
     // method to render live,upcoming or finish match page.
     getMatchDetails: function getMatchDetails(id, homeTeam, awayTeam, status) {
       var team = homeTeam.toLowerCase() + "-vs-" + awayTeam.toLowerCase();
-      if (this.liveMatches.includes(status) || this.liveendedMatches.includes(status)) {
+      if (this.liveMatches.includes(status) || this.liveendedMatches.includes(status) || this.upcomingMatches.includes(status)) {
         window.open("/cricket/today/live/match/" + team + "/" + id, "_blank");
       } else if (this.upcomingMatches.includes(status)) {
         window.open("/cricket/today/upcoming/match/" + team + "/" + id, "_blank");
@@ -21855,14 +21860,12 @@ var _hoisted_10 = {
   id: "home",
   role: "tabpanel"
 };
-var _hoisted_11 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", null, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("ul", {
+var _hoisted_11 = {
   "class": "nav nav-pills mb-3",
   id: "pills-tab",
   role: "tablist"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", {
-  "class": "nav-item",
-  role: "presentation"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+};
+var _hoisted_12 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
   "class": "nav-link active",
   id: "pills-home-tab",
   "data-bs-toggle": "pill",
@@ -21871,10 +21874,9 @@ var _hoisted_11 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
   role: "tab"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
   "class": "fas fa-calendar-alt"
-}), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Server 1 ")])]), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", {
-  "class": "nav-item",
-  role: "presentation"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+}), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Server 1 ")], -1 /* HOISTED */);
+var _hoisted_13 = [_hoisted_12];
+var _hoisted_14 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
   "class": "nav-link",
   id: "pills-profile-tab",
   "data-bs-toggle": "pill",
@@ -21883,10 +21885,9 @@ var _hoisted_11 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
   role: "tab"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
   "class": "fas fa-calendar-alt"
-}), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Server 2 ")])]), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", {
-  "class": "nav-item",
-  role: "presentation"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+}), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Server 2 ")], -1 /* HOISTED */);
+var _hoisted_15 = [_hoisted_14];
+var _hoisted_16 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
   "class": "nav-link",
   "data-bs-toggle": "pill",
   "data-bs-target": "#yd-hom3",
@@ -21894,10 +21895,9 @@ var _hoisted_11 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
   role: "tab"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
   "class": "fas fa-calendar-alt"
-}), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Server 3 ")])]), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", {
-  "class": "nav-item",
-  role: "presentation"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+}), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Server 3 ")], -1 /* HOISTED */);
+var _hoisted_17 = [_hoisted_16];
+var _hoisted_18 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
   "class": "nav-link",
   "data-bs-toggle": "pill",
   "data-bs-target": "#yd-hom4",
@@ -21905,56 +21905,53 @@ var _hoisted_11 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
   role: "tab"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
   "class": "fas fa-calendar-alt"
-}), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Server 4 ")])])])], -1 /* HOISTED */);
-var _hoisted_12 = {
+}), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Server 4 ")], -1 /* HOISTED */);
+var _hoisted_19 = [_hoisted_18];
+var _hoisted_20 = {
   key: 0,
   "class": "tab-content mobile-version",
   id: "pills-tabContent"
 };
-var _hoisted_13 = {
+var _hoisted_21 = {
   "class": "tab-pane fade show active",
   id: "yd-hom1",
   role: "tabpanel"
 };
-var _hoisted_14 = {
+var _hoisted_22 = {
   "class": "comon-fild-ads1 d-lg-flex"
 };
-var _hoisted_15 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("figure", {
+var _hoisted_23 = {
   style: {
     "width": "100% !important",
     "height": "400px"
   }
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("iframe", {
-  gesture: "media",
-  src: "https://crichdstreaming.xyz/embed2.php?id=ptvsp",
-  height: "400",
-  width: "350"
-})], -1 /* HOISTED */);
-var _hoisted_16 = {
+};
+var _hoisted_24 = ["src"];
+var _hoisted_25 = {
   "class": "left-history",
   style: {
     "width": "100% !important",
     "margin-top": "10px"
   }
 };
-var _hoisted_17 = {
+var _hoisted_26 = {
   "class": "col-12"
 };
-var _hoisted_18 = {
+var _hoisted_27 = {
   "class": "items-matchs",
   style: {
     "height": "252px !important"
   }
 };
-var _hoisted_19 = {
+var _hoisted_28 = {
   "class": "matches-div-home"
 };
-var _hoisted_20 = {
+var _hoisted_29 = {
   style: {
     "margin-top": "75px !important"
   }
 };
-var _hoisted_21 = {
+var _hoisted_30 = {
   style: {
     "overflow": "hidden",
     "display": "-webkit-box",
@@ -21963,14 +21960,14 @@ var _hoisted_21 = {
     "white-space": "pre-wrap"
   }
 };
-var _hoisted_22 = {
+var _hoisted_31 = {
   "class": "d-block"
 };
-var _hoisted_23 = {
+var _hoisted_32 = {
   "class": "d-flex align-items-center justify-content-between"
 };
-var _hoisted_24 = ["src"];
-var _hoisted_25 = {
+var _hoisted_33 = ["src"];
+var _hoisted_34 = {
   style: {
     "overflow": "hidden",
     "display": "-webkit-box",
@@ -21979,31 +21976,31 @@ var _hoisted_25 = {
     "white-space": "pre-wrap"
   }
 };
-var _hoisted_26 = {
+var _hoisted_35 = {
   key: 0,
   style: {
     "font-size": "14px"
   }
 };
-var _hoisted_27 = {
+var _hoisted_36 = {
   key: 1,
   style: {
     "font-size": "14px"
   }
 };
-var _hoisted_28 = {
+var _hoisted_37 = {
   key: 0
 };
-var _hoisted_29 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("br", null, null, -1 /* HOISTED */);
-var _hoisted_30 = {
+var _hoisted_38 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("br", null, null, -1 /* HOISTED */);
+var _hoisted_39 = {
   style: {
     "margin-top": "-150px !important"
   }
 };
-var _hoisted_31 = {
+var _hoisted_40 = {
   key: 0
 };
-var _hoisted_32 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
+var _hoisted_41 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
   src: "/img/live/livelive.gif",
   alt: "Image not Found",
   width: "50",
@@ -22012,12 +22009,12 @@ var _hoisted_32 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
     "margin-top": "5px !important"
   }
 }, null, -1 /* HOISTED */);
-var _hoisted_33 = [_hoisted_32];
-var _hoisted_34 = {
+var _hoisted_42 = [_hoisted_41];
+var _hoisted_43 = {
   key: 1
 };
-var _hoisted_35 = ["src"];
-var _hoisted_36 = {
+var _hoisted_44 = ["src"];
+var _hoisted_45 = {
   style: {
     "overflow": "hidden",
     "display": "-webkit-box",
@@ -22026,65 +22023,59 @@ var _hoisted_36 = {
     "white-space": "pre-wrap"
   }
 };
-var _hoisted_37 = {
+var _hoisted_46 = {
   key: 0,
   style: {
     "font-size": "14px"
   }
 };
-var _hoisted_38 = {
+var _hoisted_47 = {
   key: 1,
   style: {
     "font-size": "14px"
   }
 };
-var _hoisted_39 = {
+var _hoisted_48 = {
   key: 1,
   "class": "tab-content desktop-version",
   id: "pills-tabContent"
 };
-var _hoisted_40 = {
+var _hoisted_49 = {
   "class": "tab-pane fade show active",
   id: "yd-hom1",
   role: "tabpanel"
 };
-var _hoisted_41 = {
+var _hoisted_50 = {
   "class": "comon-fild-ads1 d-lg-flex"
 };
-var _hoisted_42 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("figure", {
+var _hoisted_51 = {
   style: {
     "width": "60% !important",
     "height": "400px"
   }
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" begin::ifream "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("iframe", {
-  gesture: "media",
-  allow: "encrypted-media",
-  src: "https://crichdstreaming.xyz/embed2.php?id=ptvsp",
-  height: "400",
-  width: "750",
-  title: "Iframe Example"
-}), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" end::ifream ")], -1 /* HOISTED */);
-var _hoisted_43 = {
+};
+var _hoisted_52 = ["src"];
+var _hoisted_53 = {
   "class": "left-history",
   style: {
     "width": "40% !important"
   }
 };
-var _hoisted_44 = {
+var _hoisted_54 = {
   "class": "col-12"
 };
-var _hoisted_45 = {
+var _hoisted_55 = {
   "class": "items-matchs"
 };
-var _hoisted_46 = {
+var _hoisted_56 = {
   "class": "matches-div-home"
 };
-var _hoisted_47 = {
+var _hoisted_57 = {
   style: {
     "margin-top": "75px !important"
   }
 };
-var _hoisted_48 = {
+var _hoisted_58 = {
   style: {
     "overflow": "hidden",
     "display": "-webkit-box",
@@ -22093,14 +22084,14 @@ var _hoisted_48 = {
     "white-space": "pre-wrap"
   }
 };
-var _hoisted_49 = {
+var _hoisted_59 = {
   "class": "d-block"
 };
-var _hoisted_50 = {
+var _hoisted_60 = {
   "class": "d-flex align-items-center justify-content-between"
 };
-var _hoisted_51 = ["src"];
-var _hoisted_52 = {
+var _hoisted_61 = ["src"];
+var _hoisted_62 = {
   style: {
     "overflow": "hidden",
     "display": "-webkit-box",
@@ -22109,31 +22100,31 @@ var _hoisted_52 = {
     "white-space": "pre-wrap"
   }
 };
-var _hoisted_53 = {
+var _hoisted_63 = {
   key: 0,
   style: {
     "font-size": "14px"
   }
 };
-var _hoisted_54 = {
+var _hoisted_64 = {
   key: 1,
   style: {
     "font-size": "14px"
   }
 };
-var _hoisted_55 = {
+var _hoisted_65 = {
   key: 0
 };
-var _hoisted_56 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("br", null, null, -1 /* HOISTED */);
-var _hoisted_57 = {
+var _hoisted_66 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("br", null, null, -1 /* HOISTED */);
+var _hoisted_67 = {
   style: {
     "margin-top": "-150px !important"
   }
 };
-var _hoisted_58 = {
+var _hoisted_68 = {
   key: 0
 };
-var _hoisted_59 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
+var _hoisted_69 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
   src: "/img/live/livelive.gif",
   alt: "Image not Found",
   width: "50",
@@ -22141,12 +22132,12 @@ var _hoisted_59 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
     "margin-top": "5px !important"
   }
 }, null, -1 /* HOISTED */);
-var _hoisted_60 = [_hoisted_59];
-var _hoisted_61 = {
+var _hoisted_70 = [_hoisted_69];
+var _hoisted_71 = {
   key: 1
 };
-var _hoisted_62 = ["src"];
-var _hoisted_63 = {
+var _hoisted_72 = ["src"];
+var _hoisted_73 = {
   style: {
     "overflow": "hidden",
     "display": "-webkit-box",
@@ -22155,46 +22146,46 @@ var _hoisted_63 = {
     "white-space": "pre-wrap"
   }
 };
-var _hoisted_64 = {
+var _hoisted_74 = {
   key: 0,
   style: {
     "font-size": "14px"
   }
 };
-var _hoisted_65 = {
+var _hoisted_75 = {
   key: 1,
   style: {
     "font-size": "14px"
   }
 };
-var _hoisted_66 = {
+var _hoisted_76 = {
   key: 1,
   "class": "body-part-total float-start w-100"
 };
-var _hoisted_67 = {
+var _hoisted_77 = {
   "class": "matech-div-details-main my-5"
 };
-var _hoisted_68 = {
+var _hoisted_78 = {
   "class": "mn-next-part"
 };
-var _hoisted_69 = {
+var _hoisted_79 = {
   "class": "container"
 };
-var _hoisted_70 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+var _hoisted_80 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
   "class": "d-lg-flex align-items-start"
 }, null, -1 /* HOISTED */);
-var _hoisted_71 = {
+var _hoisted_81 = {
   key: 0,
   "class": "d-lg-flex align-items-start"
 };
-var _hoisted_72 = {
+var _hoisted_82 = {
   "class": "col-lg-6"
 };
-var _hoisted_73 = ["innerHTML"];
-var _hoisted_74 = {
+var _hoisted_83 = ["innerHTML"];
+var _hoisted_84 = {
   "class": "col-lg-6"
 };
-var _hoisted_75 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h2", {
+var _hoisted_85 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h2", {
   "class": "comon-heading",
   style: {
     "overflow": "hidden",
@@ -22204,31 +22195,31 @@ var _hoisted_75 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
     "white-space": "pre-wrap"
   }
 }, null, -1 /* HOISTED */);
-var _hoisted_76 = {
+var _hoisted_86 = {
   "class": "table-div-left"
 };
-var _hoisted_77 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h4", null, "Standings", -1 /* HOISTED */);
-var _hoisted_78 = {
+var _hoisted_87 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h4", null, "Standings", -1 /* HOISTED */);
+var _hoisted_88 = {
   id: "seri1_wrapper",
   "class": "dataTables_wrapper"
 };
-var _hoisted_79 = {
+var _hoisted_89 = {
   "class": "dataTables_scroll"
 };
-var _hoisted_80 = {
+var _hoisted_90 = {
   "class": "dataTables_scrollHead"
 };
-var _hoisted_81 = {
+var _hoisted_91 = {
   "class": "dataTables_scrollHeadInner"
 };
-var _hoisted_82 = {
+var _hoisted_92 = {
   "class": "display dataTable",
   style: {
     "width": "580.4px",
     "margin-left": "0px"
   }
 };
-var _hoisted_83 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("thead", null, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("tr", null, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("th", {
+var _hoisted_93 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("thead", null, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("tr", null, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("th", {
   "class": "sorting sorting_asc",
   "aria-controls": "seri1",
   rowspan: "1",
@@ -22269,82 +22260,76 @@ var _hoisted_83 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
   },
   "aria-label": "L: activate to sort column ascending"
 }, " Pts ")])], -1 /* HOISTED */);
-var _hoisted_84 = {
+var _hoisted_94 = {
   "class": "odd"
 };
-var _hoisted_85 = {
+var _hoisted_95 = {
   colspan: "5"
 };
-var _hoisted_86 = {
+var _hoisted_96 = {
   "class": "sorting_1",
   colspan: "2"
 };
-var _hoisted_87 = {
+var _hoisted_97 = {
   "class": "comon-ft-cl"
 };
-var _hoisted_88 = {
+var _hoisted_98 = {
   "class": "d-flex align-items-center"
 };
-var _hoisted_89 = ["src"];
-var _hoisted_90 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("figcaption", null, null, -1 /* HOISTED */);
-var _hoisted_91 = {
+var _hoisted_99 = ["src"];
+var _hoisted_100 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("figcaption", null, null, -1 /* HOISTED */);
+var _hoisted_101 = {
   key: 1
 };
-var _hoisted_92 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("tr", null, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, "Temporarily no data")], -1 /* HOISTED */);
-var _hoisted_93 = [_hoisted_92];
-var _hoisted_94 = {
+var _hoisted_102 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("tr", null, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, "Temporarily no data")], -1 /* HOISTED */);
+var _hoisted_103 = [_hoisted_102];
+var _hoisted_104 = {
   key: 0
 };
-var _hoisted_95 = {
+var _hoisted_105 = {
   "class": "py-5 float-start w-100"
 };
-var _hoisted_96 = {
+var _hoisted_106 = {
   "class": "container"
 };
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_Scoreboard = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("Scoreboard");
   var _component_MatchSquad = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("MatchSquad");
   var _component_Footer = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("Footer");
-  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("section", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" begin::loader section "), $data.loading ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("h2", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Loading... "), _hoisted_5])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" end::loader secton "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" begin::live match section "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("section", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_7, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_8, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_9, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_10, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" begin::server buttons "), _hoisted_11, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" end::servers buttons "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" begin::mobile version "), !$data.loading ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_12, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" begin::server 1 container "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_13, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_14, [_hoisted_15, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_16, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_17, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", _hoisted_18, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_19, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h5", _hoisted_20, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", _hoisted_21, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.matchDetails.event.tournament.name), 1 /* TEXT */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", _hoisted_22, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.matchDetails.event.status.description), 1 /* TEXT */)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_23, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" begin::home team Information "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("figure", {
-    style: {
-      "cursor": "pointer"
-    },
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("section", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" begin::loader section "), $data.loading ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("h2", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Loading... "), _hoisted_5])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" end::loader secton "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" begin::live match section "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("section", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_7, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_8, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_9, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_10, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" begin::server buttons "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("ul", _hoisted_11, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", {
+    "class": "nav-item",
+    role: "presentation",
     onClick: _cache[0] || (_cache[0] = function ($event) {
-      return $options.getTeamDetails($data.matchDetails.event.homeTeam.id, $data.matchDetails.event.homeTeam.slug);
+      return $options.changeServer('https://crichdstreaming.xyz/embed2.php?id=ptvsp');
     })
-  }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
-    src: 'https://api.sofascore.app/api/v1/team/' + $data.matchDetails.event.homeTeam.id + '/image',
-    alt: "cl2",
-    style: {
-      "width": "48%",
-      "height": "31%"
-    }
-  }, null, 8 /* PROPS */, _hoisted_24), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("figcaption", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", _hoisted_25, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.matchDetails.event.homeTeam.name), 1 /* TEXT */), $data.matchDetails.event && $data.matchDetails.event.homeScore && $data.matchDetails.event.homeScore.innings && $data.matchDetails.event.homeScore.innings.inning1 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("p", _hoisted_26, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.matchDetails.event.homeScore.innings.inning1.score + "/" + $data.matchDetails.event.homeScore.innings.inning1.wickets) + " " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)("(" + $data.matchDetails.event.homeScore.innings.inning1.overs + ")"), 1 /* TEXT */)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), $data.matchDetails.event && $data.matchDetails.event.homeScore && $data.matchDetails.event.homeScore.innings && $data.matchDetails.event.homeScore.innings.inning2 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("p", _hoisted_27, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.matchDetails.event.homeScore.innings.inning2.score + "/" + $data.matchDetails.event.homeScore.innings.inning2.wickets) + " " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)("(" + $data.matchDetails.event.homeScore.innings.inning2.overs + ")"), 1 /* TEXT */)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($data.currentBatters, function (batter) {
-    return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("small", {
-      style: {
-        "float": "right"
-      },
-      key: batter.id
-    }, [batter.wicketTypeId == 10 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("small", _hoisted_28, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(batter.player.name), 1 /* TEXT */)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), _hoisted_29]);
-  }), 128 /* KEYED_FRAGMENT */))])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" end::home team Information "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h4", _hoisted_30, [$data.liveMatches.includes($data.matchDetails.event.status.code) ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("span", _hoisted_31, [].concat(_hoisted_33))) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("span", _hoisted_34, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.matchDetails.event.status.description), 1 /* TEXT */))]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" begin::away team Information "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("figure", {
-    style: {
-      "cursor": "pointer"
-    },
+  }, [].concat(_hoisted_13)), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", {
+    "class": "nav-item",
+    role: "presentation",
     onClick: _cache[1] || (_cache[1] = function ($event) {
-      return $options.getTeamDetails($data.matchDetails.event.awayTeam.id, $data.matchDetails.event.awayTeam.slug);
+      return $options.changeServer('//stream.crichd.vip/update/skys1.php');
     })
-  }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
-    src: 'https://api.sofascore.app/api/v1/team/' + $data.matchDetails.event.awayTeam.id + '/image',
-    alt: "cl2",
-    style: {
-      "width": "48%",
-      "height": "31%"
-    }
-  }, null, 8 /* PROPS */, _hoisted_35), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("figcaption", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", _hoisted_36, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.matchDetails.event.awayTeam.name), 1 /* TEXT */), $data.matchDetails.event && $data.matchDetails.event.awayScore && $data.matchDetails.event.awayScore.innings && $data.matchDetails.event.awayScore.innings.inning1 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("p", _hoisted_37, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.matchDetails.event.awayScore.innings.inning1.score + "/" + $data.matchDetails.event.awayScore.innings.inning1.wickets) + " " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)("(" + $data.matchDetails.event.awayScore.innings.inning1.overs + ")"), 1 /* TEXT */)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), $data.matchDetails.event && $data.matchDetails.event.awayScore && $data.matchDetails.event.awayScore.innings && $data.matchDetails.event.awayScore.innings.inning2 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("p", _hoisted_38, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.matchDetails.event.awayScore.innings.inning2.score + "/" + $data.matchDetails.event.awayScore.innings.inning2.wickets) + " " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)("(" + $data.matchDetails.event.awayScore.innings.inning2.overs + ")"), 1 /* TEXT */)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" end::away team Information ")])])])])])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" end::server 1 container ")])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" end::mobile version "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" begin::desktop version "), !$data.loading ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_39, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" begin::server 1 container "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_40, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_41, [_hoisted_42, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_43, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_44, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", _hoisted_45, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_46, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h5", _hoisted_47, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", _hoisted_48, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.matchDetails.event.tournament.name), 1 /* TEXT */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", _hoisted_49, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.matchDetails.event.status.description), 1 /* TEXT */)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_50, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" begin::home team Information "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("figure", {
+  }, [].concat(_hoisted_15)), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", {
+    "class": "nav-item",
+    role: "presentation",
+    onClick: _cache[2] || (_cache[2] = function ($event) {
+      return $options.changeServer('//stream.crichd.vip/update/sspsl.php');
+    })
+  }, [].concat(_hoisted_17)), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", {
+    "class": "nav-item",
+    role: "presentation",
+    onClick: _cache[3] || (_cache[3] = function ($event) {
+      return $options.changeServer('//stream.crichd.vip/update/ssgrandstand.php');
+    })
+  }, [].concat(_hoisted_19))])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" end::servers buttons "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" begin::mobile version "), !$data.loading ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_20, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" begin::server 1 container "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_21, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_22, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("figure", _hoisted_23, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("iframe", {
+    gesture: "media",
+    src: $data.currentServer,
+    height: "400",
+    width: "350"
+  }, null, 8 /* PROPS */, _hoisted_24)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_25, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_26, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", _hoisted_27, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_28, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h5", _hoisted_29, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", _hoisted_30, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.matchDetails.event.tournament.name), 1 /* TEXT */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", _hoisted_31, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.matchDetails.event.status.description), 1 /* TEXT */)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_32, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" begin::home team Information "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("figure", {
     style: {
       "cursor": "pointer"
     },
-    onClick: _cache[2] || (_cache[2] = function ($event) {
+    onClick: _cache[4] || (_cache[4] = function ($event) {
       return $options.getTeamDetails($data.matchDetails.event.homeTeam.id, $data.matchDetails.event.homeTeam.slug);
     })
   }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
@@ -22354,18 +22339,18 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       "width": "48%",
       "height": "31%"
     }
-  }, null, 8 /* PROPS */, _hoisted_51), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("figcaption", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", _hoisted_52, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.matchDetails.event.homeTeam.name), 1 /* TEXT */), $data.matchDetails.event && $data.matchDetails.event.homeScore && $data.matchDetails.event.homeScore.innings && $data.matchDetails.event.homeScore.innings.inning1 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("p", _hoisted_53, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.matchDetails.event.homeScore.innings.inning1.score + "/" + $data.matchDetails.event.homeScore.innings.inning1.wickets) + " " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)("(" + $data.matchDetails.event.homeScore.innings.inning1.overs + ")"), 1 /* TEXT */)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), $data.matchDetails.event && $data.matchDetails.event.homeScore && $data.matchDetails.event.homeScore.innings && $data.matchDetails.event.homeScore.innings.inning2 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("p", _hoisted_54, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.matchDetails.event.homeScore.innings.inning2.score + "/" + $data.matchDetails.event.homeScore.innings.inning2.wickets) + " " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)("(" + $data.matchDetails.event.homeScore.innings.inning2.overs + ")"), 1 /* TEXT */)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($data.currentBatters, function (batter) {
+  }, null, 8 /* PROPS */, _hoisted_33), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("figcaption", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", _hoisted_34, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.matchDetails.event.homeTeam.name), 1 /* TEXT */), $data.matchDetails.event && $data.matchDetails.event.homeScore && $data.matchDetails.event.homeScore.innings && $data.matchDetails.event.homeScore.innings.inning1 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("p", _hoisted_35, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.matchDetails.event.homeScore.innings.inning1.score + "/" + $data.matchDetails.event.homeScore.innings.inning1.wickets) + " " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)("(" + $data.matchDetails.event.homeScore.innings.inning1.overs + ")"), 1 /* TEXT */)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), $data.matchDetails.event && $data.matchDetails.event.homeScore && $data.matchDetails.event.homeScore.innings && $data.matchDetails.event.homeScore.innings.inning2 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("p", _hoisted_36, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.matchDetails.event.homeScore.innings.inning2.score + "/" + $data.matchDetails.event.homeScore.innings.inning2.wickets) + " " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)("(" + $data.matchDetails.event.homeScore.innings.inning2.overs + ")"), 1 /* TEXT */)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($data.currentBatters, function (batter) {
     return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("small", {
       style: {
         "float": "right"
       },
       key: batter.id
-    }, [batter.wicketTypeId == 10 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("small", _hoisted_55, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(batter.player.name), 1 /* TEXT */)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), _hoisted_56]);
-  }), 128 /* KEYED_FRAGMENT */))])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" end::home team Information "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h4", _hoisted_57, [$data.liveMatches.includes($data.matchDetails.event.status.code) ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("span", _hoisted_58, [].concat(_hoisted_60))) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("span", _hoisted_61, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.matchDetails.event.status.description), 1 /* TEXT */))]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" begin::away team Information "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("figure", {
+    }, [batter.wicketTypeId == 10 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("small", _hoisted_37, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(batter.player.name), 1 /* TEXT */)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), _hoisted_38]);
+  }), 128 /* KEYED_FRAGMENT */))])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" end::home team Information "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h4", _hoisted_39, [$data.liveMatches.includes($data.matchDetails.event.status.code) ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("span", _hoisted_40, [].concat(_hoisted_42))) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("span", _hoisted_43, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.matchDetails.event.status.description), 1 /* TEXT */))]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" begin::away team Information "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("figure", {
     style: {
       "cursor": "pointer"
     },
-    onClick: _cache[3] || (_cache[3] = function ($event) {
+    onClick: _cache[5] || (_cache[5] = function ($event) {
       return $options.getTeamDetails($data.matchDetails.event.awayTeam.id, $data.matchDetails.event.awayTeam.slug);
     })
   }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
@@ -22375,29 +22360,71 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       "width": "48%",
       "height": "31%"
     }
-  }, null, 8 /* PROPS */, _hoisted_62), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("figcaption", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", _hoisted_63, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.matchDetails.event.awayTeam.name), 1 /* TEXT */), $data.matchDetails.event && $data.matchDetails.event.awayScore && $data.matchDetails.event.awayScore.innings && $data.matchDetails.event.awayScore.innings.inning1 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("p", _hoisted_64, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.matchDetails.event.awayScore.innings.inning1.score + "/" + $data.matchDetails.event.awayScore.innings.inning1.wickets) + " " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)("(" + $data.matchDetails.event.awayScore.innings.inning1.overs + ")"), 1 /* TEXT */)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), $data.matchDetails.event && $data.matchDetails.event.awayScore && $data.matchDetails.event.awayScore.innings && $data.matchDetails.event.awayScore.innings.inning2 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("p", _hoisted_65, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.matchDetails.event.awayScore.innings.inning2.score + "/" + $data.matchDetails.event.awayScore.innings.inning2.wickets) + " " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)("(" + $data.matchDetails.event.awayScore.innings.inning2.overs + ")"), 1 /* TEXT */)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" end::away team Information ")])])])])])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" end::server 1 container ")])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" end::desktop version ")])])])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" end::live match section "), !$data.loading ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("section", _hoisted_66, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" end::match result "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" begin::scoreboard section "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Scoreboard), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" end:: scoreboard section"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" begin::match info and standings "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_67, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_68, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_69, [_hoisted_70, !$data.loading ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_71, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" begin::about match info "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_72, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", {
+  }, null, 8 /* PROPS */, _hoisted_44), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("figcaption", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", _hoisted_45, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.matchDetails.event.awayTeam.name), 1 /* TEXT */), $data.matchDetails.event && $data.matchDetails.event.awayScore && $data.matchDetails.event.awayScore.innings && $data.matchDetails.event.awayScore.innings.inning1 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("p", _hoisted_46, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.matchDetails.event.awayScore.innings.inning1.score + "/" + $data.matchDetails.event.awayScore.innings.inning1.wickets) + " " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)("(" + $data.matchDetails.event.awayScore.innings.inning1.overs + ")"), 1 /* TEXT */)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), $data.matchDetails.event && $data.matchDetails.event.awayScore && $data.matchDetails.event.awayScore.innings && $data.matchDetails.event.awayScore.innings.inning2 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("p", _hoisted_47, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.matchDetails.event.awayScore.innings.inning2.score + "/" + $data.matchDetails.event.awayScore.innings.inning2.wickets) + " " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)("(" + $data.matchDetails.event.awayScore.innings.inning2.overs + ")"), 1 /* TEXT */)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" end::away team Information ")])])])])])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" end::server 1 container ")])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" end::mobile version "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" begin::desktop version "), !$data.loading ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_48, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" begin::server 1 container "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_49, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_50, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("figure", _hoisted_51, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" begin::ifream "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("iframe", {
+    gesture: "media",
+    allow: "encrypted-media",
+    src: $data.currentServer,
+    height: "400",
+    width: "750",
+    title: "Iframe Example"
+  }, null, 8 /* PROPS */, _hoisted_52), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" end::ifream ")]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_53, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_54, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", _hoisted_55, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_56, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h5", _hoisted_57, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", _hoisted_58, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.matchDetails.event.tournament.name), 1 /* TEXT */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", _hoisted_59, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.matchDetails.event.status.description), 1 /* TEXT */)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_60, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" begin::home team Information "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("figure", {
+    style: {
+      "cursor": "pointer"
+    },
+    onClick: _cache[6] || (_cache[6] = function ($event) {
+      return $options.getTeamDetails($data.matchDetails.event.homeTeam.id, $data.matchDetails.event.homeTeam.slug);
+    })
+  }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
+    src: 'https://api.sofascore.app/api/v1/team/' + $data.matchDetails.event.homeTeam.id + '/image',
+    alt: "cl2",
+    style: {
+      "width": "48%",
+      "height": "31%"
+    }
+  }, null, 8 /* PROPS */, _hoisted_61), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("figcaption", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", _hoisted_62, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.matchDetails.event.homeTeam.name), 1 /* TEXT */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" s "), $data.matchDetails.event && $data.matchDetails.event.homeScore && $data.matchDetails.event.homeScore.innings && $data.matchDetails.event.homeScore.innings.inning1 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("p", _hoisted_63, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.matchDetails.event.homeScore.innings.inning1.score + "/" + $data.matchDetails.event.homeScore.innings.inning1.wickets) + " " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)("(" + $data.matchDetails.event.homeScore.innings.inning1.overs + ")"), 1 /* TEXT */)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), $data.matchDetails.event && $data.matchDetails.event.homeScore && $data.matchDetails.event.homeScore.innings && $data.matchDetails.event.homeScore.innings.inning2 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("p", _hoisted_64, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.matchDetails.event.homeScore.innings.inning2.score + "/" + $data.matchDetails.event.homeScore.innings.inning2.wickets) + " " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)("(" + $data.matchDetails.event.homeScore.innings.inning2.overs + ")"), 1 /* TEXT */)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($data.currentBatters, function (batter) {
+    return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("small", {
+      style: {
+        "float": "right"
+      },
+      key: batter.id
+    }, [batter.wicketTypeId == 10 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("small", _hoisted_65, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(batter.player.name), 1 /* TEXT */)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), _hoisted_66]);
+  }), 128 /* KEYED_FRAGMENT */))])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" end::home team Information "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h4", _hoisted_67, [$data.liveMatches.includes($data.matchDetails.event.status.code) ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("span", _hoisted_68, [].concat(_hoisted_70))) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("span", _hoisted_71, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.matchDetails.event.status.description), 1 /* TEXT */))]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" begin::away team Information "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("figure", {
+    style: {
+      "cursor": "pointer"
+    },
+    onClick: _cache[7] || (_cache[7] = function ($event) {
+      return $options.getTeamDetails($data.matchDetails.event.awayTeam.id, $data.matchDetails.event.awayTeam.slug);
+    })
+  }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
+    src: 'https://api.sofascore.app/api/v1/team/' + $data.matchDetails.event.awayTeam.id + '/image',
+    alt: "cl2",
+    style: {
+      "width": "48%",
+      "height": "31%"
+    }
+  }, null, 8 /* PROPS */, _hoisted_72), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("figcaption", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", _hoisted_73, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.matchDetails.event.awayTeam.name), 1 /* TEXT */), $data.matchDetails.event && $data.matchDetails.event.awayScore && $data.matchDetails.event.awayScore.innings && $data.matchDetails.event.awayScore.innings.inning1 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("p", _hoisted_74, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.matchDetails.event.awayScore.innings.inning1.score + "/" + $data.matchDetails.event.awayScore.innings.inning1.wickets) + " " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)("(" + $data.matchDetails.event.awayScore.innings.inning1.overs + ")"), 1 /* TEXT */)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), $data.matchDetails.event && $data.matchDetails.event.awayScore && $data.matchDetails.event.awayScore.innings && $data.matchDetails.event.awayScore.innings.inning2 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("p", _hoisted_75, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.matchDetails.event.awayScore.innings.inning2.score + "/" + $data.matchDetails.event.awayScore.innings.inning2.wickets) + " " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)("(" + $data.matchDetails.event.awayScore.innings.inning2.overs + ")"), 1 /* TEXT */)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" end::away team Information ")])])])])])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" end::server 1 container ")])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" end::desktop version ")])])])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" end::live match section "), !$data.loading ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("section", _hoisted_76, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" end::match result "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" begin::scoreboard section "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Scoreboard), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" end:: scoreboard section"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" begin::match info and standings "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_77, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_78, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_79, [_hoisted_80, !$data.loading ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_81, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" begin::about match info "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_82, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", {
     innerHTML: $data.aboutMatch,
     "class": "mt-3 pe-lg-3"
-  }, null, 8 /* PROPS */, _hoisted_73)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" end::match info "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" begin::standings "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_74, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" begin::match standings "), _hoisted_75, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_76, [_hoisted_77, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_78, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_79, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_80, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_81, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("table", _hoisted_82, [_hoisted_83, $data.seasonStandings != '' ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
+  }, null, 8 /* PROPS */, _hoisted_83)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" end::match info "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" begin::standings "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_84, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" begin::match standings "), _hoisted_85, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_86, [_hoisted_87, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_88, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_89, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_90, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_91, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("table", _hoisted_92, [_hoisted_93, $data.seasonStandings != '' ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
     key: 0
   }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($data.seasonStandings, function (standing) {
     return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("tbody", {
       key: standing
-    }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("tr", _hoisted_84, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", _hoisted_85, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(standing.name), 1 /* TEXT */)]), ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)(standing.rows, function (row) {
+    }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("tr", _hoisted_94, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", _hoisted_95, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(standing.name), 1 /* TEXT */)]), ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)(standing.rows, function (row) {
       return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("tr", {
         "class": "odd",
         key: row.id
-      }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", _hoisted_86, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_87, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("figure", _hoisted_88, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
+      }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", _hoisted_96, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_97, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("figure", _hoisted_98, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
         src: 'https://api.sofascore.app/api/v1/team/' + row.team.id + '/image/small',
         alt: "fbn",
         style: {
           "max-width": "20%"
         }
-      }, null, 8 /* PROPS */, _hoisted_89), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("   " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(row.team.name) + " ", 1 /* TEXT */), _hoisted_90])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(row.wins), 1 /* TEXT */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(row.losses), 1 /* TEXT */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(row.points), 1 /* TEXT */)]);
+      }, null, 8 /* PROPS */, _hoisted_99), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("   " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(row.team.name) + " ", 1 /* TEXT */), _hoisted_100])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(row.wins), 1 /* TEXT */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(row.losses), 1 /* TEXT */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(row.points), 1 /* TEXT */)]);
     }), 128 /* KEYED_FRAGMENT */))]);
-  }), 128 /* KEYED_FRAGMENT */)) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("tbody", _hoisted_91, [].concat(_hoisted_93)))])])])])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" end::match standings ")]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" end::standings ")])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" end::match info and standings "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" begin::players "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" end of players "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_MatchSquad, {
+  }), 128 /* KEYED_FRAGMENT */)) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("tbody", _hoisted_101, [].concat(_hoisted_103)))])])])])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" end::match standings ")]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" end::standings ")])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" end::match info and standings "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" begin::players "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" end of players "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_MatchSquad, {
     matchId: $data.matchId
-  }, null, 8 /* PROPS */, ["matchId"])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" end::scoreboard section  ")])])]), !$data.loading ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("span", _hoisted_94, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("footer", _hoisted_95, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_96, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Footer)])])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)], 64 /* STABLE_FRAGMENT */);
+  }, null, 8 /* PROPS */, ["matchId"])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" end::scoreboard section  ")])])]), !$data.loading ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("span", _hoisted_104, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("footer", _hoisted_105, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_106, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Footer)])])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)], 64 /* STABLE_FRAGMENT */);
 }
 
 /***/ }),

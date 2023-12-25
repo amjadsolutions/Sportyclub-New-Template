@@ -795,7 +795,7 @@ export default defineComponent({
 
       if (
         this.liveMatches.includes(status) ||
-        this.liveendedMatches.includes(status)
+        this.liveendedMatches.includes(status) || this.upcomingMatches.includes(status)
       ) {
         window.open("/cricket/today/live/match/" + team + "/" + id, "_blank");
       } else if (this.upcomingMatches.includes(status)) {
