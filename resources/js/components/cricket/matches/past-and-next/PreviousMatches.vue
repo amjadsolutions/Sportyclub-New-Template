@@ -133,7 +133,7 @@
                         {{ getMatchTime(match.startTimestamp) }}
                       </td>
                       <td>
-                        <a href="matches-details.html" class="btn ms-ti">
+                        <a class="btn ms-ti">
                           {{ match.homeTeam.shortName }}
                           <img
                             class="event-teams-logo"

@@ -98,7 +98,9 @@
                                     }}</span
                                   >
                                 </h5>
-                                <div class="d-flex align-items-center justify-content-between">
+                                <div
+                                  class="d-flex align-items-center justify-content-between"
+                                >
                                   <!-- begin::home team Information -->
                                   <figure>
                                     <img
@@ -293,7 +295,16 @@
                           <div class="col">
                             <a href="#" class="items-matchs">
                               <div class="matches-div-home">
-                                <h5 style="margin-top: 75px !important">
+                                <h5
+                                  style="
+                                    margin-top: 75px !important;
+                                    overflow: hidden;
+                                    display: -webkit-box;
+                                    -webkit-box-orient: vertical;
+                                    -webkit-line-clamp: 2; /* start showing ellipsis when 3rd line is reached */
+                                    white-space: pre-wrap;
+                                  "
+                                >
                                   {{ matchDetails.event.tournament.name }}
                                   <span class="d-block">
                                     {{
@@ -316,7 +327,15 @@
                                       style="width: 48%; height: 31%"
                                     />
                                     <figcaption>
-                                      <p>
+                                      <p
+                                        style="
+                                          overflow: hidden;
+                                          display: -webkit-box;
+                                          -webkit-box-orient: vertical;
+                                          -webkit-line-clamp: 2; /* start showing ellipsis when 3rd line is reached */
+                                          white-space: pre-wrap;
+                                        "
+                                      >
                                         {{ matchDetails.event.homeTeam.name }}
                                       </p>
                                       <p
@@ -391,7 +410,15 @@
                                       style="width: 48%; height: 31%"
                                     />
                                     <figcaption>
-                                      <p>
+                                      <p
+                                        style="
+                                          overflow: hidden;
+                                          display: -webkit-box;
+                                          -webkit-box-orient: vertical;
+                                          -webkit-line-clamp: 2; /* start showing ellipsis when 3rd line is reached */
+                                          white-space: pre-wrap;
+                                        "
+                                      >
                                         {{ matchDetails.event.awayTeam.name }}
                                       </p>
                                       <p
@@ -599,7 +626,8 @@
                                 </template>
                                 <template v-else>
                                   <tbody>
-                                    <tr> Amjhad
+                                    <tr>
+                                      Amjhad
                                       <td colspan="4">Temporarily no data</td>
                                     </tr>
                                   </tbody>
@@ -661,7 +689,6 @@ export default {
       defaulPlayerImg: "/img/default/player-default.png",
       aboutMatch: null,
       matchH2H: null,
-    
     };
   },
   mounted() {
