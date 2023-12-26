@@ -23282,7 +23282,7 @@ var _hoisted_48 = {
 };
 var _hoisted_49 = {
   key: 0,
-  "class": "table-div-left mt-2"
+  "class": "table-div-left mt-4"
 };
 var _hoisted_50 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h2", {
   "class": "comon-heading m-0",
@@ -23422,13 +23422,10 @@ var _hoisted_71 = ["src"];
 var _hoisted_72 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", null, "vs", -1 /* HOISTED */);
 var _hoisted_73 = ["src"];
 var _hoisted_74 = {
-  "class": "col-lg-4",
-  style: {
-    "margin-top": "35px !important"
-  }
+  "class": "col-lg-4 mt-4"
 };
 var _hoisted_75 = {
-  "class": "table-div-left mt-2"
+  "class": "table-div-left"
 };
 var _hoisted_76 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h4", null, "Top Leagues", -1 /* HOISTED */);
 var _hoisted_77 = {

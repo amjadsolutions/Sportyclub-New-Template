@@ -283,7 +283,7 @@
                   <div class="col-lg-8">
                     <!-- begin::live matches -->
                     <div
-                      class="table-div-left mt-2"
+                      class="table-div-left mt-4"
                       v-if="liveMatchList.length > 0"
                     >
                       <h2
@@ -529,8 +529,8 @@
                     <!-- end:: finished matchess -->
                   </div>
                   <!-- begin::top leagues -->
-                  <div class="col-lg-4" style="margin-top: 35px !important;">
-                    <div class="table-div-left mt-2">
+                  <div class="col-lg-4  mt-4">
+                    <div class="table-div-left">
                       <h4>Top Leagues</h4>
                       <div id="seri2_wrapper" class="dataTables_wrapper">
                         <div class="dataTables_scroll">
