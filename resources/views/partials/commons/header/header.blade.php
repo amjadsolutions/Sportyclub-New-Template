@@ -13,7 +13,7 @@
             </button>`
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 {{-- begin::tabs --}}
-                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">4
                     <li class="nav-item">
                         <a class="nav-link " href="{{ route('cricket/today/live/match/list') }}"><b
                                 style="color:red">LIVE<span class="blink_me" style="margin-left: 5px">'</span></b></a>
