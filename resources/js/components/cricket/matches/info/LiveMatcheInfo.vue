@@ -162,7 +162,7 @@
                                         '/image'
                                       "
                                       alt="cl2"
-                                      style="width: 48%; height: 31%"
+                                      style="width: 61%; height: 31%"
                                     />
                                     <figcaption>
                                       <p
@@ -283,7 +283,7 @@
                                         '/image'
                                       "
                                       alt="cl2"
-                                      style="width: 48%; height: 31%"
+                                      style="width: 61%; height: 31%"
                                     />
                                     <figcaption>
                                       <p
