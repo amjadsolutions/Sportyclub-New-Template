@@ -10,7 +10,7 @@
                     <img src="/img/sporty_club.png" alt="logo" style="width:60%;margin-top:5px !important">
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas"
-                    data-bs-target="#offcanvasRightmobile" style="position: absolute;left:300px">
+                    data-bs-target="#offcanvasRightmobile" style="position: absolute;left:300px;top:5px">
                     <i class="fas fa-bars"></i>
                 </button>
             </span>
