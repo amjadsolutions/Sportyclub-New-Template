@@ -26,6 +26,60 @@
                 display: none;
             }
         }
+          /* Custom, iPhone Retina */
+          @media only screen and (min-width: 320px) {
+            .mobile-version {
+                display: block;
+            }
+
+            .desktop-version {
+                display: none;
+            }
+        }
+
+        /* Extra Small Devices, Phones */
+        @media only screen and (min-width: 480px) {
+            .mobile-version {
+                display: block;
+            }
+
+            .desktop-version {
+                display: none;
+            }
+        }
+
+        /* Small Devices, Tablets */
+        @media only screen and (min-width: 768px) {
+            .mobile-version {
+                display: none;
+            }
+
+            .desktop-version {
+                display: block;
+            }
+        }
+
+        /* Medium Devices, Desktops */
+        @media only screen and (min-width: 992px) {
+            .mobile-version {
+                display: none;
+            }
+
+            .desktop-version {
+                display: block;
+            }
+        }
+
+        /* Large Devices, Wide Screens */
+        @media only screen and (min-width: 1200px) {
+            .mobile-version {
+                display: none;
+            }
+
+            .desktop-version {
+                display: block;
+            }
+        }
     </style>
     <!-- Google Tag Manager -->
     <script>

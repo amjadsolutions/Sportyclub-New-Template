@@ -4,13 +4,26 @@
     <nav class="navbar navbar-expand-lg navbar-light ">
         <div class="container">
             {{-- logo --}}
-            <a class="navbar-brand" href="{{ route('/') }}">
-                <img src="/img/sporty_club.png" alt="logo" style="margin-top:-44px;width:60%">
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas"
-                data-bs-target="#offcanvasRightmobile">
-                <i class="fas fa-bars"></i>
-            </button>
+            {{-- mobile version --}}
+            <span class="mobile-version">
+                <a class="navbar-brand " href="{{ route('/') }}">
+                    <img src="/img/sporty_club.png" alt="logo" style="width:60%">
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas"
+                    data-bs-target="#offcanvasRightmobile" style="position: absolute;left:370px">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </span>
+            {{-- desktop version --}}
+            <span class="desktop-version">
+                <a class="navbar-brand " href="{{ route('/') }}">
+                    <img src="/img/sporty_club.png" alt="logo" style="margin-top:-15px;width:60%">
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas"
+                    data-bs-target="#offcanvasRightmobile">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </span>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 {{-- begin::tabs --}}
                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0">

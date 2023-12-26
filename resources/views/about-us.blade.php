@@ -75,8 +75,12 @@
                 </div>
             </div>
         </div>
-    
+
     </section>
-    <footer-vue>
+    <footer class="py-5 float-start w-100">
+        <div class="container">
+            <footer-vue />
+        </div>
+    </footer>
     {{-- end::page contents --}}
 @endsection
