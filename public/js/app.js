@@ -25288,7 +25288,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
           style: {
             "max-width": "50% !important"
           },
-          src: 'https://api.sofascore.app/api/v1/player/' + player.player.id + '/image',
+          src: $data.defaultPlayerPhoto,
           alt: "gps1",
           "class": "mobile-version"
         }, null, 8 /* PROPS */, _hoisted_21), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {

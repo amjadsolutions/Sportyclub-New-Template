@@ -79,11 +79,7 @@
               <figure>
                 <img
                   style="max-width: 50% !important"
-                  :src="
-                    'https://api.sofascore.app/api/v1/player/' +
-                    player.player.id +
-                    '/image'
-                  "
+                  :src="defaultPlayerPhoto"
                   alt="gps1"
                   class="mobile-version"
                 />
