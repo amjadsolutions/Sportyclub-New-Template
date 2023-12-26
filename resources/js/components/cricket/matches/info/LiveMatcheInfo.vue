@@ -442,7 +442,7 @@
                                       >
                                         {{ matchDetails.event.homeTeam.name }}
                                       </p>
-                                      s
+                           
                                       <p
                                         style="font-size: 14px"
                                         v-if="
