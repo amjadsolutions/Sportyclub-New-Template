@@ -39,7 +39,7 @@
             <a href="/cricket/teams/list"> Hot Teams </a>
           </li>
           <li>
-            <a href="cricket/top/league/list"> Hot Leagues </a>
+            <a href="/cricket/top/league/list"> Hot Leagues </a>
           </li>
           <li>
             <a href="/cricket/previous/matches"> Previous Matches </a>
