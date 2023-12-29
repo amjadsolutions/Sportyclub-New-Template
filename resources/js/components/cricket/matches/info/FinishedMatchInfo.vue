@@ -627,7 +627,7 @@
                                 <template v-else>
                                   <tbody>
                                     <tr>
-                                      Amjhad
+                                      
                                       <td colspan="4">Temporarily no data</td>
                                     </tr>
                                   </tbody>
