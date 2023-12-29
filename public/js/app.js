@@ -21711,9 +21711,9 @@ var _hoisted_82 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
 var _hoisted_83 = {
   key: 1
 };
-var _hoisted_84 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("tr", null, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Amjhad "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", {
+var _hoisted_84 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("tr", null, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", {
   colspan: "4"
-}, "Temporarily no data")], -1 /* HOISTED */);
+}, " Temporarily no data... ")], -1 /* HOISTED */);
 var _hoisted_85 = [_hoisted_84];
 var _hoisted_86 = {
   key: 0
@@ -25738,7 +25738,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\ndiv #floater {\r\n  display: none !important;\n}\n.m-date {\r\n  width: 75px !important;\n}\r\n/* Extra Small Devices, Phones */\n@media only screen and (min-width: 480px) {\n.mobile-version {\r\n    display: block;\n}\n.desktop-version {\r\n    display: none;\n}\n}\r\n\r\n/* Small Devices, Tablets */\n@media only screen and (min-width: 768px) {\n.mobile-version {\r\n    display: block;\n}\n.desktop-version {\r\n    display: none;\n}\n}\r\n\r\n/* Medium Devices, Desktops */\n@media only screen and (min-width: 992px) {\n.mobile-version {\r\n    display: none;\n}\n.desktop-version {\r\n    display: block;\n}\n}\r\n\r\n/* Large Devices, Wide Screens */\n@media only screen and (min-width: 1200px) {\n.mobile-version {\r\n    display: none;\n}\n.desktop-version {\r\n    display: block;\n}\n}\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\ndiv #floater {\r\n    display: none !important;\n}\n.m-date {\r\n    width: 75px !important;\n}\r\n/* Extra Small Devices, Phones */\n@media only screen and (min-width: 480px) {\n.mobile-version {\r\n        display: block;\n}\n.desktop-version {\r\n        display: none;\n}\n}\r\n\r\n/* Small Devices, Tablets */\n@media only screen and (min-width: 768px) {\n.mobile-version {\r\n        display: block;\n}\n.desktop-version {\r\n        display: none;\n}\n}\r\n\r\n/* Medium Devices, Desktops */\n@media only screen and (min-width: 992px) {\n.mobile-version {\r\n        display: none;\n}\n.desktop-version {\r\n        display: block;\n}\n}\r\n\r\n/* Large Devices, Wide Screens */\n@media only screen and (min-width: 1200px) {\n.mobile-version {\r\n        display: none;\n}\n.desktop-version {\r\n        display: block;\n}\n}\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
