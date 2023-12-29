@@ -19683,7 +19683,7 @@ __webpack_require__.r(__webpack_exports__);
   // Other component options and methods
   data: function data() {
     return {
-      liveMatches: [20, 21, 22, 45],
+      liveMatches: [20, 21, 22, 23, 24, 45],
       finishMatches: [100],
       upcomingMatches: [0],
       liveendedMatches: [143],
@@ -25435,7 +25435,7 @@ var _hoisted_1 = {
   "class": "row row-cols-1 row-cols-lg-3"
 };
 var _hoisted_2 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"col\"><div class=\"comon-footer\"><h5>Sportyclub Live</h5><p class=\"col-lg-10\"> SportyClub is a reliable online streaming service that broadcasts live cricket on TV worldwide from over all major leagues and tournaments. Our platform allows users to watch live sports from anywhere, anytime, and on many electronic devices. </p><ul class=\"list-unstyled d-flex align-items-center mt-2\"><li><a href=\"https://www.facebook.com/sportyclub.lives\"><i class=\"fab fa-facebook\"></i></a></li><li class=\"mx-2\"><a href=\"https://www.linkedin.com/in/sportyclub-live-5852392a5/\"><i class=\"fab fa-linkedin\"></i></a></li><li><a href=\"https://www.instagram.com/sportyclub_live/\"><i class=\"fab fa-instagram\"></i></a></li></ul></div></div>", 1);
-var _hoisted_3 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"col\"><div class=\"comon-footer\"><h5>Resources</h5><ul class=\"list-unstyled\"><li><a href=\"/cricket/teams/list\"> Hot Teams </a></li><li><a href=\"cricket/top/league/list\"> Hot Leagues </a></li><li><a href=\"/cricket/previous/matches\"> Previous Matches </a></li><li><a href=\"/cricket/upcoming/matches\"> Upcoming Matches </a></li><li><a href=\"/cricket/news/list\"> Cricket News </a></li><li><a href=\"/about-us\"> About Us </a></li><li><a href=\"/contact-us\"> Contact Us </a></li><li><a href=\"/terms-of-service\"> Terms &amp; Conditions </a></li><li><a href=\"/privacy-policy\"> Privacy &amp; Policy </a></li><li><a href=\"/disclaimer\"> Disclaimer </a></li></ul></div></div>", 1);
+var _hoisted_3 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"col\"><div class=\"comon-footer\"><h5>Resources</h5><ul class=\"list-unstyled\"><li><a href=\"/cricket/teams/list\"> Hot Teams </a></li><li><a href=\"/cricket/top/league/list\"> Hot Leagues </a></li><li><a href=\"/cricket/previous/matches\"> Previous Matches </a></li><li><a href=\"/cricket/upcoming/matches\"> Upcoming Matches </a></li><li><a href=\"/cricket/news/list\"> Cricket News </a></li><li><a href=\"/about-us\"> About Us </a></li><li><a href=\"/contact-us\"> Contact Us </a></li><li><a href=\"/terms-of-service\"> Terms &amp; Conditions </a></li><li><a href=\"/privacy-policy\"> Privacy &amp; Policy </a></li><li><a href=\"/disclaimer\"> Disclaimer </a></li></ul></div></div>", 1);
 var _hoisted_4 = {
   "class": "col"
 };
