@@ -220,26 +220,33 @@ export default defineComponent({
     this.getPreviousMatchList(-1);
   },
   methods: {
+    formatDate(date) {
+            var year = date.getFullYear();
+            var month = (date.getMonth() + 1).toString().padStart(2, "0"); // Adding 1 because months are zero-based
+            var day = date.getDate().toString().padStart(2, "0");
+            return year + "-" + month + "-" + day;
+        },
     prevDate(daysBefore) {
-      let current = new Date();
-      current.setTime(current.getTime() + daysBefore * 24 * 60 * 60 * 1000); // Subtract 7 days
-      return `${current.getFullYear()}-${
-        current.getMonth() + 1
-      }-${current.getDate()}`;
+      var today = new Date();
+
+            // Calculate yesterday's date
+            var yesterday = new Date(today);
+            yesterday.setDate(today.getDate() - daysBefore);
+            return this.formatDate(yesterday);
     },
 
     // method to return live matches
     getPreviousMatchList(val) {
-      const current = new Date();
-      current.setTime(current.getTime() + val * 24 * 60 * 60 * 1000);
-      this.selectedDate = `${current.getFullYear()}-${
-        current.getMonth() + 1
-      }-${current.getDate()}`;
+      var today = new Date();
+            var yesterday = new Date(today);
+            yesterday.setDate(today.getDate() + val);
+
+
       this.dayClickedBtnVal = val;
       this.loadingBtn = true;
       axios
         .get(
-          `${this.BASE_SERVER_URI}/api/cricket/sofascore/today/all/matches/${this.selectedDate}`
+          `${this.BASE_SERVER_URI}/api/cricket/sofascore/today/all/matches/${this.formatDate(yesterday)}`
         )
         .then((response) => {
           this.matchList = response.data.events;

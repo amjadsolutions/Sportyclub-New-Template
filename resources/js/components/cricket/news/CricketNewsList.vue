@@ -152,6 +152,7 @@ export default {
   components: {
       axios,
       Footer,
+
   },
   data() {
       return {
@@ -161,6 +162,7 @@ export default {
           totlePages: null,
           currentPage: null,
           changeNum: 1,
+          page: 10
       };
   },
 
@@ -169,6 +171,7 @@ export default {
       this.getPageMetaContents();
   },
   methods: {
+   
       // method to get news list from API
       getNewsList(pageNumber) {
           this.currentPage = pageNumber;
@@ -183,6 +186,9 @@ export default {
                   this.loading = false;
               });
       },
+      clickCallback (pageNum) {
+      console.log(pageNum)
+    },
 
       // method to get news details from API
       getNewsDetails(newsId) {

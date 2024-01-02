@@ -1,6 +1,7 @@
 require("./bootstrap");
 import { createApp } from "vue";
 
+
 // begin::commons
 import Footer from "./components/partials/commons/Footer.vue";
 // end::commons
