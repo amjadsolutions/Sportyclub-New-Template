@@ -23,6 +23,9 @@ use Illuminate\Support\Facades\Route;
 // Route::get('/', function () {
 //     return redirect('/cricket');
 // })->name('/');
+
+Route::get('/', [IndexController::class, 'index'])->name('/');
+
 Route::get('cricket', [IndexController::class, 'index'])->name('cricket');
 Route::get('about-us', [IndexController::class, 'aboutUs'])->name('about-us');
 Route::get('terms-of-service', [IndexController::class, 'termsAndConditions'])->name('terms-of-service');
