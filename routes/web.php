@@ -20,9 +20,9 @@ use Illuminate\Support\Facades\Route;
  */
 
 //  begin::index routes
-Route::get('/', function () {
-    return redirect('/cricket');
-})->name('/');
+// Route::get('/', function () {
+//     return redirect('/cricket');
+// })->name('/');
 Route::get('cricket', [IndexController::class, 'index'])->name('cricket');
 Route::get('about-us', [IndexController::class, 'aboutUs'])->name('about-us');
 Route::get('terms-of-service', [IndexController::class, 'termsAndConditions'])->name('terms-of-service');

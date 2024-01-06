@@ -20705,7 +20705,7 @@ __webpack_require__.r(__webpack_exports__);
     },
     // method to get topLeague Details
     getTopLeagueDetails: function getTopLeagueDetails(leagueId, league) {
-      window.open("cricket/top/league/details/" + league + "/" + leagueId, "_blank");
+      window.open("/cricket/top/league/details/" + league + "/" + leagueId, "_blank");
     }
   }
 });
