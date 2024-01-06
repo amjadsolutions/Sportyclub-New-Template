@@ -8,7 +8,7 @@
         content="Get live cricket scores, cricket updates of upcoming & finished International, domestic , leagues and T20 matches. Catch all the latest news about cricket on sportyclub.">
     <meta name="keywords"
         content="cricket news, latest news, latest cricket news, cricket news headlines,today's match live score, cricket update,today cricket scores,latest cricket scores,cricket result,cricket live update, icc cricket news, psl news, ipl news, bigbash news, t10 news">
-    <link rel="canonical" href="http://sportyclub.live">
+    <link rel="canonical" href="http://sportyclub.live/contact-us">
     <!-- begin::propery -->
     <meta property="og:type" content="website">
     <meta property="og:title"
