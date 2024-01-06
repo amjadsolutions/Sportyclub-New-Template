@@ -134,7 +134,7 @@ export default {
     // method to get topLeague Details
     getTopLeagueDetails(leagueId, league) {
       window.open(
-        "cricket/top/league/details/" + league + "/" + leagueId,
+        "/cricket/top/league/details/" + league + "/" + leagueId,
         "_blank"
       );
     },
