@@ -17,7 +17,7 @@
         content="Get live cricket scores, cricket updates of upcoming & finished International, domestic , leagues and T20 matches. Catch all the latest news about cricket on sportyclub.">
     <meta property="og:locale" content="en_US">
     <meta property="og:image" content="https://sportyclub.live/img/sporty_club_logo.png">
-    <meta property="og:url" content="http://sportyclub.live">
+    <meta property="og:url" content="http://sportyclub.live/contact-us">
     <meta property="fb:pages" content="107469275516888">
     <!-- end::property -->
     <!-- begin::item prop -->
