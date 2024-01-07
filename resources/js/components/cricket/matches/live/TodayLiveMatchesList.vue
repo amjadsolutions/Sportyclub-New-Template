@@ -312,7 +312,7 @@ export default {
       axios
         .get(`${this.BASE_SERVER_URI}/api/cricket/sofascore/today/live/matches`)
         .then((response) => {
-          this.matchDetails = response.data.events;
+          this.matchDetails = response.data.liveMatches.events;
           this.isEmpty = this.matchDetails.length;
           this.loading = false;
         });

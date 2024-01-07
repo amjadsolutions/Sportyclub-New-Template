@@ -723,7 +723,7 @@ export default defineComponent({
       axios
         .get(`${this.BASE_SERVER_URI}/api/cricket/sofascore/today/live/matches`)
         .then((response) => {
-          this.liveMatchList = response.data.events;
+          this.liveMatchList = response.data.liveMatches.events;
           console.log(this.liveMatchList);
           this.loading = false;
         });

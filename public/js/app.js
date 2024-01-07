@@ -19728,7 +19728,7 @@ __webpack_require__.r(__webpack_exports__);
     getLiveMatchList: function getLiveMatchList() {
       var _this2 = this;
       axios.get("".concat(this.BASE_SERVER_URI, "/api/cricket/sofascore/today/live/matches")).then(function (response) {
-        _this2.liveMatchList = response.data.events;
+        _this2.liveMatchList = response.data.liveMatches.events;
         console.log(_this2.liveMatchList);
         _this2.loading = false;
       });
@@ -19860,7 +19860,7 @@ __webpack_require__.r(__webpack_exports__);
       this.activeBtn = status;
       this.loading = true;
       axios__WEBPACK_IMPORTED_MODULE_0___default().get("".concat(this.BASE_SERVER_URI, "/api/cricket/sofascore/today/live/matches")).then(function (response) {
-        _this.matchDetails = response.data.events;
+        _this.matchDetails = response.data.liveMatches.events;
         _this.isEmpty = _this.matchDetails.length;
         _this.loading = false;
       });
