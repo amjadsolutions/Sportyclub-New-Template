@@ -1,8 +1,8 @@
 @extends('layouts.main')
 @section('page-styles')
     <!-- begin::meta -->
-    <title>Today's Cricket News | Internation Cricket News | Cricket Headlines | Sportyclub Live</title>
-    <meta name="title" content="Today's Cricket News | Internation Cricket News | Cricket Headlines | Sportyclub Live">
+    <title>Today's Cricket News | International Cricket News | Cricket Headlines | Sportyclub Live</title>
+    <meta name="title" content="Today's Cricket News | International Cricket News | Cricket Headlines | Sportyclub Live">
     <meta name="description" content="Get latest cricket news & headlines from Sportyclub Live">
     <meta name="keywords"
         content="cricket news, latest news, latest cricket news, cricket news headlines,  icc cricket news, psl news, ipl news, bigbash news, t10 news">
@@ -10,7 +10,7 @@
     <!-- begin::propery -->
     <meta property="og:type" content="website">
     <meta property="og:title"
-        content="Today's Cricket News | Internation Cricket News | Cricket Headlines | Sportyclub Live">
+        content="Today's Cricket News | International Cricket News | Cricket Headlines | Sportyclub Live">
     <meta property="og:description"
         content="Get live cricket scores, cricket updates of upcoming & finished International, domestic , leagues and T20 matches. Catch all the latest news about cricket on sportyclub.">
     <meta property="og:locale" content="en_US">
