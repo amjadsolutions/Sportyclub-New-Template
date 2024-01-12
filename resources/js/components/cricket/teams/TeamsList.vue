@@ -35,7 +35,8 @@
                 <ICCODIWORLDCUP />
                 <br>
                 <PSL />
-              
+              <br>
+              <IPL />
                 <!-- end::icc teams -->
             </div>
         </div>
@@ -54,6 +55,7 @@
 import axios from "axios";
 import Footer from "./../../partials/commons/Footer.vue";
 import PSL from "./leagues/psl-league.vue";
+import IPL from "./leagues/ipl-league.vue";
 import ICCODIWORLDCUP from "./leagues/icc-odi-worldcup.vue";
 
 export default {
@@ -61,6 +63,7 @@ export default {
         axios,
         Footer,
         PSL,
+        IPL,
         ICCODIWORLDCUP
     },
     data() {
