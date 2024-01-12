@@ -108,7 +108,7 @@
                   </div>
                   <!-- end::about section -->
                   <!-- begin::standings -->
-                  <div class="col-lg-6">
+                  <div class="col-lg-6" v-if="!loading">
                     <!-- begin::match standings -->
                     <h2
                       class="comon-heading"
@@ -287,6 +287,66 @@
                   </div>
                   <!-- end::standings -->
                 </div>
+                <br>
+                <teamplate v-if="seasonStandingsDetails">
+                  <span      v-for="standings in seasonStandingsDetails"
+                                    :key="standings.id">
+
+                
+                    <div
+                        class="row row-cols-1 row-cols-sm-2 row-cols-md-4 row-cols-lg-5 g-4 g-lg-5"
+                   
+                    >
+                        <div class="col-lg-12 col-xl-12">
+                            <h2
+                                class="comon-heading m-0"
+                                style="
+                                    color: rgb(7, 31, 64);
+                                    font-family: Barlow Condensed, sans-seri0 !important;
+                                    font-weight: 600 !important;
+                                "
+                            
+                            >{{ standings.name }} Teams
+                            </h2>
+                        </div>
+                    </div>
+                    <br />
+                    <div
+                        class="row row-cols-1 row-cols-md-2 row-cols-lg-3 gy-5 gx-md-5 gy-lg-0 gx-lg-5 mt-0"
+                    >
+                        <div
+                            class="col-lg-3"
+                            v-for="row in standings.rows"
+                                      :key="row.id"
+                            style="margin-top: 10px"
+                        >
+                            <a
+                                class="top-next-mc text-center"
+                                style="
+                                    background-color: rgb(12, 26, 44);
+                                    cursor: pointer;
+                                "
+                                v-on:click="getTeamDetails(row.team.id, row.team.slug)"
+                            >
+                                <h5 class="mn-mc-titel">{{ row.team.name }}</h5>
+                                <hr />
+                                <div
+                                    class="d-flex align-items-center justify-content-center mt-2"
+                                >
+                                    <img
+                                        :src="
+                                            'https://api.sofascore.app/api/v1/team/' +
+                                            row.team.id +
+                                            '/image'
+                                        "
+                                        alt="image not found"
+                                    />
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                  </span>
+                </teamplate>
                 <br />
               </div>
             </div>

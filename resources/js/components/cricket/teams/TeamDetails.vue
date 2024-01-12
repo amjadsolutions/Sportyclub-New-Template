@@ -223,6 +223,7 @@ export default {
 
     // method to get meta contents of team
     getTeamContentsMeta(teamId) {
+
       axios
         .get(
           `${this.BASE_SERVER_URI}/api/cricket/sofascore/teams/contents/meta/${teamId}`

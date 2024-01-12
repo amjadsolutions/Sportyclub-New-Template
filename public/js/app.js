@@ -19380,6 +19380,17 @@ __webpack_require__.r(__webpack_exports__);
       liveMatches: [20, 21, 22, 45]
     };
   },
+  created: function created() {
+    var _this = this;
+    // refresh frontend every 30 seconds
+    setInterval(function () {
+      axios__WEBPACK_IMPORTED_MODULE_0___default().get("".concat(_this.BASE_SERVER_URI, "/api/cricket/sofascore/single/match/details/").concat(_this.matchId)).then(function (response) {
+        _this.matchDetails = response.data;
+      })["catch"](function (error) {
+        console.log(error);
+      });
+    }, 5000);
+  },
   mounted: function mounted() {
     var url = window.location.href;
     var lastParam = url.split("/").slice(-1)[0];
@@ -19393,16 +19404,16 @@ __webpack_require__.r(__webpack_exports__);
   methods: {
     // method to call matchList API
     getMatchList: function getMatchList() {
-      var _this = this;
+      var _this2 = this;
       axios__WEBPACK_IMPORTED_MODULE_0___default().get("".concat(this.BASE_SERVER_URI, "/api/cricket/sofascore/single/match/details/").concat(this.matchId)).then(function (response) {
-        _this.matchDetails = response.data;
-        _this.loading = false;
-        _this.getLeagueStandings(_this.matchDetails.event.tournament.uniqueTournament.id, _this.matchDetails.event.season.id);
+        _this2.matchDetails = response.data;
+        _this2.loading = false;
+        _this2.getLeagueStandings(_this2.matchDetails.event.tournament.uniqueTournament.id, _this2.matchDetails.event.season.id);
       });
     },
     // method to get page contents
     getPageContents: function getPageContents() {
-      var _this2 = this;
+      var _this3 = this;
       // Get the current URL
       var currentURL = window.location.href;
 
@@ -19419,7 +19430,7 @@ __webpack_require__.r(__webpack_exports__);
       }
       axios__WEBPACK_IMPORTED_MODULE_0___default().get("".concat(this.BASE_SERVER_URI, "/api/cricket/sofascore/single/match/contents/").concat(this.matchId, "?status=").concat(status)).then(function (response) {
         $("meta[name='keywords']").attr("content", response.data.contents.keywords);
-        _this2.aboutMatch = response.data.contents.about;
+        _this3.aboutMatch = response.data.contents.about;
         $("title").text(response.data.contents.title);
         $("link[rel='canonical']").attr("href", response.data.contents.url);
 
@@ -19439,19 +19450,19 @@ __webpack_require__.r(__webpack_exports__);
     },
     // method to get h2h of specific match
     getMatchH2H: function getMatchH2H() {
-      var _this3 = this;
+      var _this4 = this;
       axios__WEBPACK_IMPORTED_MODULE_0___default().get("".concat(this.BASE_SERVER_URI, "/api/cricket/sofascore/specisinglefic/match/h2h/").concat(this.matchId)).then(function (response) {
-        _this3.matchH2H = response.data.teamDuel;
+        _this4.matchH2H = response.data.teamDuel;
       });
     },
     // method to get League Standings
     getLeagueStandings: function getLeagueStandings(leagueId, seasonId) {
-      var _this4 = this;
+      var _this5 = this;
       axios__WEBPACK_IMPORTED_MODULE_0___default().get("".concat(this.BASE_SERVER_URI, "/api/cricket/sofascore/topLeagues/singe/season/standings/").concat(leagueId, "/").concat(seasonId)).then(function (response) {
         if (typeof response.data.standings !== "undefined") {
-          _this4.seasonStandings = response.data.standings;
+          _this5.seasonStandings = response.data.standings;
         } else {
-          _this4.seasonStandings = "";
+          _this5.seasonStandings = "";
         }
       });
     },
@@ -19469,17 +19480,17 @@ __webpack_require__.r(__webpack_exports__);
     },
     // method to get match linups
     getMatchLineups: function getMatchLineups() {
-      var _this5 = this;
+      var _this6 = this;
       axios__WEBPACK_IMPORTED_MODULE_0___default().get("".concat(this.BASE_SERVER_URI, "/api/cricket/sofascore/single/match/lineups/").concat(this.matchId)).then(function (response) {
-        _this5.homeLineups = response.data.home["players"];
-        _this5.awayLineups = response.data.away["players"];
+        _this6.homeLineups = response.data.home["players"];
+        _this6.awayLineups = response.data.away["players"];
       });
     },
     getMatchInnings: function getMatchInnings() {
-      var _this6 = this;
+      var _this7 = this;
       axios__WEBPACK_IMPORTED_MODULE_0___default().get("".concat(this.BASE_SERVER_URI, "/api/cricket/sofascore/single/match/innings/").concat(this.matchId)).then(function (response) {
-        _this6.matchInnings = response.data.innings;
-        _this6.currentBatters = response.data.innings;
+        _this7.matchInnings = response.data.innings;
+        _this7.currentBatters = response.data.innings;
       });
     }
   }
@@ -20640,39 +20651,125 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _partials_commons_Footer_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./../../partials/commons/Footer.vue */ "./resources/js/components/partials/commons/Footer.vue");
+/* harmony import */ var _leagues_psl_league_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./leagues/psl-league.vue */ "./resources/js/components/cricket/teams/leagues/psl-league.vue");
+/* harmony import */ var _leagues_icc_odi_worldcup_vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./leagues/icc-odi-worldcup.vue */ "./resources/js/components/cricket/teams/leagues/icc-odi-worldcup.vue");
+
+
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {
     axios: (axios__WEBPACK_IMPORTED_MODULE_0___default()),
-    Footer: _partials_commons_Footer_vue__WEBPACK_IMPORTED_MODULE_1__["default"]
+    Footer: _partials_commons_Footer_vue__WEBPACK_IMPORTED_MODULE_1__["default"],
+    PSL: _leagues_psl_league_vue__WEBPACK_IMPORTED_MODULE_2__["default"],
+    ICCODIWORLDCUP: _leagues_icc_odi_worldcup_vue__WEBPACK_IMPORTED_MODULE_3__["default"]
   },
   data: function data() {
     return {
-      iCCTeamsList: null,
-      iplTeamsList: null,
-      loading: true
+      // loading: true,
+    };
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/cricket/teams/leagues/icc-odi-worldcup.vue?vue&type=script&lang=js":
+/*!********************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/cricket/teams/leagues/icc-odi-worldcup.vue?vue&type=script&lang=js ***!
+  \********************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  components: {
+    axios: (axios__WEBPACK_IMPORTED_MODULE_0___default())
+  },
+  data: function data() {
+    return {
+      leagueId: null,
+      loading: true,
+      odiTeamsList: null,
+      pslTeamsList: null
     };
   },
   created: function created() {
-    this.getTeamsList();
-    this.getIplTeamsList();
+    this.getOdiInternationalTeams(20661);
   },
   methods: {
-    getTeamsList: function getTeamsList() {
+    // method to get odi international teams
+    getOdiInternationalTeams: function getOdiInternationalTeams(leagueId) {
       var _this = this;
-      axios__WEBPACK_IMPORTED_MODULE_0___default().get("".concat(this.BASE_SERVER_URI, "/api/cricket/sofascore/teams/list")).then(function (response) {
-        _this.iCCTeamsList = response.data.teamList;
+      this.leagueId = leagueId;
+      axios__WEBPACK_IMPORTED_MODULE_0___default().get("".concat(this.BASE_SERVER_URI, "/api/cricket/sofascore/topLeagues/season/standings/list/").concat(leagueId)).then(function (response) {
+        axios__WEBPACK_IMPORTED_MODULE_0___default().get("".concat(_this.BASE_SERVER_URI, "/api/cricket/sofascore/topLeagues/singe/season/standings/").concat(_this.leagueId, "/").concat(response.data.seasons[0].id)).then(function (response) {
+          _this.odiTeamsList = response.data.standings;
+        });
         _this.loading = false;
       });
     },
-    getIplTeamsList: function getIplTeamsList() {
-      var _this2 = this;
-      axios__WEBPACK_IMPORTED_MODULE_0___default().get("".concat(this.BASE_SERVER_URI, "/api/cricket/sofascore/teams/ipl")).then(function (response) {
-        _this2.iplTeamsList = response.data.teamList;
-        _this2.loading = false;
+    // method to psl teams
+    //   method to get team details
+    getTeamDetails: function getTeamDetails(teamId, slug) {
+      var basePath = window.location.origin;
+      var w = window.open();
+      w.document.location.href = basePath + "/cricket/" + slug + "/team/details/" + teamId;
+      w.document.target = "_blank";
+    }
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/cricket/teams/leagues/psl-league.vue?vue&type=script&lang=js":
+/*!**************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/cricket/teams/leagues/psl-league.vue?vue&type=script&lang=js ***!
+  \**************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  components: {
+    axios: (axios__WEBPACK_IMPORTED_MODULE_0___default())
+  },
+  data: function data() {
+    return {
+      leagueId: null,
+      loading: true,
+      odiTeamsList: null,
+      pslTeamsList: null
+    };
+  },
+  created: function created() {
+    this.getOdiInternationalTeams(11170);
+  },
+  methods: {
+    // method to get odi international teams
+    getOdiInternationalTeams: function getOdiInternationalTeams(leagueId) {
+      var _this = this;
+      this.leagueId = leagueId;
+      axios__WEBPACK_IMPORTED_MODULE_0___default().get("".concat(this.BASE_SERVER_URI, "/api/cricket/sofascore/topLeagues/season/standings/list/").concat(leagueId)).then(function (response) {
+        axios__WEBPACK_IMPORTED_MODULE_0___default().get("".concat(_this.BASE_SERVER_URI, "/api/cricket/sofascore/topLeagues/singe/season/standings/").concat(_this.leagueId, "/").concat(response.data.seasons[0].id)).then(function (response) {
+          _this.odiTeamsList = response.data.standings;
+        });
+        _this.loading = false;
       });
     },
+    // method to psl teams
+    //   method to get team details
     getTeamDetails: function getTeamDetails(teamId, slug) {
       var basePath = window.location.origin;
       var w = window.open();
@@ -20807,6 +20904,7 @@ var _hoisted_20 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
 }, "About League", -1 /* HOISTED */);
 var _hoisted_21 = ["innerHTML"];
 var _hoisted_22 = {
+  key: 2,
   "class": "col-lg-6"
 };
 var _hoisted_23 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h2", {
@@ -20911,19 +21009,47 @@ var _hoisted_40 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
 var _hoisted_41 = [_hoisted_40];
 var _hoisted_42 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("br", null, null, -1 /* HOISTED */);
 var _hoisted_43 = {
+  "class": "row row-cols-1 row-cols-sm-2 row-cols-md-4 row-cols-lg-5 g-4 g-lg-5"
+};
+var _hoisted_44 = {
+  "class": "col-lg-12 col-xl-12"
+};
+var _hoisted_45 = {
+  "class": "comon-heading m-0",
+  style: {
+    "color": "rgb(7, 31, 64)",
+    "font-family": "Barlow Condensed, sans-seri0 !important",
+    "font-weight": "600 !important"
+  }
+};
+var _hoisted_46 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("br", null, null, -1 /* HOISTED */);
+var _hoisted_47 = {
+  "class": "row row-cols-1 row-cols-md-2 row-cols-lg-3 gy-5 gx-md-5 gy-lg-0 gx-lg-5 mt-0"
+};
+var _hoisted_48 = ["onClick"];
+var _hoisted_49 = {
+  "class": "mn-mc-titel"
+};
+var _hoisted_50 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("hr", null, null, -1 /* HOISTED */);
+var _hoisted_51 = {
+  "class": "d-flex align-items-center justify-content-center mt-2"
+};
+var _hoisted_52 = ["src"];
+var _hoisted_53 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("br", null, null, -1 /* HOISTED */);
+var _hoisted_54 = {
   key: 0,
   "class": "body-part-total float-start w-100"
 };
-var _hoisted_44 = {
+var _hoisted_55 = {
   "class": "playerrs-div-total py-5"
 };
-var _hoisted_45 = {
+var _hoisted_56 = {
   "class": "golaskipers-div"
 };
-var _hoisted_46 = {
+var _hoisted_57 = {
   "class": "container"
 };
-var _hoisted_47 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h1", {
+var _hoisted_58 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h1", {
   "class": "comon-heading m-0",
   style: {
     "color": "rgb(7, 31, 64)",
@@ -20931,19 +21057,19 @@ var _hoisted_47 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
     "font-weight": "600 !important"
   }
 }, " IPL News ", -1 /* HOISTED */);
-var _hoisted_48 = {
+var _hoisted_59 = {
   "class": "row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 mt-0 mt-lg-0 g-4 g-lg-4"
 };
-var _hoisted_49 = ["onClick"];
-var _hoisted_50 = {
+var _hoisted_60 = ["onClick"];
+var _hoisted_61 = {
   href: "players-details.html",
   "class": "cmonon-plyaars"
 };
-var _hoisted_51 = ["src"];
-var _hoisted_52 = {
+var _hoisted_62 = ["src"];
+var _hoisted_63 = {
   "class": "d-flex align-items-center justify-content-between"
 };
-var _hoisted_53 = {
+var _hoisted_64 = {
   style: {
     "display": "-webkit-box",
     "-webkit-line-clamp": "3",
@@ -20951,16 +21077,17 @@ var _hoisted_53 = {
     "overflow": "hidden"
   }
 };
-var _hoisted_54 = {
+var _hoisted_65 = {
   key: 1
 };
-var _hoisted_55 = {
+var _hoisted_66 = {
   "class": "py-5 float-start w-100"
 };
-var _hoisted_56 = {
+var _hoisted_67 = {
   "class": "container"
 };
 function render(_ctx, _cache, $props, $setup, $data, $options) {
+  var _component_teamplate = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("teamplate");
   var _component_Footer = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("Footer");
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("section", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("section", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_7, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_8, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" begin::loading "), $data.loading ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("h2", _hoisted_9, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Loading... "), _hoisted_10])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" end::loading "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" begin::about section "), !$data.loading ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_11, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_12, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h2", _hoisted_13, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)((0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.topLeagueInfo.uniqueTournament.name) + " ", 1 /* TEXT */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", _hoisted_14, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.topLeagueInfo.uniqueTournament.category.name), 1 /* TEXT */)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("ul", _hoisted_15, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", null, [_hoisted_16, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.topLeagueInfo.uniqueTournament.titleHolder && $data.topLeagueInfo.uniqueTournament.titleHolder.name ? $data.topLeagueInfo.uniqueTournament.titleHolder.name : " --"), 1 /* TEXT */)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", null, [_hoisted_17, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.topLeagueInfo.uniqueTournament.titleHolder && $data.topLeagueInfo.uniqueTournament.titleHolder.shortName ? $data.topLeagueInfo.uniqueTournament.titleHolder.shortName : " --"), 1 /* TEXT */)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", null, [_hoisted_18, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.topLeagueInfo.uniqueTournament.titleHolderTitles ? $data.topLeagueInfo.uniqueTournament.titleHolderTitles : " --"), 1 /* TEXT */)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", null, [_hoisted_19, $data.topLeagueInfo.uniqueTournament.mostTitlesTeams ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
     key: 0
@@ -20975,7 +21102,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     key: 1
   }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" -- ")], 64 /* STABLE_FRAGMENT */))])]), _hoisted_20, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", {
     innerHTML: $data.topLeagueDetails
-  }, null, 8 /* PROPS */, _hoisted_21)])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" end::about section "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" begin::standings "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_22, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" begin::match standings "), _hoisted_23, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_24, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_25, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_26, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_27, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_28, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" begin::selection of season "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_29, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Select Season "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("select", {
+  }, null, 8 /* PROPS */, _hoisted_21)])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" end::about section "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" begin::standings "), !$data.loading ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_22, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" begin::match standings "), _hoisted_23, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_24, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_25, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_26, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_27, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_28, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" begin::selection of season "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_29, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Select Season "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("select", {
     name: "seri3_length",
     "aria-controls": "seri3",
     "class": "",
@@ -21020,18 +21147,50 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         }
       }, null, 8 /* PROPS */, _hoisted_37), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("   " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(row.team.name) + " ", 1 /* TEXT */), _hoisted_38])])], 8 /* PROPS */, _hoisted_34), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(row.wins), 1 /* TEXT */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(row.losses), 1 /* TEXT */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(row.points), 1 /* TEXT */)]);
     }), 128 /* KEYED_FRAGMENT */))]);
-  }), 128 /* KEYED_FRAGMENT */)) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("tbody", _hoisted_39, [].concat(_hoisted_41))), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" ebd::table body ")], 2 /* CLASS */)])])])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" end::match standings ")]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" end::standings ")]), _hoisted_42])])])])])])]), !$data.loading && $data.topLeagueInfo.uniqueTournament.id == 11165 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("section", _hoisted_43, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_44, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_45, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_46, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" begin::loader section "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" end::loader secton "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" begin::lists "), _hoisted_47, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_48, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($data.leagueNews, function (news) {
+  }), 128 /* KEYED_FRAGMENT */)) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("tbody", _hoisted_39, [].concat(_hoisted_41))), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" ebd::table body ")], 2 /* CLASS */)])])])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" end::match standings ")])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" end::standings ")]), _hoisted_42, $data.seasonStandingsDetails ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_teamplate, {
+    key: 0
+  }, {
+    "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+      return [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($data.seasonStandingsDetails, function (standings) {
+        return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("span", {
+          key: standings.id
+        }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_43, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_44, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h2", _hoisted_45, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(standings.name) + " Teams ", 1 /* TEXT */)])]), _hoisted_46, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_47, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)(standings.rows, function (row) {
+          return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", {
+            "class": "col-lg-3",
+            key: row.id,
+            style: {
+              "margin-top": "10px"
+            }
+          }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
+            "class": "top-next-mc text-center",
+            style: {
+              "background-color": "rgb(12, 26, 44)",
+              "cursor": "pointer"
+            },
+            onClick: function onClick($event) {
+              return $options.getTeamDetails(row.team.id, row.team.slug);
+            }
+          }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h5", _hoisted_49, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(row.team.name), 1 /* TEXT */), _hoisted_50, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_51, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
+            src: 'https://api.sofascore.app/api/v1/team/' + row.team.id + '/image',
+            alt: "image not found"
+          }, null, 8 /* PROPS */, _hoisted_52)])], 8 /* PROPS */, _hoisted_48)]);
+        }), 128 /* KEYED_FRAGMENT */))])]);
+      }), 128 /* KEYED_FRAGMENT */))];
+    }),
+
+    _: 1 /* STABLE */
+  })) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), _hoisted_53])])])])])])]), !$data.loading && $data.topLeagueInfo.uniqueTournament.id == 11165 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("section", _hoisted_54, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_55, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_56, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_57, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" begin::loader section "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" end::loader secton "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" begin::lists "), _hoisted_58, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_59, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($data.leagueNews, function (news) {
     return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", {
       "class": "col",
       key: news.id,
       onClick: function onClick($event) {
         return $options.getNewsDetails(news.id);
       }
-    }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", _hoisted_50, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" begin::image "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("figure", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
+    }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", _hoisted_61, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" begin::image "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("figure", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
       src: 'https://ios.app99877.com/' + news.image,
       alt: "gl1"
-    }, null, 8 /* PROPS */, _hoisted_51)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" end::image "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" begin::title "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_52, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h5", _hoisted_53, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(news.title), 1 /* TEXT */)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" end::title ")])], 8 /* PROPS */, _hoisted_49);
-  }), 128 /* KEYED_FRAGMENT */))]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" end::lists ")])])])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" begin::footer "), !$data.loading ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("span", _hoisted_54, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("footer", _hoisted_55, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_56, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Footer)])])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" end::footer ")], 64 /* STABLE_FRAGMENT */);
+    }, null, 8 /* PROPS */, _hoisted_62)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" end::image "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" begin::title "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_63, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h5", _hoisted_64, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(news.title), 1 /* TEXT */)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" end::title ")])], 8 /* PROPS */, _hoisted_60);
+  }), 128 /* KEYED_FRAGMENT */))]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" end::lists ")])])])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" begin::footer "), !$data.loading ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("span", _hoisted_65, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("footer", _hoisted_66, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_67, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Footer)])])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" end::footer ")], 64 /* STABLE_FRAGMENT */);
 }
 
 /***/ }),
@@ -22318,7 +22477,7 @@ var _hoisted_100 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElemen
 var _hoisted_101 = {
   key: 1
 };
-var _hoisted_102 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("tr", null, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, "Temporarily no data")], -1 /* HOISTED */);
+var _hoisted_102 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("tr", null, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, " Temporarily no data ")], -1 /* HOISTED */);
 var _hoisted_103 = [_hoisted_102];
 var _hoisted_104 = {
   key: 0
@@ -25476,127 +25635,181 @@ var _hoisted_6 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementV
   }
 })])], -1 /* HOISTED */);
 var _hoisted_7 = [_hoisted_6];
-var _hoisted_8 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "row row-cols-1 row-cols-sm-2 row-cols-md-4 row-cols-lg-5 g-4 g-lg-5"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "col-lg-12 col-xl-12"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h2", {
-  "class": "comon-heading m-0",
-  style: {
-    "color": "rgb(7, 31, 64)",
-    "font-family": "Barlow Condensed, sans-seri0 !important",
-    "font-weight": "600 !important"
-  }
-}, " International Cricket Teams ")])], -1 /* HOISTED */);
-var _hoisted_9 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("br", null, null, -1 /* HOISTED */);
-var _hoisted_10 = {
-  "class": "row row-cols-1 row-cols-md-2 row-cols-lg-3 gy-5 gx-md-5 gy-lg-0 gx-lg-5 mt-0"
-};
-var _hoisted_11 = ["onClick"];
-var _hoisted_12 = {
-  "class": "mn-mc-titel"
-};
-var _hoisted_13 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("hr", null, null, -1 /* HOISTED */);
-var _hoisted_14 = {
-  "class": "d-flex align-items-center justify-content-center mt-2"
-};
-var _hoisted_15 = ["src"];
-var _hoisted_16 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("br", null, null, -1 /* HOISTED */);
-var _hoisted_17 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("br", null, null, -1 /* HOISTED */);
-var _hoisted_18 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "row row-cols-1 row-cols-sm-2 row-cols-md-4 row-cols-lg-5 g-4 g-lg-5"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "col-lg-12 col-xl-12"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h2", {
-  "class": "comon-heading m-0",
-  style: {
-    "color": "rgb(7, 31, 64)",
-    "font-family": "Barlow Condensed, sans-seri0 !important",
-    "font-weight": "600 !important"
-  }
-}, " Indian Premier League Teams ")])], -1 /* HOISTED */);
-var _hoisted_19 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("br", null, null, -1 /* HOISTED */);
-var _hoisted_20 = {
-  "class": "row row-cols-1 row-cols-md-2 row-cols-lg-3 gy-5 gx-md-5 gy-lg-0 gx-lg-5 mt-0"
-};
-var _hoisted_21 = ["onClick"];
-var _hoisted_22 = {
-  "class": "mn-mc-titel"
-};
-var _hoisted_23 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("hr", null, null, -1 /* HOISTED */);
-var _hoisted_24 = {
-  "class": "d-flex align-items-center justify-content-center mt-2"
-};
-var _hoisted_25 = ["src"];
-var _hoisted_26 = {
+var _hoisted_8 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("br", null, null, -1 /* HOISTED */);
+var _hoisted_9 = {
   key: 0
 };
-var _hoisted_27 = {
+var _hoisted_10 = {
   "class": "py-5 float-start w-100"
 };
-var _hoisted_28 = {
+var _hoisted_11 = {
   "class": "container"
 };
 function render(_ctx, _cache, $props, $setup, $data, $options) {
-  var _component_teamplate = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("teamplate");
+  var _component_ICCODIWORLDCUP = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("ICCODIWORLDCUP");
+  var _component_PSL = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("PSL");
   var _component_Footer = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("Footer");
-  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("section", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" begin::loader section "), $data.loading ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_5, [].concat(_hoisted_7))) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" end::loader secton ")]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" begin::icc teams "), !$data.loading ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_teamplate, {
-    key: 0
-  }, {
-    "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-      return [_hoisted_8, _hoisted_9, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_10, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($data.iCCTeamsList, function (team) {
-        return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", {
-          "class": "col-lg-3",
-          key: team.id,
-          style: {
-            "margin-top": "10px"
-          }
-        }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
-          "class": "top-next-mc text-center",
-          style: {
-            "background-color": "rgb(12, 26, 44)",
-            "cursor": "pointer"
-          },
-          onClick: function onClick($event) {
-            return $options.getTeamDetails(team.id, team.slug);
-          }
-        }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h5", _hoisted_12, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(team.nameEn), 1 /* TEXT */), _hoisted_13, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_14, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
-          src: 'https://api.sofascore.app/api/v1/team/' + team.id + '/image',
-          alt: "image not found"
-        }, null, 8 /* PROPS */, _hoisted_15)])], 8 /* PROPS */, _hoisted_11)]);
-      }), 128 /* KEYED_FRAGMENT */))])];
-    }),
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("section", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" begin::loader section "), _ctx.loading ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_5, [].concat(_hoisted_7))) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" end::loader secton ")]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" begin::icc teams "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_ICCODIWORLDCUP), _hoisted_8, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_PSL), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" end::icc teams ")])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" begin::footer "), !_ctx.loading ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("span", _hoisted_9, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("footer", _hoisted_10, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_11, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Footer)])])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" end::footer ")], 64 /* STABLE_FRAGMENT */);
+}
 
-    _: 1 /* STABLE */
-  })) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" end::icc teams "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" begin::psl teams "), !$data.loading ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_teamplate, {
-    key: 1
-  }, {
-    "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-      return [_hoisted_16, _hoisted_17, _hoisted_18, _hoisted_19, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_20, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($data.iplTeamsList, function (team) {
-        return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", {
-          "class": "col-lg-3",
-          key: team.id,
-          style: {
-            "margin-top": "10px"
-          }
-        }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
-          "class": "top-next-mc text-center",
-          style: {
-            "background-color": "rgb(12, 26, 44)",
-            "cursor": "pointer"
-          },
-          onClick: function onClick($event) {
-            return $options.getTeamDetails(team.id, team.slug);
-          }
-        }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h5", _hoisted_22, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(team.nameEn), 1 /* TEXT */), _hoisted_23, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_24, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
-          src: 'https://api.sofascore.app/api/v1/team/' + team.id + '/image',
-          alt: "image not found"
-        }, null, 8 /* PROPS */, _hoisted_25)])], 8 /* PROPS */, _hoisted_21)]);
-      }), 128 /* KEYED_FRAGMENT */))])];
-    }),
+/***/ }),
 
-    _: 1 /* STABLE */
-  })) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" end::psl teams ")])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" begin::footer "), !$data.loading ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("span", _hoisted_26, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("footer", _hoisted_27, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_28, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Footer)])])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" end::footer ")], 64 /* STABLE_FRAGMENT */);
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/cricket/teams/leagues/icc-odi-worldcup.vue?vue&type=template&id=68f581d6":
+/*!************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/cricket/teams/leagues/icc-odi-worldcup.vue?vue&type=template&id=68f581d6 ***!
+  \************************************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   render: () => (/* binding */ render)
+/* harmony export */ });
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
+
+var _hoisted_1 = {
+  key: 0
+};
+var _hoisted_2 = {
+  "class": "row row-cols-1 row-cols-sm-2 row-cols-md-4 row-cols-lg-5 g-4 g-lg-5"
+};
+var _hoisted_3 = {
+  "class": "col-lg-12 col-xl-12"
+};
+var _hoisted_4 = {
+  "class": "comon-heading m-0",
+  style: {
+    "color": "rgb(7, 31, 64)",
+    "font-family": "Barlow Condensed, sans-seri0 !important",
+    "font-weight": "600 !important"
+  }
+};
+var _hoisted_5 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("br", null, null, -1 /* HOISTED */);
+var _hoisted_6 = {
+  "class": "row row-cols-1 row-cols-md-2 row-cols-lg-3 gy-5 gx-md-5 gy-lg-0 gx-lg-5 mt-0"
+};
+var _hoisted_7 = ["onClick"];
+var _hoisted_8 = {
+  "class": "mn-mc-titel"
+};
+var _hoisted_9 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("hr", null, null, -1 /* HOISTED */);
+var _hoisted_10 = {
+  "class": "d-flex align-items-center justify-content-center mt-2"
+};
+var _hoisted_11 = ["src"];
+function render(_ctx, _cache, $props, $setup, $data, $options) {
+  var _component_teamplate = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("teamplate");
+  return $data.odiTeamsList ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("span", _hoisted_1, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($data.odiTeamsList, function (standings) {
+    return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_teamplate, {
+      key: standings.id
+    }, {
+      "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+        return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h2", _hoisted_4, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(standings && standings.name ? standings.name : "") + " Teams ", 1 /* TEXT */)])]), _hoisted_5, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_6, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)(standings.rows, function (row) {
+          return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", {
+            "class": "col-lg-3",
+            key: row.id,
+            style: {
+              "margin-top": "10px"
+            }
+          }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
+            "class": "top-next-mc text-center",
+            style: {
+              "background-color": "rgb(12, 26, 44)",
+              "cursor": "pointer"
+            },
+            onClick: function onClick($event) {
+              return $options.getTeamDetails(row.team.id, row.team.slug);
+            }
+          }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h5", _hoisted_8, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(row.team.name), 1 /* TEXT */), _hoisted_9, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_10, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
+            src: 'https://api.sofascore.app/api/v1/team/' + row.team.id + '/image',
+            alt: "image not found"
+          }, null, 8 /* PROPS */, _hoisted_11)])], 8 /* PROPS */, _hoisted_7)]);
+        }), 128 /* KEYED_FRAGMENT */))])];
+      }),
+
+      _: 2 /* DYNAMIC */
+    }, 1024 /* DYNAMIC_SLOTS */);
+  }), 128 /* KEYED_FRAGMENT */))])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true);
+}
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/cricket/teams/leagues/psl-league.vue?vue&type=template&id=f0c7c8c0":
+/*!******************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/cricket/teams/leagues/psl-league.vue?vue&type=template&id=f0c7c8c0 ***!
+  \******************************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   render: () => (/* binding */ render)
+/* harmony export */ });
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
+
+var _hoisted_1 = {
+  key: 0
+};
+var _hoisted_2 = {
+  "class": "row row-cols-1 row-cols-sm-2 row-cols-md-4 row-cols-lg-5 g-4 g-lg-5"
+};
+var _hoisted_3 = {
+  "class": "col-lg-12 col-xl-12"
+};
+var _hoisted_4 = {
+  "class": "comon-heading m-0",
+  style: {
+    "color": "rgb(7, 31, 64)",
+    "font-family": "Barlow Condensed, sans-seri0 !important",
+    "font-weight": "600 !important"
+  }
+};
+var _hoisted_5 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("br", null, null, -1 /* HOISTED */);
+var _hoisted_6 = {
+  "class": "row row-cols-1 row-cols-md-2 row-cols-lg-3 gy-5 gx-md-5 gy-lg-0 gx-lg-5 mt-0"
+};
+var _hoisted_7 = ["onClick"];
+var _hoisted_8 = {
+  "class": "mn-mc-titel"
+};
+var _hoisted_9 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("hr", null, null, -1 /* HOISTED */);
+var _hoisted_10 = {
+  "class": "d-flex align-items-center justify-content-center mt-2"
+};
+var _hoisted_11 = ["src"];
+function render(_ctx, _cache, $props, $setup, $data, $options) {
+  var _component_teamplate = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("teamplate");
+  return $data.odiTeamsList ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("span", _hoisted_1, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($data.odiTeamsList, function (standings) {
+    return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_teamplate, {
+      key: standings.id
+    }, {
+      "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+        return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h2", _hoisted_4, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(standings && standings.name ? standings.name : "") + " Teams ", 1 /* TEXT */)])]), _hoisted_5, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_6, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)(standings.rows, function (row) {
+          return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", {
+            "class": "col-lg-3",
+            key: row.id,
+            style: {
+              "margin-top": "10px"
+            }
+          }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
+            "class": "top-next-mc text-center",
+            style: {
+              "background-color": "rgb(12, 26, 44)",
+              "cursor": "pointer"
+            },
+            onClick: function onClick($event) {
+              return $options.getTeamDetails(row.team.id, row.team.slug);
+            }
+          }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h5", _hoisted_8, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(row.team.name), 1 /* TEXT */), _hoisted_9, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_10, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
+            src: 'https://api.sofascore.app/api/v1/team/' + row.team.id + '/image',
+            alt: "image not found"
+          }, null, 8 /* PROPS */, _hoisted_11)])], 8 /* PROPS */, _hoisted_7)]);
+        }), 128 /* KEYED_FRAGMENT */))])];
+      }),
+
+      _: 2 /* DYNAMIC */
+    }, 1024 /* DYNAMIC_SLOTS */);
+  }), 128 /* KEYED_FRAGMENT */))])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true);
 }
 
 /***/ }),
@@ -25945,7 +26158,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\ndiv #floater {\r\n  display: none !important;\n}\n.m-date {\r\n  width: 75px !important;\n}\n.accordion-button::after {\r\n  display: none;\n}\r\n\r\n/* Custom, iPhone Retina */\n@media only screen and (min-width: 320px) {\n.mobile-version {\r\n    display: block;\n}\n.desktop-version {\r\n    display: none;\n}\n}\r\n\r\n/* Extra Small Devices, Phones */\n@media only screen and (min-width: 480px) {\n.mobile-version {\r\n    display: block;\n}\n.desktop-version {\r\n    display: none;\n}\n}\r\n\r\n/* Small Devices, Tablets */\n@media only screen and (min-width: 768px) {\n.mobile-version {\r\n    display: block;\n}\n.desktop-version {\r\n    display: none;\n}\n}\r\n\r\n/* Medium Devices, Desktops */\n@media only screen and (min-width: 992px) {\n.mobile-version {\r\n    display: none;\n}\n}\r\n\r\n/* Large Devices, Wide Screens */\n@media only screen and (min-width: 1200px) {\n.mobile-version {\r\n    display: none;\n}\n}\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\ndiv #floater {\r\n    display: none !important;\n}\n.m-date {\r\n    width: 75px !important;\n}\n.accordion-button::after {\r\n    display: none;\n}\r\n\r\n/* Custom, iPhone Retina */\n@media only screen and (min-width: 320px) {\n.mobile-version {\r\n        display: block;\n}\n.desktop-version {\r\n        display: none;\n}\n}\r\n\r\n/* Extra Small Devices, Phones */\n@media only screen and (min-width: 480px) {\n.mobile-version {\r\n        display: block;\n}\n.desktop-version {\r\n        display: none;\n}\n}\r\n\r\n/* Small Devices, Tablets */\n@media only screen and (min-width: 768px) {\n.mobile-version {\r\n        display: block;\n}\n.desktop-version {\r\n        display: none;\n}\n}\r\n\r\n/* Medium Devices, Desktops */\n@media only screen and (min-width: 992px) {\n.mobile-version {\r\n        display: none;\n}\n}\r\n\r\n/* Large Devices, Wide Screens */\n@media only screen and (min-width: 1200px) {\n.mobile-version {\r\n        display: none;\n}\n}\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -44870,6 +45083,62 @@ if (false) {}
 
 /***/ }),
 
+/***/ "./resources/js/components/cricket/teams/leagues/icc-odi-worldcup.vue":
+/*!****************************************************************************!*\
+  !*** ./resources/js/components/cricket/teams/leagues/icc-odi-worldcup.vue ***!
+  \****************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _icc_odi_worldcup_vue_vue_type_template_id_68f581d6__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./icc-odi-worldcup.vue?vue&type=template&id=68f581d6 */ "./resources/js/components/cricket/teams/leagues/icc-odi-worldcup.vue?vue&type=template&id=68f581d6");
+/* harmony import */ var _icc_odi_worldcup_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./icc-odi-worldcup.vue?vue&type=script&lang=js */ "./resources/js/components/cricket/teams/leagues/icc-odi-worldcup.vue?vue&type=script&lang=js");
+/* harmony import */ var _node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../../../node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
+
+
+
+
+;
+const __exports__ = /*#__PURE__*/(0,_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_icc_odi_worldcup_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_icc_odi_worldcup_vue_vue_type_template_id_68f581d6__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/components/cricket/teams/leagues/icc-odi-worldcup.vue"]])
+/* hot reload */
+if (false) {}
+
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (__exports__);
+
+/***/ }),
+
+/***/ "./resources/js/components/cricket/teams/leagues/psl-league.vue":
+/*!**********************************************************************!*\
+  !*** ./resources/js/components/cricket/teams/leagues/psl-league.vue ***!
+  \**********************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _psl_league_vue_vue_type_template_id_f0c7c8c0__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./psl-league.vue?vue&type=template&id=f0c7c8c0 */ "./resources/js/components/cricket/teams/leagues/psl-league.vue?vue&type=template&id=f0c7c8c0");
+/* harmony import */ var _psl_league_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./psl-league.vue?vue&type=script&lang=js */ "./resources/js/components/cricket/teams/leagues/psl-league.vue?vue&type=script&lang=js");
+/* harmony import */ var _node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../../../node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
+
+
+
+
+;
+const __exports__ = /*#__PURE__*/(0,_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_psl_league_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_psl_league_vue_vue_type_template_id_f0c7c8c0__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/components/cricket/teams/leagues/psl-league.vue"]])
+/* hot reload */
+if (false) {}
+
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (__exports__);
+
+/***/ }),
+
 /***/ "./resources/js/components/partials/commons/Footer.vue":
 /*!*************************************************************!*\
   !*** ./resources/js/components/partials/commons/Footer.vue ***!
@@ -45186,6 +45455,38 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/components/cricket/teams/leagues/icc-odi-worldcup.vue?vue&type=script&lang=js":
+/*!****************************************************************************************************!*\
+  !*** ./resources/js/components/cricket/teams/leagues/icc-odi-worldcup.vue?vue&type=script&lang=js ***!
+  \****************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_icc_odi_worldcup_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__["default"])
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_icc_odi_worldcup_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./icc-odi-worldcup.vue?vue&type=script&lang=js */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/cricket/teams/leagues/icc-odi-worldcup.vue?vue&type=script&lang=js");
+ 
+
+/***/ }),
+
+/***/ "./resources/js/components/cricket/teams/leagues/psl-league.vue?vue&type=script&lang=js":
+/*!**********************************************************************************************!*\
+  !*** ./resources/js/components/cricket/teams/leagues/psl-league.vue?vue&type=script&lang=js ***!
+  \**********************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_psl_league_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__["default"])
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_psl_league_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./psl-league.vue?vue&type=script&lang=js */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/cricket/teams/leagues/psl-league.vue?vue&type=script&lang=js");
+ 
+
+/***/ }),
+
 /***/ "./resources/js/components/partials/commons/Footer.vue?vue&type=script&lang=js":
 /*!*************************************************************************************!*\
   !*** ./resources/js/components/partials/commons/Footer.vue?vue&type=script&lang=js ***!
@@ -45486,6 +45787,38 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   render: () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_TeamsList_vue_vue_type_template_id_454b95bc__WEBPACK_IMPORTED_MODULE_0__.render)
 /* harmony export */ });
 /* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_TeamsList_vue_vue_type_template_id_454b95bc__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../../node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!../../../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./TeamsList.vue?vue&type=template&id=454b95bc */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/cricket/teams/TeamsList.vue?vue&type=template&id=454b95bc");
+
+
+/***/ }),
+
+/***/ "./resources/js/components/cricket/teams/leagues/icc-odi-worldcup.vue?vue&type=template&id=68f581d6":
+/*!**********************************************************************************************************!*\
+  !*** ./resources/js/components/cricket/teams/leagues/icc-odi-worldcup.vue?vue&type=template&id=68f581d6 ***!
+  \**********************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   render: () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_icc_odi_worldcup_vue_vue_type_template_id_68f581d6__WEBPACK_IMPORTED_MODULE_0__.render)
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_icc_odi_worldcup_vue_vue_type_template_id_68f581d6__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../../../node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!../../../../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./icc-odi-worldcup.vue?vue&type=template&id=68f581d6 */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/cricket/teams/leagues/icc-odi-worldcup.vue?vue&type=template&id=68f581d6");
+
+
+/***/ }),
+
+/***/ "./resources/js/components/cricket/teams/leagues/psl-league.vue?vue&type=template&id=f0c7c8c0":
+/*!****************************************************************************************************!*\
+  !*** ./resources/js/components/cricket/teams/leagues/psl-league.vue?vue&type=template&id=f0c7c8c0 ***!
+  \****************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   render: () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_psl_league_vue_vue_type_template_id_f0c7c8c0__WEBPACK_IMPORTED_MODULE_0__.render)
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_psl_league_vue_vue_type_template_id_f0c7c8c0__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../../../node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!../../../../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./psl-league.vue?vue&type=template&id=f0c7c8c0 */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/cricket/teams/leagues/psl-league.vue?vue&type=template&id=f0c7c8c0");
 
 
 /***/ }),
