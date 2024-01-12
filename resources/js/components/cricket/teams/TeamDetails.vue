@@ -263,7 +263,7 @@ export default {
                     `${this.BASE_SERVER_URI}/api/cricket/sofascore/teams/contents/meta/${teamId}`
                 )
                 .then((response) => {
-                    window.alert(response.data);
+              
                     $("title").text(response.data.contents.title);
                     $("link[rel='canonical']").attr(
                         "href",

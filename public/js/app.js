@@ -20605,7 +20605,6 @@ __webpack_require__.r(__webpack_exports__);
     getTeamContentsMeta: function getTeamContentsMeta(teamId) {
       var _this3 = this;
       axios__WEBPACK_IMPORTED_MODULE_0___default().get("".concat(this.BASE_SERVER_URI, "/api/cricket/sofascore/teams/contents/meta/").concat(teamId)).then(function (response) {
-        window.alert(response.data);
         $("title").text(response.data.contents.title);
         $("link[rel='canonical']").attr("href", response.data.contents.url);
 
@@ -20654,7 +20653,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _partials_commons_Footer_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./../../partials/commons/Footer.vue */ "./resources/js/components/partials/commons/Footer.vue");
 /* harmony import */ var _leagues_psl_league_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./leagues/psl-league.vue */ "./resources/js/components/cricket/teams/leagues/psl-league.vue");
 /* harmony import */ var _leagues_ipl_league_vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./leagues/ipl-league.vue */ "./resources/js/components/cricket/teams/leagues/ipl-league.vue");
-/* harmony import */ var _leagues_icc_odi_worldcup_vue__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./leagues/icc-odi-worldcup.vue */ "./resources/js/components/cricket/teams/leagues/icc-odi-worldcup.vue");
+/* harmony import */ var _leagues_bbl_league_vue__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./leagues/bbl-league.vue */ "./resources/js/components/cricket/teams/leagues/bbl-league.vue");
+/* harmony import */ var _leagues_bpl_league_vue__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./leagues/bpl-league.vue */ "./resources/js/components/cricket/teams/leagues/bpl-league.vue");
+/* harmony import */ var _leagues_cpl_league_vue__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./leagues/cpl-league.vue */ "./resources/js/components/cricket/teams/leagues/cpl-league.vue");
+/* harmony import */ var _leagues_lpl_league_vue__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./leagues/lpl-league.vue */ "./resources/js/components/cricket/teams/leagues/lpl-league.vue");
+/* harmony import */ var _leagues_icc_odi_worldcup_vue__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./leagues/icc-odi-worldcup.vue */ "./resources/js/components/cricket/teams/leagues/icc-odi-worldcup.vue");
+
+
+
+
 
 
 
@@ -20666,12 +20673,178 @@ __webpack_require__.r(__webpack_exports__);
     Footer: _partials_commons_Footer_vue__WEBPACK_IMPORTED_MODULE_1__["default"],
     PSL: _leagues_psl_league_vue__WEBPACK_IMPORTED_MODULE_2__["default"],
     IPL: _leagues_ipl_league_vue__WEBPACK_IMPORTED_MODULE_3__["default"],
-    ICCODIWORLDCUP: _leagues_icc_odi_worldcup_vue__WEBPACK_IMPORTED_MODULE_4__["default"]
+    BBL: _leagues_bbl_league_vue__WEBPACK_IMPORTED_MODULE_4__["default"],
+    BPL: _leagues_bpl_league_vue__WEBPACK_IMPORTED_MODULE_5__["default"],
+    CPL: _leagues_cpl_league_vue__WEBPACK_IMPORTED_MODULE_6__["default"],
+    LPL: _leagues_lpl_league_vue__WEBPACK_IMPORTED_MODULE_7__["default"],
+    ICCODIWORLDCUP: _leagues_icc_odi_worldcup_vue__WEBPACK_IMPORTED_MODULE_8__["default"]
   },
   data: function data() {
     return {
       // loading: true,
     };
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/cricket/teams/leagues/bbl-league.vue?vue&type=script&lang=js":
+/*!**************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/cricket/teams/leagues/bbl-league.vue?vue&type=script&lang=js ***!
+  \**************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  components: {
+    axios: (axios__WEBPACK_IMPORTED_MODULE_0___default())
+  },
+  data: function data() {
+    return {
+      leagueId: null,
+      loading: true,
+      odiTeamsList: null,
+      pslTeamsList: null
+    };
+  },
+  created: function created() {
+    this.getOdiInternationalTeams(11162);
+  },
+  methods: {
+    // method to get odi international teams
+    getOdiInternationalTeams: function getOdiInternationalTeams(leagueId) {
+      var _this = this;
+      this.leagueId = leagueId;
+      axios__WEBPACK_IMPORTED_MODULE_0___default().get("".concat(this.BASE_SERVER_URI, "/api/cricket/sofascore/topLeagues/season/standings/list/").concat(leagueId)).then(function (response) {
+        axios__WEBPACK_IMPORTED_MODULE_0___default().get("".concat(_this.BASE_SERVER_URI, "/api/cricket/sofascore/topLeagues/singe/season/standings/").concat(_this.leagueId, "/").concat(response.data.seasons[0].id)).then(function (response) {
+          _this.odiTeamsList = response.data.standings;
+        });
+        _this.loading = false;
+      });
+    },
+    // method to psl teams
+    //   method to get team details
+    getTeamDetails: function getTeamDetails(teamId, slug) {
+      var basePath = window.location.origin;
+      var w = window.open();
+      w.document.location.href = basePath + "/cricket/" + slug + "/team/details/" + teamId;
+      w.document.target = "_blank";
+    }
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/cricket/teams/leagues/bpl-league.vue?vue&type=script&lang=js":
+/*!**************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/cricket/teams/leagues/bpl-league.vue?vue&type=script&lang=js ***!
+  \**************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  components: {
+    axios: (axios__WEBPACK_IMPORTED_MODULE_0___default())
+  },
+  data: function data() {
+    return {
+      leagueId: null,
+      loading: true,
+      odiTeamsList: null,
+      pslTeamsList: null
+    };
+  },
+  created: function created() {
+    this.getOdiInternationalTeams(11164);
+  },
+  methods: {
+    // method to get odi international teams
+    getOdiInternationalTeams: function getOdiInternationalTeams(leagueId) {
+      var _this = this;
+      this.leagueId = leagueId;
+      axios__WEBPACK_IMPORTED_MODULE_0___default().get("".concat(this.BASE_SERVER_URI, "/api/cricket/sofascore/topLeagues/season/standings/list/").concat(leagueId)).then(function (response) {
+        axios__WEBPACK_IMPORTED_MODULE_0___default().get("".concat(_this.BASE_SERVER_URI, "/api/cricket/sofascore/topLeagues/singe/season/standings/").concat(_this.leagueId, "/").concat(response.data.seasons[0].id)).then(function (response) {
+          _this.odiTeamsList = response.data.standings;
+        });
+        _this.loading = false;
+      });
+    },
+    // method to psl teams
+    //   method to get team details
+    getTeamDetails: function getTeamDetails(teamId, slug) {
+      var basePath = window.location.origin;
+      var w = window.open();
+      w.document.location.href = basePath + "/cricket/" + slug + "/team/details/" + teamId;
+      w.document.target = "_blank";
+    }
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/cricket/teams/leagues/cpl-league.vue?vue&type=script&lang=js":
+/*!**************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/cricket/teams/leagues/cpl-league.vue?vue&type=script&lang=js ***!
+  \**************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  components: {
+    axios: (axios__WEBPACK_IMPORTED_MODULE_0___default())
+  },
+  data: function data() {
+    return {
+      leagueId: null,
+      loading: true,
+      odiTeamsList: null,
+      pslTeamsList: null
+    };
+  },
+  created: function created() {
+    this.getOdiInternationalTeams(11167);
+  },
+  methods: {
+    // method to get odi international teams
+    getOdiInternationalTeams: function getOdiInternationalTeams(leagueId) {
+      var _this = this;
+      this.leagueId = leagueId;
+      axios__WEBPACK_IMPORTED_MODULE_0___default().get("".concat(this.BASE_SERVER_URI, "/api/cricket/sofascore/topLeagues/season/standings/list/").concat(leagueId)).then(function (response) {
+        axios__WEBPACK_IMPORTED_MODULE_0___default().get("".concat(_this.BASE_SERVER_URI, "/api/cricket/sofascore/topLeagues/singe/season/standings/").concat(_this.leagueId, "/").concat(response.data.seasons[0].id)).then(function (response) {
+          _this.odiTeamsList = response.data.standings;
+        });
+        _this.loading = false;
+      });
+    },
+    // method to psl teams
+    //   method to get team details
+    getTeamDetails: function getTeamDetails(teamId, slug) {
+      var basePath = window.location.origin;
+      var w = window.open();
+      w.document.location.href = basePath + "/cricket/" + slug + "/team/details/" + teamId;
+      w.document.target = "_blank";
+    }
   }
 });
 
@@ -20759,6 +20932,60 @@ __webpack_require__.r(__webpack_exports__);
   },
   created: function created() {
     this.getOdiInternationalTeams(11165);
+  },
+  methods: {
+    // method to get odi international teams
+    getOdiInternationalTeams: function getOdiInternationalTeams(leagueId) {
+      var _this = this;
+      this.leagueId = leagueId;
+      axios__WEBPACK_IMPORTED_MODULE_0___default().get("".concat(this.BASE_SERVER_URI, "/api/cricket/sofascore/topLeagues/season/standings/list/").concat(leagueId)).then(function (response) {
+        axios__WEBPACK_IMPORTED_MODULE_0___default().get("".concat(_this.BASE_SERVER_URI, "/api/cricket/sofascore/topLeagues/singe/season/standings/").concat(_this.leagueId, "/").concat(response.data.seasons[0].id)).then(function (response) {
+          _this.odiTeamsList = response.data.standings;
+        });
+        _this.loading = false;
+      });
+    },
+    // method to psl teams
+    //   method to get team details
+    getTeamDetails: function getTeamDetails(teamId, slug) {
+      var basePath = window.location.origin;
+      var w = window.open();
+      w.document.location.href = basePath + "/cricket/" + slug + "/team/details/" + teamId;
+      w.document.target = "_blank";
+    }
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/cricket/teams/leagues/lpl-league.vue?vue&type=script&lang=js":
+/*!**************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/cricket/teams/leagues/lpl-league.vue?vue&type=script&lang=js ***!
+  \**************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  components: {
+    axios: (axios__WEBPACK_IMPORTED_MODULE_0___default())
+  },
+  data: function data() {
+    return {
+      leagueId: null,
+      loading: true,
+      odiTeamsList: null,
+      pslTeamsList: null
+    };
+  },
+  created: function created() {
+    this.getOdiInternationalTeams(16365);
   },
   methods: {
     // method to get odi international teams
@@ -25695,21 +25922,269 @@ var _hoisted_6 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementV
 var _hoisted_7 = [_hoisted_6];
 var _hoisted_8 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("br", null, null, -1 /* HOISTED */);
 var _hoisted_9 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("br", null, null, -1 /* HOISTED */);
-var _hoisted_10 = {
+var _hoisted_10 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("br", null, null, -1 /* HOISTED */);
+var _hoisted_11 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("br", null, null, -1 /* HOISTED */);
+var _hoisted_12 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("br", null, null, -1 /* HOISTED */);
+var _hoisted_13 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("br", null, null, -1 /* HOISTED */);
+var _hoisted_14 = {
   key: 0
 };
-var _hoisted_11 = {
+var _hoisted_15 = {
   "class": "py-5 float-start w-100"
 };
-var _hoisted_12 = {
+var _hoisted_16 = {
   "class": "container"
 };
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_ICCODIWORLDCUP = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("ICCODIWORLDCUP");
   var _component_PSL = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("PSL");
   var _component_IPL = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("IPL");
+  var _component_BBL = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("BBL");
+  var _component_BPL = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("BPL");
+  var _component_CPL = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("CPL");
+  var _component_LPL = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("LPL");
   var _component_Footer = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("Footer");
-  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("section", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" begin::loader section "), _ctx.loading ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_5, [].concat(_hoisted_7))) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" end::loader secton ")]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" begin::icc teams "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_ICCODIWORLDCUP), _hoisted_8, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_PSL), _hoisted_9, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_IPL), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" end::icc teams ")])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" begin::footer "), !_ctx.loading ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("span", _hoisted_10, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("footer", _hoisted_11, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_12, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Footer)])])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" end::footer ")], 64 /* STABLE_FRAGMENT */);
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("section", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" begin::loader section "), _ctx.loading ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_5, [].concat(_hoisted_7))) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" end::loader secton ")]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" begin::icc teams "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_ICCODIWORLDCUP), _hoisted_8, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_PSL), _hoisted_9, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_IPL), _hoisted_10, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_BBL), _hoisted_11, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_BPL), _hoisted_12, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_CPL), _hoisted_13, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_LPL), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" end::icc teams ")])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" begin::footer "), !_ctx.loading ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("span", _hoisted_14, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("footer", _hoisted_15, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_16, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Footer)])])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" end::footer ")], 64 /* STABLE_FRAGMENT */);
+}
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/cricket/teams/leagues/bbl-league.vue?vue&type=template&id=56c7a65d":
+/*!******************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/cricket/teams/leagues/bbl-league.vue?vue&type=template&id=56c7a65d ***!
+  \******************************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   render: () => (/* binding */ render)
+/* harmony export */ });
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
+
+var _hoisted_1 = {
+  key: 0
+};
+var _hoisted_2 = {
+  "class": "row row-cols-1 row-cols-sm-2 row-cols-md-4 row-cols-lg-5 g-4 g-lg-5"
+};
+var _hoisted_3 = {
+  "class": "col-lg-12 col-xl-12"
+};
+var _hoisted_4 = {
+  "class": "comon-heading m-0",
+  style: {
+    "color": "rgb(7, 31, 64)",
+    "font-family": "Barlow Condensed, sans-seri0 !important",
+    "font-weight": "600 !important"
+  }
+};
+var _hoisted_5 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("br", null, null, -1 /* HOISTED */);
+var _hoisted_6 = {
+  "class": "row row-cols-1 row-cols-md-2 row-cols-lg-3 gy-5 gx-md-5 gy-lg-0 gx-lg-5 mt-0"
+};
+var _hoisted_7 = ["onClick"];
+var _hoisted_8 = {
+  "class": "mn-mc-titel"
+};
+var _hoisted_9 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("hr", null, null, -1 /* HOISTED */);
+var _hoisted_10 = {
+  "class": "d-flex align-items-center justify-content-center mt-2"
+};
+var _hoisted_11 = ["src"];
+function render(_ctx, _cache, $props, $setup, $data, $options) {
+  var _component_teamplate = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("teamplate");
+  return $data.odiTeamsList ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("span", _hoisted_1, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($data.odiTeamsList, function (standings) {
+    return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_teamplate, {
+      key: standings.id
+    }, {
+      "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+        return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h2", _hoisted_4, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(standings && standings.name ? standings.name : "") + " Teams ", 1 /* TEXT */)])]), _hoisted_5, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_6, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)(standings.rows, function (row) {
+          return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", {
+            "class": "col-lg-3",
+            key: row.id,
+            style: {
+              "margin-top": "10px"
+            }
+          }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
+            "class": "top-next-mc text-center",
+            style: {
+              "background-color": "rgb(12, 26, 44)",
+              "cursor": "pointer"
+            },
+            onClick: function onClick($event) {
+              return $options.getTeamDetails(row.team.id, row.team.slug);
+            }
+          }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h5", _hoisted_8, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(row.team.name), 1 /* TEXT */), _hoisted_9, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_10, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
+            src: 'https://api.sofascore.app/api/v1/team/' + row.team.id + '/image',
+            alt: "image not found"
+          }, null, 8 /* PROPS */, _hoisted_11)])], 8 /* PROPS */, _hoisted_7)]);
+        }), 128 /* KEYED_FRAGMENT */))])];
+      }),
+
+      _: 2 /* DYNAMIC */
+    }, 1024 /* DYNAMIC_SLOTS */);
+  }), 128 /* KEYED_FRAGMENT */))])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true);
+}
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/cricket/teams/leagues/bpl-league.vue?vue&type=template&id=61f2016b":
+/*!******************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/cricket/teams/leagues/bpl-league.vue?vue&type=template&id=61f2016b ***!
+  \******************************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   render: () => (/* binding */ render)
+/* harmony export */ });
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
+
+var _hoisted_1 = {
+  key: 0
+};
+var _hoisted_2 = {
+  "class": "row row-cols-1 row-cols-sm-2 row-cols-md-4 row-cols-lg-5 g-4 g-lg-5"
+};
+var _hoisted_3 = {
+  "class": "col-lg-12 col-xl-12"
+};
+var _hoisted_4 = {
+  "class": "comon-heading m-0",
+  style: {
+    "color": "rgb(7, 31, 64)",
+    "font-family": "Barlow Condensed, sans-seri0 !important",
+    "font-weight": "600 !important"
+  }
+};
+var _hoisted_5 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("br", null, null, -1 /* HOISTED */);
+var _hoisted_6 = {
+  "class": "row row-cols-1 row-cols-md-2 row-cols-lg-3 gy-5 gx-md-5 gy-lg-0 gx-lg-5 mt-0"
+};
+var _hoisted_7 = ["onClick"];
+var _hoisted_8 = {
+  "class": "mn-mc-titel"
+};
+var _hoisted_9 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("hr", null, null, -1 /* HOISTED */);
+var _hoisted_10 = {
+  "class": "d-flex align-items-center justify-content-center mt-2"
+};
+var _hoisted_11 = ["src"];
+function render(_ctx, _cache, $props, $setup, $data, $options) {
+  var _component_teamplate = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("teamplate");
+  return $data.odiTeamsList ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("span", _hoisted_1, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($data.odiTeamsList, function (standings) {
+    return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_teamplate, {
+      key: standings.id
+    }, {
+      "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+        return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h2", _hoisted_4, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(standings && standings.name ? standings.name : "") + " Teams ", 1 /* TEXT */)])]), _hoisted_5, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_6, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)(standings.rows, function (row) {
+          return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", {
+            "class": "col-lg-3",
+            key: row.id,
+            style: {
+              "margin-top": "10px"
+            }
+          }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
+            "class": "top-next-mc text-center",
+            style: {
+              "background-color": "rgb(12, 26, 44)",
+              "cursor": "pointer"
+            },
+            onClick: function onClick($event) {
+              return $options.getTeamDetails(row.team.id, row.team.slug);
+            }
+          }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h5", _hoisted_8, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(row.team.name), 1 /* TEXT */), _hoisted_9, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_10, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
+            src: 'https://api.sofascore.app/api/v1/team/' + row.team.id + '/image',
+            alt: "image not found"
+          }, null, 8 /* PROPS */, _hoisted_11)])], 8 /* PROPS */, _hoisted_7)]);
+        }), 128 /* KEYED_FRAGMENT */))])];
+      }),
+
+      _: 2 /* DYNAMIC */
+    }, 1024 /* DYNAMIC_SLOTS */);
+  }), 128 /* KEYED_FRAGMENT */))])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true);
+}
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/cricket/teams/leagues/cpl-league.vue?vue&type=template&id=43cfcb0a":
+/*!******************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/cricket/teams/leagues/cpl-league.vue?vue&type=template&id=43cfcb0a ***!
+  \******************************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   render: () => (/* binding */ render)
+/* harmony export */ });
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
+
+var _hoisted_1 = {
+  key: 0
+};
+var _hoisted_2 = {
+  "class": "row row-cols-1 row-cols-sm-2 row-cols-md-4 row-cols-lg-5 g-4 g-lg-5"
+};
+var _hoisted_3 = {
+  "class": "col-lg-12 col-xl-12"
+};
+var _hoisted_4 = {
+  "class": "comon-heading m-0",
+  style: {
+    "color": "rgb(7, 31, 64)",
+    "font-family": "Barlow Condensed, sans-seri0 !important",
+    "font-weight": "600 !important"
+  }
+};
+var _hoisted_5 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("br", null, null, -1 /* HOISTED */);
+var _hoisted_6 = {
+  "class": "row row-cols-1 row-cols-md-2 row-cols-lg-3 gy-5 gx-md-5 gy-lg-0 gx-lg-5 mt-0"
+};
+var _hoisted_7 = ["onClick"];
+var _hoisted_8 = {
+  "class": "mn-mc-titel"
+};
+var _hoisted_9 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("hr", null, null, -1 /* HOISTED */);
+var _hoisted_10 = {
+  "class": "d-flex align-items-center justify-content-center mt-2"
+};
+var _hoisted_11 = ["src"];
+function render(_ctx, _cache, $props, $setup, $data, $options) {
+  var _component_teamplate = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("teamplate");
+  return $data.odiTeamsList ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("span", _hoisted_1, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($data.odiTeamsList, function (standings) {
+    return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_teamplate, {
+      key: standings.id
+    }, {
+      "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+        return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h2", _hoisted_4, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(standings && standings.name ? standings.name : "") + " Teams ", 1 /* TEXT */)])]), _hoisted_5, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_6, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)(standings.rows, function (row) {
+          return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", {
+            "class": "col-lg-3",
+            key: row.id,
+            style: {
+              "margin-top": "10px"
+            }
+          }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
+            "class": "top-next-mc text-center",
+            style: {
+              "background-color": "rgb(12, 26, 44)",
+              "cursor": "pointer"
+            },
+            onClick: function onClick($event) {
+              return $options.getTeamDetails(row.team.id, row.team.slug);
+            }
+          }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h5", _hoisted_8, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(row.team.name), 1 /* TEXT */), _hoisted_9, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_10, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
+            src: 'https://api.sofascore.app/api/v1/team/' + row.team.id + '/image',
+            alt: "image not found"
+          }, null, 8 /* PROPS */, _hoisted_11)])], 8 /* PROPS */, _hoisted_7)]);
+        }), 128 /* KEYED_FRAGMENT */))])];
+      }),
+
+      _: 2 /* DYNAMIC */
+    }, 1024 /* DYNAMIC_SLOTS */);
+  }), 128 /* KEYED_FRAGMENT */))])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true);
 }
 
 /***/ }),
@@ -25797,6 +26272,86 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 /***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/cricket/teams/leagues/ipl-league.vue?vue&type=template&id=e1faf678":
 /*!******************************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/cricket/teams/leagues/ipl-league.vue?vue&type=template&id=e1faf678 ***!
+  \******************************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   render: () => (/* binding */ render)
+/* harmony export */ });
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
+
+var _hoisted_1 = {
+  key: 0
+};
+var _hoisted_2 = {
+  "class": "row row-cols-1 row-cols-sm-2 row-cols-md-4 row-cols-lg-5 g-4 g-lg-5"
+};
+var _hoisted_3 = {
+  "class": "col-lg-12 col-xl-12"
+};
+var _hoisted_4 = {
+  "class": "comon-heading m-0",
+  style: {
+    "color": "rgb(7, 31, 64)",
+    "font-family": "Barlow Condensed, sans-seri0 !important",
+    "font-weight": "600 !important"
+  }
+};
+var _hoisted_5 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("br", null, null, -1 /* HOISTED */);
+var _hoisted_6 = {
+  "class": "row row-cols-1 row-cols-md-2 row-cols-lg-3 gy-5 gx-md-5 gy-lg-0 gx-lg-5 mt-0"
+};
+var _hoisted_7 = ["onClick"];
+var _hoisted_8 = {
+  "class": "mn-mc-titel"
+};
+var _hoisted_9 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("hr", null, null, -1 /* HOISTED */);
+var _hoisted_10 = {
+  "class": "d-flex align-items-center justify-content-center mt-2"
+};
+var _hoisted_11 = ["src"];
+function render(_ctx, _cache, $props, $setup, $data, $options) {
+  var _component_teamplate = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("teamplate");
+  return $data.odiTeamsList ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("span", _hoisted_1, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($data.odiTeamsList, function (standings) {
+    return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_teamplate, {
+      key: standings.id
+    }, {
+      "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+        return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h2", _hoisted_4, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(standings && standings.name ? standings.name : "") + " Teams ", 1 /* TEXT */)])]), _hoisted_5, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_6, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)(standings.rows, function (row) {
+          return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", {
+            "class": "col-lg-3",
+            key: row.id,
+            style: {
+              "margin-top": "10px"
+            }
+          }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
+            "class": "top-next-mc text-center",
+            style: {
+              "background-color": "rgb(12, 26, 44)",
+              "cursor": "pointer"
+            },
+            onClick: function onClick($event) {
+              return $options.getTeamDetails(row.team.id, row.team.slug);
+            }
+          }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h5", _hoisted_8, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(row.team.name), 1 /* TEXT */), _hoisted_9, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_10, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
+            src: 'https://api.sofascore.app/api/v1/team/' + row.team.id + '/image',
+            alt: "image not found"
+          }, null, 8 /* PROPS */, _hoisted_11)])], 8 /* PROPS */, _hoisted_7)]);
+        }), 128 /* KEYED_FRAGMENT */))])];
+      }),
+
+      _: 2 /* DYNAMIC */
+    }, 1024 /* DYNAMIC_SLOTS */);
+  }), 128 /* KEYED_FRAGMENT */))])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true);
+}
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/cricket/teams/leagues/lpl-league.vue?vue&type=template&id=349be1a1":
+/*!******************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/cricket/teams/leagues/lpl-league.vue?vue&type=template&id=349be1a1 ***!
   \******************************************************************************************************************************************************************************************************************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
@@ -45223,6 +45778,90 @@ if (false) {}
 
 /***/ }),
 
+/***/ "./resources/js/components/cricket/teams/leagues/bbl-league.vue":
+/*!**********************************************************************!*\
+  !*** ./resources/js/components/cricket/teams/leagues/bbl-league.vue ***!
+  \**********************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _bbl_league_vue_vue_type_template_id_56c7a65d__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./bbl-league.vue?vue&type=template&id=56c7a65d */ "./resources/js/components/cricket/teams/leagues/bbl-league.vue?vue&type=template&id=56c7a65d");
+/* harmony import */ var _bbl_league_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./bbl-league.vue?vue&type=script&lang=js */ "./resources/js/components/cricket/teams/leagues/bbl-league.vue?vue&type=script&lang=js");
+/* harmony import */ var _node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../../../node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
+
+
+
+
+;
+const __exports__ = /*#__PURE__*/(0,_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_bbl_league_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_bbl_league_vue_vue_type_template_id_56c7a65d__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/components/cricket/teams/leagues/bbl-league.vue"]])
+/* hot reload */
+if (false) {}
+
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (__exports__);
+
+/***/ }),
+
+/***/ "./resources/js/components/cricket/teams/leagues/bpl-league.vue":
+/*!**********************************************************************!*\
+  !*** ./resources/js/components/cricket/teams/leagues/bpl-league.vue ***!
+  \**********************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _bpl_league_vue_vue_type_template_id_61f2016b__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./bpl-league.vue?vue&type=template&id=61f2016b */ "./resources/js/components/cricket/teams/leagues/bpl-league.vue?vue&type=template&id=61f2016b");
+/* harmony import */ var _bpl_league_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./bpl-league.vue?vue&type=script&lang=js */ "./resources/js/components/cricket/teams/leagues/bpl-league.vue?vue&type=script&lang=js");
+/* harmony import */ var _node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../../../node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
+
+
+
+
+;
+const __exports__ = /*#__PURE__*/(0,_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_bpl_league_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_bpl_league_vue_vue_type_template_id_61f2016b__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/components/cricket/teams/leagues/bpl-league.vue"]])
+/* hot reload */
+if (false) {}
+
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (__exports__);
+
+/***/ }),
+
+/***/ "./resources/js/components/cricket/teams/leagues/cpl-league.vue":
+/*!**********************************************************************!*\
+  !*** ./resources/js/components/cricket/teams/leagues/cpl-league.vue ***!
+  \**********************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _cpl_league_vue_vue_type_template_id_43cfcb0a__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./cpl-league.vue?vue&type=template&id=43cfcb0a */ "./resources/js/components/cricket/teams/leagues/cpl-league.vue?vue&type=template&id=43cfcb0a");
+/* harmony import */ var _cpl_league_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./cpl-league.vue?vue&type=script&lang=js */ "./resources/js/components/cricket/teams/leagues/cpl-league.vue?vue&type=script&lang=js");
+/* harmony import */ var _node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../../../node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
+
+
+
+
+;
+const __exports__ = /*#__PURE__*/(0,_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_cpl_league_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_cpl_league_vue_vue_type_template_id_43cfcb0a__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/components/cricket/teams/leagues/cpl-league.vue"]])
+/* hot reload */
+if (false) {}
+
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (__exports__);
+
+/***/ }),
+
 /***/ "./resources/js/components/cricket/teams/leagues/icc-odi-worldcup.vue":
 /*!****************************************************************************!*\
   !*** ./resources/js/components/cricket/teams/leagues/icc-odi-worldcup.vue ***!
@@ -45271,6 +45910,34 @@ __webpack_require__.r(__webpack_exports__);
 
 ;
 const __exports__ = /*#__PURE__*/(0,_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_ipl_league_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_ipl_league_vue_vue_type_template_id_e1faf678__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/components/cricket/teams/leagues/ipl-league.vue"]])
+/* hot reload */
+if (false) {}
+
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (__exports__);
+
+/***/ }),
+
+/***/ "./resources/js/components/cricket/teams/leagues/lpl-league.vue":
+/*!**********************************************************************!*\
+  !*** ./resources/js/components/cricket/teams/leagues/lpl-league.vue ***!
+  \**********************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _lpl_league_vue_vue_type_template_id_349be1a1__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./lpl-league.vue?vue&type=template&id=349be1a1 */ "./resources/js/components/cricket/teams/leagues/lpl-league.vue?vue&type=template&id=349be1a1");
+/* harmony import */ var _lpl_league_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./lpl-league.vue?vue&type=script&lang=js */ "./resources/js/components/cricket/teams/leagues/lpl-league.vue?vue&type=script&lang=js");
+/* harmony import */ var _node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../../../node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
+
+
+
+
+;
+const __exports__ = /*#__PURE__*/(0,_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_lpl_league_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_lpl_league_vue_vue_type_template_id_349be1a1__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/components/cricket/teams/leagues/lpl-league.vue"]])
 /* hot reload */
 if (false) {}
 
@@ -45623,6 +46290,54 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/components/cricket/teams/leagues/bbl-league.vue?vue&type=script&lang=js":
+/*!**********************************************************************************************!*\
+  !*** ./resources/js/components/cricket/teams/leagues/bbl-league.vue?vue&type=script&lang=js ***!
+  \**********************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_bbl_league_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__["default"])
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_bbl_league_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./bbl-league.vue?vue&type=script&lang=js */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/cricket/teams/leagues/bbl-league.vue?vue&type=script&lang=js");
+ 
+
+/***/ }),
+
+/***/ "./resources/js/components/cricket/teams/leagues/bpl-league.vue?vue&type=script&lang=js":
+/*!**********************************************************************************************!*\
+  !*** ./resources/js/components/cricket/teams/leagues/bpl-league.vue?vue&type=script&lang=js ***!
+  \**********************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_bpl_league_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__["default"])
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_bpl_league_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./bpl-league.vue?vue&type=script&lang=js */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/cricket/teams/leagues/bpl-league.vue?vue&type=script&lang=js");
+ 
+
+/***/ }),
+
+/***/ "./resources/js/components/cricket/teams/leagues/cpl-league.vue?vue&type=script&lang=js":
+/*!**********************************************************************************************!*\
+  !*** ./resources/js/components/cricket/teams/leagues/cpl-league.vue?vue&type=script&lang=js ***!
+  \**********************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_cpl_league_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__["default"])
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_cpl_league_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./cpl-league.vue?vue&type=script&lang=js */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/cricket/teams/leagues/cpl-league.vue?vue&type=script&lang=js");
+ 
+
+/***/ }),
+
 /***/ "./resources/js/components/cricket/teams/leagues/icc-odi-worldcup.vue?vue&type=script&lang=js":
 /*!****************************************************************************************************!*\
   !*** ./resources/js/components/cricket/teams/leagues/icc-odi-worldcup.vue?vue&type=script&lang=js ***!
@@ -45651,6 +46366,22 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_ipl_league_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__["default"])
 /* harmony export */ });
 /* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_ipl_league_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./ipl-league.vue?vue&type=script&lang=js */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/cricket/teams/leagues/ipl-league.vue?vue&type=script&lang=js");
+ 
+
+/***/ }),
+
+/***/ "./resources/js/components/cricket/teams/leagues/lpl-league.vue?vue&type=script&lang=js":
+/*!**********************************************************************************************!*\
+  !*** ./resources/js/components/cricket/teams/leagues/lpl-league.vue?vue&type=script&lang=js ***!
+  \**********************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_lpl_league_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__["default"])
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_lpl_league_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./lpl-league.vue?vue&type=script&lang=js */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/cricket/teams/leagues/lpl-league.vue?vue&type=script&lang=js");
  
 
 /***/ }),
@@ -45975,6 +46706,54 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/components/cricket/teams/leagues/bbl-league.vue?vue&type=template&id=56c7a65d":
+/*!****************************************************************************************************!*\
+  !*** ./resources/js/components/cricket/teams/leagues/bbl-league.vue?vue&type=template&id=56c7a65d ***!
+  \****************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   render: () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_bbl_league_vue_vue_type_template_id_56c7a65d__WEBPACK_IMPORTED_MODULE_0__.render)
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_bbl_league_vue_vue_type_template_id_56c7a65d__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../../../node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!../../../../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./bbl-league.vue?vue&type=template&id=56c7a65d */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/cricket/teams/leagues/bbl-league.vue?vue&type=template&id=56c7a65d");
+
+
+/***/ }),
+
+/***/ "./resources/js/components/cricket/teams/leagues/bpl-league.vue?vue&type=template&id=61f2016b":
+/*!****************************************************************************************************!*\
+  !*** ./resources/js/components/cricket/teams/leagues/bpl-league.vue?vue&type=template&id=61f2016b ***!
+  \****************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   render: () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_bpl_league_vue_vue_type_template_id_61f2016b__WEBPACK_IMPORTED_MODULE_0__.render)
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_bpl_league_vue_vue_type_template_id_61f2016b__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../../../node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!../../../../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./bpl-league.vue?vue&type=template&id=61f2016b */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/cricket/teams/leagues/bpl-league.vue?vue&type=template&id=61f2016b");
+
+
+/***/ }),
+
+/***/ "./resources/js/components/cricket/teams/leagues/cpl-league.vue?vue&type=template&id=43cfcb0a":
+/*!****************************************************************************************************!*\
+  !*** ./resources/js/components/cricket/teams/leagues/cpl-league.vue?vue&type=template&id=43cfcb0a ***!
+  \****************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   render: () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_cpl_league_vue_vue_type_template_id_43cfcb0a__WEBPACK_IMPORTED_MODULE_0__.render)
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_cpl_league_vue_vue_type_template_id_43cfcb0a__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../../../node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!../../../../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./cpl-league.vue?vue&type=template&id=43cfcb0a */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/cricket/teams/leagues/cpl-league.vue?vue&type=template&id=43cfcb0a");
+
+
+/***/ }),
+
 /***/ "./resources/js/components/cricket/teams/leagues/icc-odi-worldcup.vue?vue&type=template&id=68f581d6":
 /*!**********************************************************************************************************!*\
   !*** ./resources/js/components/cricket/teams/leagues/icc-odi-worldcup.vue?vue&type=template&id=68f581d6 ***!
@@ -46003,6 +46782,22 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   render: () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_ipl_league_vue_vue_type_template_id_e1faf678__WEBPACK_IMPORTED_MODULE_0__.render)
 /* harmony export */ });
 /* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_ipl_league_vue_vue_type_template_id_e1faf678__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../../../node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!../../../../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./ipl-league.vue?vue&type=template&id=e1faf678 */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/cricket/teams/leagues/ipl-league.vue?vue&type=template&id=e1faf678");
+
+
+/***/ }),
+
+/***/ "./resources/js/components/cricket/teams/leagues/lpl-league.vue?vue&type=template&id=349be1a1":
+/*!****************************************************************************************************!*\
+  !*** ./resources/js/components/cricket/teams/leagues/lpl-league.vue?vue&type=template&id=349be1a1 ***!
+  \****************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   render: () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_lpl_league_vue_vue_type_template_id_349be1a1__WEBPACK_IMPORTED_MODULE_0__.render)
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_lpl_league_vue_vue_type_template_id_349be1a1__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../../../node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!../../../../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./lpl-league.vue?vue&type=template&id=349be1a1 */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/cricket/teams/leagues/lpl-league.vue?vue&type=template&id=349be1a1");
 
 
 /***/ }),
