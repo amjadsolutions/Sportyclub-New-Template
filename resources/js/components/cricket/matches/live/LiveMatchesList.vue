@@ -234,11 +234,7 @@
                                             >
                                                 <figure>
                                                     <img
-                                                        :src="
-                                                            'https://api.sofascore.app/api/v1/team/' +
-                                                            match.homeTeam.id +
-                                                            '/image'
-                                                        "
+                                                        :src="base64Image"
                                                         alt="cl2"
                                                     />
                                                     <figcaption
@@ -929,6 +925,8 @@ export default defineComponent({
 
     data() {
         return {
+            remotePath: "https://api.sofascore.app/api/v1/team/413993/image",
+            base64Image: null,
             liveLeaguesList: null,
             liveMatches: [20, 21, 22, 23, 24, 45],
             finishMatches: [100],
@@ -961,6 +959,7 @@ export default defineComponent({
         };
     },
     created() {
+        this.fetchAndEncodeImage();
         this.getNewsList(1);
         this.getLiveMatchList();
         this.getTodayMatchList();
@@ -1094,6 +1093,21 @@ export default defineComponent({
         // method to get news details from API
         getNewsDetails(newsId) {
             window.open("/cricket/news/details/" + newsId, "_blank");
+        },
+
+        fetchAndEncodeImage() {
+            fetch(this.remotePath)
+                .then((response) => response.blob())
+                .then((blob) => {
+                    const reader = new FileReader();
+                    reader.onloadend = () => {
+                        this.base64Image = reader.result;
+                    };
+                    reader.readAsDataURL(blob);
+                })
+                .catch((error) => {
+                    console.error("Error fetching or encoding image:", error);
+                });
         },
     },
 });
