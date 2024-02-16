@@ -41,7 +41,7 @@
                                 font-weight: 600 !important;
                             "
                         >
-                            Today Fixtures
+                            Today Fixtures Test
                         </h2>
                         <a
                             href="cricket/today/live/match/list"
