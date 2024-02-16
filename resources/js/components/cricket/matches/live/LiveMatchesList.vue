@@ -1092,7 +1092,7 @@ export default defineComponent({
                     this.newsList = response.data.cricketNewsList;
                 });
         },
-        // method to get news details from API
+        // method to get news details from API test
         getNewsDetails(newsId) {
             window.open("/cricket/news/details/" + newsId, "_blank");
         },
