@@ -7,6 +7,7 @@ use App\Http\Controllers\Cricket\sofascore\TopLeaguesController;
 use App\Http\Controllers\IndexController;
 use App\Http\Controllers\News\Cricket\GetCricketNewsController;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Http;
 
 /*
 |--------------------------------------------------------------------------
@@ -68,4 +69,7 @@ Route::prefix('cricket')->group(function () {
     Route::get('top/league/details/{league}/{leagueId}', [TopLeaguesController::class, 'topLeagueDetails'])->name('cricket/top/league/details');
     // end top leagues
 });
+
+
+
 // end::cricket news

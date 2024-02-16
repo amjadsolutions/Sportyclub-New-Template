@@ -165,10 +165,8 @@
                         class="d-flex align-items-center justify-content-between"
                       >
                         <figure>
-                          <img
-                          :src="base64Image"
-                            alt="cl2123"
-                          />
+           
+                          <img :src="`/api/team/image/${match.homeTeam.id}`" alt="cl2" />
                           <figcaption style="width: 130% !important">
                             <span
                               style="
@@ -207,11 +205,9 @@
                         <h5 style="color: white">VS</h5>
                         <figure>
                           <img
-                            :src="
-                              'https://api.sofascore.app/api/v1/team/' +
-                              match.awayTeam.id +
-                              '/image'
-                            "
+
+                          :src="`/api/team/image/${match.awayTeam.id}`"
+                         
                             alt="cl2"
                           />
                           <figcaption style="width: 130% !important">
@@ -386,13 +382,17 @@
                                 <td>
                                   <a class="btn ms-ti">
                                     {{ match.homeTeam.shortName }}
+
+
+                                    <!-- :src="`/api/team/image/${match.homeTeam.id}`" -->
                                     <img
                                       class="event-teams-logo"
-                                      :src="
-                                        'https://api.sofascore.app/api/v1/team/' +
-                                        match.homeTeam.id +
-                                        '/image/small'
-                                      "
+
+
+                                      
+                                      :src="`/api/team/image/small/${match.homeTeam.id}` "
+
+                               
                                       alt=""
                                     />
                                     &nbsp;
@@ -400,11 +400,8 @@
                                     &nbsp;
                                     <img
                                       class="event-teams-logo"
-                                      :src="
-                                        'https://api.sofascore.app/api/v1/team/' +
-                                        match.awayTeam.id +
-                                        '/image/small'
-                                      "
+                                      :src="`/api/team/image/small/${match.awayTeam.id}` "
+                                 
                                       alt=""
                                     />
                                     {{ match.awayTeam.shortName }}
@@ -510,11 +507,8 @@
                                     {{ match.homeTeam.shortName }}
                                     <img
                                       class="event-teams-logo"
-                                      :src="
-                                        'https://api.sofascore.app/api/v1/team/' +
-                                        match.homeTeam.id +
-                                        '/image/small'
-                                      "
+                                      :src="`/api/team/image/small/${match.homeTeam.id}` "
+                                    
                                       alt=""
                                     />
                                     &nbsp;
@@ -522,11 +516,9 @@
                                     &nbsp;
                                     <img
                                       class="event-teams-logo"
-                                      :src="
-                                        'https://api.sofascore.app/api/v1/team/' +
-                                        match.awayTeam.id +
-                                        '/image/small'
-                                      "
+
+                                      :src="`/api/team/image/small/${match.awayTeam.id}` "
+                                    
                                       alt=""
                                     />
                                     {{ match.awayTeam.shortName }}
@@ -581,11 +573,12 @@
                                   >
                                     <td>
                                       <img
-                                        :src="
-                                          'https://api.sofascore.app/api/v1/unique-tournament/' +
-                                          league.id +
-                                          '/image'
-                                        "
+
+                                      :src="`/api/league/image/${league.id}`"
+
+
+
+                                  
                                         width="40"
                                         style="float: left !important"
                                       />
@@ -692,8 +685,8 @@ export default defineComponent({
 
   data() {
     return {
-        imageUrl: 'https://api.sofascore.app/api/v1/team/187751/image',
-      base64Image: '',
+      teamId: null, // Replace with your team ID
+      imageUrl: `/api/team/image/`,
       liveLeaguesList: null,
       liveMatches: [20, 21, 22, 23, 24, 45],
       finishMatches: [100],
@@ -705,6 +698,8 @@ export default defineComponent({
       topLeaguesList: null,
       newsList: null,
       loading: true,
+
+      dayNum: 1,
       breakpoints: {
         300: {
           itemsToShow: 1,
@@ -721,24 +716,103 @@ export default defineComponent({
           snapAlign: "start",
         },
       },
-
-      dayNum: 1,
     };
   },
 
   created() {
-    this.fetchAndConvertImage();
+
+
+
+
     this.getNewsList(1);
     this.getLiveMatchList();
     this.getTodayMatchList();
     this.getFinishedMatchList();
     this.getTopLeaguesList();
+ 
 
-    setInterval(() => {
-      this.getTodayMatchList();
-    }, 3000);
+
+
+    // setInterval(() => {
+    //   this.getTodayMatchList();
+    // }, 3000);
   },
   methods: {
+
+    // set team logos for live matches
+    async fetchAndSetTeamsLogos() {
+    for (const match of this.liveMatchList) {
+      match.homeTeam.logo = await this.fetchAndConvertImage(match.homeTeam.id,"normal","team");
+      match.awayTeam.logo = await this.fetchAndConvertImage(match.awayTeam.id,"normal","team");
+    }
+
+    // for today matchlist
+    for (const match of this.matchList) {
+      match.homeTeam.logo = await this.fetchAndConvertImage(match.homeTeam.id,"small","team");
+      match.awayTeam.logo = await this.fetchAndConvertImage(match.awayTeam.id,"small","team");
+    }
+
+        // for today finished matches
+        for (const match of this.finishedMatchList) {
+      match.homeTeam.logo = await this.fetchAndConvertImage(match.homeTeam.id,"normal","team");
+      match.awayTeam.logo = await this.fetchAndConvertImage(match.awayTeam.id,"normal","team");
+    }
+
+
+    
+
+
+
+    
+    // for hot leagues 
+    for (const league of this.topLeaguesList) {
+        league.logo = await this.fetchAndConvertImage(league.id,"league");
+    }
+  },
+  
+ 
+
+  
+
+
+
+
+
+
+ fetchAndConvertImage(teamId,size,category) {
+    if(category == 'league')
+    {
+        const imageUrl = `${this.BASE_SERVER_URI}/api/league/image/${teamId}`;
+    }
+    else
+    {
+        if(size == 'normal')
+        {
+            const imageUrl = `${this.BASE_SERVER_URI}/api/team/image/${teamId}`;
+        }
+        else
+        { const imageUrl = `${this.BASE_SERVER_URI}/api/team/image/small/${teamId}`;
+
+        }
+             
+    }
+    return axios.get(imageUrl, { responseType: 'arraybuffer' })
+      .then(response => {
+        const base64Image = btoa(
+          new Uint8Array(response.data)
+            .reduce((data, byte) => data + String.fromCharCode(byte), '')
+        );
+        return `data:image/jpeg;base64,${base64Image}`;
+      })
+      .catch(error => {
+        console.error('Error fetching the image:', error);
+        return ''; // Return an empty string or default image URL
+      });
+  },
+
+
+
+
     // method to get Live Matches
     getLiveMatchList() {
       axios
@@ -746,10 +820,10 @@ export default defineComponent({
         .then((response) => {
           this.liveMatchList = response.data.liveMatches.events;
           this.liveLeaguesList = response.data.liveLeagues;
-          console.log(this.liveMatchList);
           this.loading = false;
         });
     },
+
     // method to return live matches
     getTodayMatchList() {
       const date = new Date();
@@ -803,25 +877,6 @@ export default defineComponent({
         });
     },
 
-
-    fetchAndConvertImage() {
-      axios.get(this.imageUrl, { responseType: 'arraybuffer' })
-        .then(response => {
-          // Convert the array buffer to base64
-          const base64Image = btoa(
-            new Uint8Array(response.data)
-              .reduce((data, byte) => data + String.fromCharCode(byte), '')
-          );
-          
-          // Set the base64 image in the data property
-          this.base64Image = `data:image/jpeg;base64,${base64Image}`;
-          window.alert(this.base64Image);
-        })
-        .catch(error => {
-          console.error('Error fetching the image:', error);
-        });
-    },
-
     // method to return top leagues list
     getTopLeaguesList() {
       axios
@@ -870,7 +925,7 @@ export default defineComponent({
           this.newsList = response.data.cricketNewsList;
         });
     },
-    // method to get news details from API test
+    // method to get news details from API
     getNewsDetails(newsId) {
       window.open("/cricket/news/details/" + newsId, "_blank");
     },
@@ -910,9 +965,11 @@ export default defineComponent({
   .items-matchs {
     width: 100%;
   }
+
   .mobile-version {
     display: block;
   }
+
   .desktop-version {
     display: none;
   }
@@ -923,9 +980,11 @@ export default defineComponent({
   .items-matchs {
     width: 100%;
   }
+
   .mobile-version {
     display: block;
   }
+
   .desktop-version {
     display: none;
   }
@@ -936,9 +995,11 @@ export default defineComponent({
   .items-matchs {
     width: 100%;
   }
+
   .mobile-version {
     display: block;
   }
+
   .desktop-version {
     display: none;
   }
@@ -949,9 +1010,11 @@ export default defineComponent({
   .items-matchs {
     width: 100%;
   }
+
   .mobile-version {
     display: none;
   }
+
   .desktop-version {
     display: block;
   }
@@ -962,20 +1025,25 @@ export default defineComponent({
   .items-matchs {
     width: 95%;
   }
+
   .mobile-version {
     display: none;
   }
+
   .desktop-version {
     display: block;
   }
 }
+
 @media only screen and (max-width: 600px) {
   .event-teams-logo {
     display: none;
   }
+
   .mobile-version {
     display: none;
   }
+
   .desktop-version {
     display: block;
   }
