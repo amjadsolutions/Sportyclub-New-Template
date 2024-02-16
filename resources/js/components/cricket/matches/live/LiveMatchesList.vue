@@ -961,7 +961,7 @@ export default defineComponent({
         };
     },
     created() {
-        this.fetchAndEncodeImage();
+   
         this.getNewsList(1);
         this.getLiveMatchList();
         this.getTodayMatchList();

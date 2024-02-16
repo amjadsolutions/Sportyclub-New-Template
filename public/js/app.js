@@ -19726,7 +19726,6 @@ __webpack_require__.r(__webpack_exports__);
   },
   created: function created() {
     var _this = this;
-    this.fetchAndEncodeImage();
     this.getNewsList(1);
     this.getLiveMatchList();
     this.getTodayMatchList();
