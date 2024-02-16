@@ -19694,8 +19694,6 @@ __webpack_require__.r(__webpack_exports__);
   // Other component options and methods
   data: function data() {
     return {
-      remotePath: "https://api.sofascore.app/api/v1/team/413993/image",
-      base64Image: null,
       liveLeaguesList: null,
       liveMatches: [20, 21, 22, 23, 24, 45],
       finishMatches: [100],
@@ -19823,23 +19821,9 @@ __webpack_require__.r(__webpack_exports__);
         _this6.newsList = response.data.cricketNewsList;
       });
     },
-    // method to get news details from API
+    // method to get news details from API test
     getNewsDetails: function getNewsDetails(newsId) {
       window.open("/cricket/news/details/" + newsId, "_blank");
-    },
-    fetchAndEncodeImage: function fetchAndEncodeImage() {
-      var _this7 = this;
-      fetch(this.remotePath).then(function (response) {
-        return response.blob();
-      }).then(function (blob) {
-        var reader = new FileReader();
-        reader.onloadend = function () {
-          _this7.base64Image = reader.result;
-        };
-        reader.readAsDataURL(blob);
-      })["catch"](function (error) {
-        console.error("Error fetching or encoding image:", error);
-      });
     }
   }
 }));
@@ -23601,7 +23585,7 @@ var _hoisted_8 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementV
     "font-family": "Barlow Condensed, sans-seri0 !important",
     "font-weight": "600 !important"
   }
-}, " Today Fixtures "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
+}, " Today Fixtures Tests "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
   href: "cricket/today/live/match/list",
   "class": "btn all-cm-btn"
 }, " Live Matches ")]), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" end::page header ")], -1 /* HOISTED */);
@@ -24052,7 +24036,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                 return _ctx.getMatchDetails(match.id, match.homeTeam.slug, match.awayTeam.slug, match.status.code);
               }
             }, [_ctx.liveMatches.includes(match.status.code) ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("span", _hoisted_16, [].concat(_hoisted_18))) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), _hoisted_19, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_20, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h5", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", _hoisted_21, [_ctx.liveMatches.includes(match.status.code) ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("small", _hoisted_22, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", _hoisted_23, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(match.tournament.name), 1 /* TEXT */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", _hoisted_24, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(match.status.description), 1 /* TEXT */)])) : _ctx.finishMatches.includes(match.status.code) ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("small", _hoisted_25, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", _hoisted_26, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(match.note), 1 /* TEXT */)])) : _ctx.liveendedMatches.includes(match.status.code) ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("small", _hoisted_27, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", _hoisted_28, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(match.status.description), 1 /* TEXT */)])) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("small", _hoisted_29, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(match.tournament.name), 1 /* TEXT */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", _hoisted_30, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.getMatchTime(match.startTimestamp)), 1 /* TEXT */)]))])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_31, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("figure", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
-              src: _ctx.base64Image,
+              src: 'https://api.sofascore.app/api/v1/team/' + match.homeTeam.id + '/image',
               alt: "cl2"
             }, null, 8 /* PROPS */, _hoisted_32), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("figcaption", _hoisted_33, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", _hoisted_34, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(match.homeTeam.shortName), 1 /* TEXT */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("small", _hoisted_35, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(match.homeScore.innings && match.homeScore.innings.inning1 ? match.homeScore.innings.inning1.score + "/" + match.homeScore.innings.inning1.wickets : "" + "") + " " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(match.homeScore.innings && match.homeScore.innings.inning1 ? "(" + match.homeScore.innings.inning1.overs + ")" : "" + ""), 1 /* TEXT */)])]), _hoisted_36, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("figure", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
               src: 'https://api.sofascore.app/api/v1/team/' + match.awayTeam.id + '/image',
