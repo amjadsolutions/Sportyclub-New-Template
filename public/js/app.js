@@ -23584,7 +23584,7 @@ var _hoisted_8 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementV
     "font-family": "Barlow Condensed, sans-seri0 !important",
     "font-weight": "600 !important"
   }
-}, " Today Fixtures Tests "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
+}, " Today Fixtures "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
   href: "cricket/today/live/match/list",
   "class": "btn all-cm-btn"
 }, " Live Matches ")]), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" end::page header ")], -1 /* HOISTED */);

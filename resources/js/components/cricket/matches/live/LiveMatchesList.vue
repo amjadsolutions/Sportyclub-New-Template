@@ -41,7 +41,7 @@
                                 font-weight: 600 !important;
                             "
                         >
-                            Today Fixtures Tests
+                            Today Fixtures
                         </h2>
                         <a
                             href="cricket/today/live/match/list"
@@ -961,7 +961,6 @@ export default defineComponent({
         };
     },
     created() {
-   
         this.getNewsList(1);
         this.getLiveMatchList();
         this.getTodayMatchList();
