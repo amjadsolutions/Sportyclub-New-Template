@@ -108,10 +108,6 @@ Route::prefix('cricket')->group(function () {
  * routes for frontend layouts
  */
 Route::get('latest-cricket-news', [IndexController::class, 'fetchLatestNews'])->name('latest-cricket-news');
-
-
-
-
 // proxcy api's
 Route::get('/team/image/{teamId}', function ($teamId) {
     $response = Http::get("https://api.sofascore.app/api/v1/team/{$teamId}/image");
@@ -119,21 +115,5 @@ Route::get('/team/image/{teamId}', function ($teamId) {
         ->header('Content-Type', 'image/jpeg');
 });
 
-// for small images
-
-Route::get('/team/image/small/{teamId}', function ($teamId) {
-    $response = Http::get("https://api.sofascore.app/api/v1/team/{$teamId}/image/small");
-    return response($response->body())
-        ->header('Content-Type', 'image/jpeg');
-});
 
 
-
-
-
-// for league
-Route::get('/league/image/{leagueId}', function ($leagueId) {
-    $response = Http::get("https://api.sofascore.app/api/v1/unique-tournament/{$leagueId}/image");
-    return response($response->body())
-        ->header('Content-Type', 'image/jpeg');
-});
