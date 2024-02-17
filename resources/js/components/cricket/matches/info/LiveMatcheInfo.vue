@@ -239,14 +239,10 @@
                                                                         "
                                                                     >
                                                                         <img
-                                                                            :src="
-                                                                                'https://api.sofascore.app/api/v1/team/' +
-                                                                                matchDetails
-                                                                                    .event
-                                                                                    .homeTeam
-                                                                                    .id +
-                                                                                '/image'
-                                                                            "
+                                                                        :src="getImageUrl(matchDetails.event.homeTeam.id,'')"
+                                    @error="
+                                        $event.target.src =
+                                          'https://ios.app99877.com//images/cricket/default/default-team.png'"
                                                                             alt="cl2"
                                                                             style="
                                                                                 width: 61%;
@@ -446,14 +442,10 @@
                                                                         "
                                                                     >
                                                                         <img
-                                                                            :src="
-                                                                                'https://api.sofascore.app/api/v1/team/' +
-                                                                                matchDetails
-                                                                                    .event
-                                                                                    .awayTeam
-                                                                                    .id +
-                                                                                '/image'
-                                                                            "
+                                                                        :src="getImageUrl(matchDetails.event.awayTeam.id,'')"
+                                    @error="
+                                        $event.target.src =
+                                          'https://ios.app99877.com//images/cricket/default/default-team.png'"
                                                                             alt="cl2"
                                                                             style="
                                                                                 width: 61%;
@@ -680,14 +672,10 @@
                                                                         "
                                                                     >
                                                                         <img
-                                                                            :src="
-                                                                                'https://api.sofascore.app/api/v1/team/' +
-                                                                                matchDetails
-                                                                                    .event
-                                                                                    .homeTeam
-                                                                                    .id +
-                                                                                '/image'
-                                                                            "
+                                                                        :src="getImageUrl(matchDetails.event.homeTeam.id,'')"
+                                    @error="
+                                        $event.target.src =
+                                          'https://ios.app99877.com//images/cricket/default/default-team.png'"
                                                                             alt="cl2"
                                                                             style="
                                                                                 width: 48%;
@@ -887,14 +875,10 @@
                                                                         "
                                                                     >
                                                                         <img
-                                                                            :src="
-                                                                                'https://api.sofascore.app/api/v1/team/' +
-                                                                                matchDetails
-                                                                                    .event
-                                                                                    .awayTeam
-                                                                                    .id +
-                                                                                '/image'
-                                                                            "
+                                                                        :src="getImageUrl(matchDetails.event.awayTeam.id,'')"
+                                    @error="
+                                        $event.target.src =
+                                          'https://ios.app99877.com//images/cricket/default/default-team.png'"
                                                                             alt="cl2"
                                                                             style="
                                                                                 width: 48%;
@@ -1190,13 +1174,10 @@
                                                                                         class="d-flex align-items-center"
                                                                                     >
                                                                                         <img
-                                                                                            :src="
-                                                                                                'https://api.sofascore.app/api/v1/team/' +
-                                                                                                row
-                                                                                                    .team
-                                                                                                    .id +
-                                                                                                '/image/small'
-                                                                                            "
+                                                                                        :src="getImageUrl(row.team.id,'-small')"
+                                    @error="
+                                        $event.target.src =
+                                          'https://ios.app99877.com//images/cricket/default/default-team-small.png'"
                                                                                             alt="fbn"
                                                                                             style="
                                                                                                 max-width: 20%;
@@ -1481,6 +1462,19 @@ export default {
                     this.currentBatters = response.data.innings;
                 });
         },
+        getImageUrl(id,size) {
+      // Check if the actual image URL is available
+      if (id) {
+        return (
+          "https://ios.app99877.com//images/cricket/teams/" +
+          id +
+          "/" +
+          id + size+
+          ".png"
+        );
+      }
+      return "https://ios.app99877.com//images/cricket/default/default-team.png";
+    },
     },
 };
 </script>
