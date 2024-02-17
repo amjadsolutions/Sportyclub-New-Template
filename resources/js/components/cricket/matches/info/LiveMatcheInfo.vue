@@ -448,7 +448,7 @@
                                 <div
                                   class="d-flex align-items-center justify-content-between"
                                 >
-                                  <!-- begin::home team Information -->
+                                  <!-- begin::home team Informatiosn -->
                                   <figure
                                     style="cursor: pointer"
                                     v-on:click="
