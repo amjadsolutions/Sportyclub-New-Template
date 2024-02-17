@@ -608,11 +608,13 @@
                                   >
                                     <td>
                                       <img
-                                        :src="
-                                          'https://api.sofascore.app/api/v1/unique-tournament/' +
-                                          league.id +
-                                          '/image'
-                                        "
+                                      :src="
+                                        'https://ios.app99877.com//images/cricket/leagues/' +
+                                        league.id +
+                                        '/' +
+                                        league.id +
+                                        '.png'
+                                      "
                                         width="40"
                                         style="float: left !important"
                                       />

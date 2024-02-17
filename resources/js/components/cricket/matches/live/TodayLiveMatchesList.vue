@@ -196,20 +196,26 @@
                           <img
                             class="event-teams-logo"
                             :src="
-                              'https://api.sofascore.app/api/v1/team/' +
-                              match.homeTeam.id +
-                              '/image/small'
-                            "
+                                        'https://ios.app99877.com//images/cricket/teams/' +
+                                        match.homeTeam.id +
+                                        '/' +
+                                        match.homeTeam.id +
+                                        '-small' +
+                                        '.png'
+                                      "
                             alt=""
                           />
                           &nbsp; <span>vs</span> &nbsp;
                           <img
                             class="event-teams-logo"
                             :src="
-                              'https://api.sofascore.app/api/v1/team/' +
-                              match.awayTeam.id +
-                              '/image/small'
-                            "
+                                        'https://ios.app99877.com//images/cricket/teams/' +
+                                        match.awayTeam.id +
+                                        '/' +
+                                        match.awayTeam.id +
+                                        '-small' +
+                                        '.png'
+                                      "
                             alt=""
                           />
                           {{ match.awayTeam.shortName }}</a
