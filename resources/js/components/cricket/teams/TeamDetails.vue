@@ -33,12 +33,12 @@
                             <div class="">
                                 <div class="m-0 bg-mc-1">
                                     <img
-                                        :src="
-                                            'https://api.sofascore.app/api/v1/team/' +
-                                            teamDetails.id +
-                                            '/image'
+                                        :src="getImageUrl(teamDetails.id)"
+                                        alt="Team Image"
+                                        @error="
+                                            $event.target.src =
+                                                'https://ios.app99877.com//images/cricket/default/default-team.png'
                                         "
-                                        alt="image not found"
                                         style="
                                             opacity: 1.3 !important;
                                             width: 80%;
@@ -263,7 +263,6 @@ export default {
                     `${this.BASE_SERVER_URI}/api/cricket/sofascore/teams/contents/meta/${teamId}`
                 )
                 .then((response) => {
-              
                     $("title").text(response.data.contents.title);
                     $("link[rel='canonical']").attr(
                         "href",
@@ -315,6 +314,21 @@ export default {
                     this.teamSquad = response.data.players;
                     this.loading = false;
                 });
+        },
+        getImageUrl(id) {
+            // Check if the actual image URL is available
+            if (id) {
+                return (
+                    "https://ios.app99877.com//images/cricket/teams/" +
+                    id +
+                    "/" +
+                    id +
+                    ".png"
+                );
+            }
+
+            // If actual image URL is not available, return the default image URL
+            return "https://ios.app99877.com//images/cricket/default/default-team.png";
         },
     },
 };
