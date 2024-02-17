@@ -20518,6 +20518,19 @@ __webpack_require__.r(__webpack_exports__);
       axios__WEBPACK_IMPORTED_MODULE_0___default().get("".concat(this.BASE_SERVER_URI, "/api/cricket/sofascore/single/match/innings/").concat(this.matchId)).then(function (response) {
         _this3.matchInnings = response.data.innings;
       });
+    },
+    getImageUrl: function getImageUrl(team) {
+      // Check if the actual image URL is available
+      if (this.matchDetails && this.matchDetails.event && this.matchDetails.event.team) {
+        var actualImageUrl = "https://ios.app99877.com//images/cricket/teams/" + this.matchDetails.event.team.id + "/" + this.matchDetails.event.team.id + "-small" + ".png";
+
+        // Check if the actual image URL is not empty or null
+        // If it is empty or null, use the default image URL from the external source
+        return actualImageUrl ? actualImageUrl : "https://ios.app99877.com//images/cricket/default/default-team-small.png";
+      }
+
+      // If matchDetails or its properties are not available, return the default image URL
+      return "https://ios.app99877.com//images/cricket/default/default-team-small.png";
     }
   }
 });
@@ -22762,7 +22775,7 @@ var _hoisted_100 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElemen
 var _hoisted_101 = {
   key: 1
 };
-var _hoisted_102 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("tr", null, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, " Temporarily no data ")], -1 /* HOISTED */);
+var _hoisted_102 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("tr", null, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, "Temporarily no data")], -1 /* HOISTED */);
 var _hoisted_103 = [_hoisted_102];
 var _hoisted_104 = {
   key: 0
@@ -22814,7 +22827,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       return $options.getTeamDetails($data.matchDetails.event.homeTeam.id, $data.matchDetails.event.homeTeam.slug);
     })
   }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
-    src: 'https://api.sofascore.app/api/v1/team/' + $data.matchDetails.event.homeTeam.id + '/image',
+    src: 'https://ios.app99877.com//images/cricket/teams/' + $data.matchDetails.event.homeTeam.id + '/' + $data.matchDetails.event.homeTeam.id + '.png',
     alt: "cl2",
     style: {
       "width": "61%",
@@ -22835,7 +22848,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       return $options.getTeamDetails($data.matchDetails.event.awayTeam.id, $data.matchDetails.event.awayTeam.slug);
     })
   }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
-    src: 'https://api.sofascore.app/api/v1/team/' + $data.matchDetails.event.awayTeam.id + '/image',
+    src: 'https://ios.app99877.com//images/cricket/teams/' + $data.matchDetails.event.awayTeam.id + '/' + $data.matchDetails.event.awayTeam.id + '.png',
     alt: "cl2",
     style: {
       "width": "61%",
@@ -22856,7 +22869,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       return $options.getTeamDetails($data.matchDetails.event.homeTeam.id, $data.matchDetails.event.homeTeam.slug);
     })
   }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
-    src: 'https://api.sofascore.app/api/v1/team/' + $data.matchDetails.event.homeTeam.id + '/image',
+    src: 'https://ios.app99877.com//images/cricket/teams/' + $data.matchDetails.event.homeTeam.id + '/' + $data.matchDetails.event.homeTeam.id + '.png',
     alt: "cl2",
     style: {
       "width": "48%",
@@ -22877,7 +22890,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       return $options.getTeamDetails($data.matchDetails.event.awayTeam.id, $data.matchDetails.event.awayTeam.slug);
     })
   }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
-    src: 'https://api.sofascore.app/api/v1/team/' + $data.matchDetails.event.awayTeam.id + '/image',
+    src: 'https://ios.app99877.com//images/cricket/teams/' + $data.matchDetails.event.awayTeam.id + '/' + $data.matchDetails.event.awayTeam.id + '.png',
     alt: "cl2",
     style: {
       "width": "48%",
@@ -22896,7 +22909,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         "class": "odd",
         key: row.id
       }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", _hoisted_96, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_97, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("figure", _hoisted_98, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
-        src: 'https://api.sofascore.app/api/v1/team/' + row.team.id + '/image/small',
+        src: 'https://ios.app99877.com//images/cricket/teams/' + row.team.id + '/' + row.team.id + '.png',
         alt: "fbn",
         style: {
           "max-width": "20%"
@@ -25680,12 +25693,12 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         return $options.getTeamDetails($data.matchDetails.event.homeTeam.id, $data.matchDetails.event.homeTeam.slug);
       })
     }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
-      src: 'https://ios.app99877.com//images/cricket/teams/' + $data.matchDetails.event.homeTeam + '/' + $data.matchDetails.event.homeTeam + '-small' + '.png',
+      src: $data.matchDetails && $data.matchDetails.event && $data.matchDetails.event.homeTeam ? 'https://ios.app99877.com//images/cricket/teams/' + $data.matchDetails.event.homeTeam.id + '/' + $data.matchDetails.event.homeTeam.id + '-small' + '.png' : 'https://ios.app99877.com//images/cricket/default/default-team-small.png',
       alt: "fbn",
       style: {
         "max-width": "20%"
       }
-    }, null, 8 /* PROPS */, _hoisted_50), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("   " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.matchDetails.event.homeTeam.name), 1 /* TEXT */)])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.matchH2H.homeWins), 1 /* TEXT */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.matchH2H.draws), 1 /* TEXT */)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("tr", _hoisted_51, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", _hoisted_52, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_53, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("figure", _hoisted_54, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("figure", {
+    }, null, 8 /* PROPS */, _hoisted_50), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("    " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.matchDetails.event.homeTeam.name), 1 /* TEXT */)])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.matchH2H.homeWins), 1 /* TEXT */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.matchH2H.draws), 1 /* TEXT */)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("tr", _hoisted_51, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", _hoisted_52, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_53, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("figure", _hoisted_54, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("figure", {
       style: {
         "cursor": "pointer"
       },
@@ -25694,12 +25707,12 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         return $options.getTeamDetails($data.matchDetails.event.awayTeam.id, $data.matchDetails.event.awayTeam.slug);
       })
     }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
-      src: 'https://ios.app99877.com//images/cricket/teams/' + $data.matchDetails.event.awayTeam.id + '/' + $data.matchDetails.event.awayTeam.id + '-small' + '.png',
+      src: $data.matchDetails && $data.matchDetails.event && $data.matchDetails.event.awayTeam ? 'https://ios.app99877.com//images/cricket/teams/' + $data.matchDetails.event.awayTeam.id + '/' + $data.matchDetails.event.awayTeam.id + '-small' + '.png' : 'https://ios.app99877.com//images/cricket/default/default-team-small.png',
       alt: "fbn",
       style: {
         "max-width": "20%"
       }
-    }, null, 8 /* PROPS */, _hoisted_55), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("   " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.matchDetails.event.awayTeam.name) + " ", 1 /* TEXT */), _hoisted_56])])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.matchH2H.awayWins), 1 /* TEXT */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.matchH2H.draws), 1 /* TEXT */)])])])])])]), _hoisted_57]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" end::head to head ")])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)])], 10 /* CLASS, PROPS */, _hoisted_8);
+    }, null, 8 /* PROPS */, _hoisted_55), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("    " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.matchDetails.event.awayTeam.name) + " ", 1 /* TEXT */), _hoisted_56])])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.matchH2H.awayWins), 1 /* TEXT */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.matchH2H.draws), 1 /* TEXT */)])])])])])]), _hoisted_57]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" end::head to head ")])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)])], 10 /* CLASS, PROPS */, _hoisted_8);
   }), 128 /* KEYED_FRAGMENT */)), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" end::1st innings ")])])])]);
 }
 
@@ -26853,7 +26866,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\ndiv #floater {\r\n    display: none !important;\n}\n.m-date {\r\n    width: 75px !important;\n}\n.accordion-button::after {\r\n    display: none;\n}\r\n\r\n/* Custom, iPhone Retina */\n@media only screen and (min-width: 320px) {\n.mobile-version {\r\n        display: block;\n}\n.desktop-version {\r\n        display: none;\n}\n}\r\n\r\n/* Extra Small Devices, Phones */\n@media only screen and (min-width: 480px) {\n.mobile-version {\r\n        display: block;\n}\n.desktop-version {\r\n        display: none;\n}\n}\r\n\r\n/* Small Devices, Tablets */\n@media only screen and (min-width: 768px) {\n.mobile-version {\r\n        display: block;\n}\n.desktop-version {\r\n        display: none;\n}\n}\r\n\r\n/* Medium Devices, Desktops */\n@media only screen and (min-width: 992px) {\n.mobile-version {\r\n        display: none;\n}\n}\r\n\r\n/* Large Devices, Wide Screens */\n@media only screen and (min-width: 1200px) {\n.mobile-version {\r\n        display: none;\n}\n}\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\ndiv #floater {\r\n  display: none !important;\n}\n.m-date {\r\n  width: 75px !important;\n}\n.accordion-button::after {\r\n  display: none;\n}\r\n\r\n/* Custom, iPhone Retina */\n@media only screen and (min-width: 320px) {\n.mobile-version {\r\n    display: block;\n}\n.desktop-version {\r\n    display: none;\n}\n}\r\n\r\n/* Extra Small Devices, Phones */\n@media only screen and (min-width: 480px) {\n.mobile-version {\r\n    display: block;\n}\n.desktop-version {\r\n    display: none;\n}\n}\r\n\r\n/* Small Devices, Tablets */\n@media only screen and (min-width: 768px) {\n.mobile-version {\r\n    display: block;\n}\n.desktop-version {\r\n    display: none;\n}\n}\r\n\r\n/* Medium Devices, Desktops */\n@media only screen and (min-width: 992px) {\n.mobile-version {\r\n    display: none;\n}\n}\r\n\r\n/* Large Devices, Wide Screens */\n@media only screen and (min-width: 1200px) {\n.mobile-version {\r\n    display: none;\n}\n}\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 

@@ -46,9 +46,7 @@
                                     class="comon-heading m-0"
                                     v-if="inning.number == index"
                                 >
-                                    {{
-                                        matchDetails.event.homeTeam.shortName
-                                    }}
+                                    {{ matchDetails.event.homeTeam.shortName }}
                                     VS
                                     {{ matchDetails.event.awayTeam.shortName }}
                                 </h2>
@@ -444,22 +442,32 @@
                                                                             >
                                                                                 <img
                                                                                     :src="
-                                                                                        'https://ios.app99877.com//images/cricket/teams/' +
+                                                                                        matchDetails &&
+                                                                                        matchDetails.event &&
                                                                                         matchDetails
                                                                                             .event
-                                                                                            .homeTeam +
-                                                                                        '/' +
-                                                                                        matchDetails
-                                                                                            .event
-                                                                                            .homeTeam +
-                                                                                        '-small' +
-                                                                                        '.png'
+                                                                                            .homeTeam
+                                                                                            ? 'https://ios.app99877.com//images/cricket/teams/' +
+                                                                                              matchDetails
+                                                                                                  .event
+                                                                                                  .homeTeam
+                                                                                                  .id +
+                                                                                              '/' +
+                                                                                              matchDetails
+                                                                                                  .event
+                                                                                                  .homeTeam
+                                                                                                  .id +
+                                                                                              '-small' +
+                                                                                              '.png'
+                                                                                            : 'https://ios.app99877.com//images/cricket/default/default-team-small.png'
                                                                                     "
                                                                                     alt="fbn"
                                                                                     style="
                                                                                         max-width: 20%;
                                                                                     "
-                                                                                />&nbsp;&nbsp;
+                                                                                />
+
+                                                                                &nbsp;&nbsp;
                                                                                 {{
                                                                                     matchDetails
                                                                                         .event
@@ -511,24 +519,32 @@
                                                                                 >
                                                                                     <img
                                                                                         :src="
-                                                                                            'https://ios.app99877.com//images/cricket/teams/' +
+                                                                                            matchDetails &&
+                                                                                            matchDetails.event &&
                                                                                             matchDetails
                                                                                                 .event
                                                                                                 .awayTeam
-                                                                                                .id +
-                                                                                            '/' +
-                                                                                            matchDetails
-                                                                                                .event
-                                                                                                .awayTeam
-                                                                                                .id +
-                                                                                            '-small' +
-                                                                                            '.png'
+                                                                                                ? 'https://ios.app99877.com//images/cricket/teams/' +
+                                                                                                  matchDetails
+                                                                                                      .event
+                                                                                                      .awayTeam
+                                                                                                      .id +
+                                                                                                  '/' +
+                                                                                                  matchDetails
+                                                                                                      .event
+                                                                                                      .awayTeam
+                                                                                                      .id +
+                                                                                                  '-small' +
+                                                                                                  '.png'
+                                                                                                : 'https://ios.app99877.com//images/cricket/default/default-team-small.png'
                                                                                         "
                                                                                         alt="fbn"
                                                                                         style="
                                                                                             max-width: 20%;
                                                                                         "
-                                                                                    />&nbsp;&nbsp;
+                                                                                    />
+
+                                                                                    &nbsp;&nbsp;
                                                                                     {{
                                                                                         matchDetails
                                                                                             .event
@@ -646,6 +662,32 @@ export default {
                 .then((response) => {
                     this.matchInnings = response.data.innings;
                 });
+        },
+
+        getImageUrl(team) {
+            // Check if the actual image URL is available
+            if (
+                this.matchDetails &&
+                this.matchDetails.event &&
+                this.matchDetails.event.team
+            ) {
+                const actualImageUrl =
+                    "https://ios.app99877.com//images/cricket/teams/" +
+                    this.matchDetails.event.team.id +
+                    "/" +
+                    this.matchDetails.event.team.id +
+                    "-small" +
+                    ".png";
+
+                // Check if the actual image URL is not empty or null
+                // If it is empty or null, use the default image URL from the external source
+                return actualImageUrl
+                    ? actualImageUrl
+                    : "https://ios.app99877.com//images/cricket/default/default-team-small.png";
+            }
+
+            // If matchDetails or its properties are not available, return the default image URL
+            return "https://ios.app99877.com//images/cricket/default/default-team-small.png";
         },
     },
 };
