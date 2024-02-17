@@ -146,12 +146,17 @@
                                                                     <figure>
                                                                         <img
                                                                             :src="
-                                                                                'https://api.sofascore.app/api/v1/team/' +
-                                                                                matchDetails
-                                                                                    .event
-                                                                                    .homeTeam
-                                                                                    .id +
-                                                                                '/image'
+                                                                                getImageUrl(
+                                                                                    matchDetails
+                                                                                        .event
+                                                                                        .homeTeam
+                                                                                        .id,
+                                                                                    ''
+                                                                                )
+                                                                            "
+                                                                            @error="
+                                                                                $event.target.src =
+                                                                                    'https://ios.app99877.com//images/cricket/default/default-team.png'
                                                                             "
                                                                             alt="cl2"
                                                                             style="
@@ -286,12 +291,17 @@
                                                                     <figure>
                                                                         <img
                                                                             :src="
-                                                                                'https://api.sofascore.app/api/v1/team/' +
-                                                                                matchDetails
-                                                                                    .event
-                                                                                    .awayTeam
-                                                                                    .id +
-                                                                                '/image'
+                                                                                getImageUrl(
+                                                                                    matchDetails
+                                                                                        .event
+                                                                                        .awayTeam
+                                                                                        .id,
+                                                                                    ''
+                                                                                )
+                                                                            "
+                                                                            @error="
+                                                                                $event.target.src =
+                                                                                    'https://ios.app99877.com//images/cricket/default/default-team.png'
                                                                             "
                                                                             alt="cl2"
                                                                             style="
@@ -507,12 +517,17 @@
                                                                     <figure>
                                                                         <img
                                                                             :src="
-                                                                                'https://api.sofascore.app/api/v1/team/' +
-                                                                                matchDetails
-                                                                                    .event
-                                                                                    .homeTeam
-                                                                                    .id +
-                                                                                '/image'
+                                                                                getImageUrl(
+                                                                                    matchDetails
+                                                                                        .event
+                                                                                        .homeTeam
+                                                                                        .id,
+                                                                                    ''
+                                                                                )
+                                                                            "
+                                                                            @error="
+                                                                                $event.target.src =
+                                                                                    'https://ios.app99877.com//images/cricket/default/default-team.png'
                                                                             "
                                                                             alt="cl2"
                                                                             style="
@@ -647,12 +662,17 @@
                                                                     <figure>
                                                                         <img
                                                                             :src="
-                                                                                'https://api.sofascore.app/api/v1/team/' +
-                                                                                matchDetails
-                                                                                    .event
-                                                                                    .awayTeam
-                                                                                    .id +
-                                                                                '/image'
+                                                                                getImageUrl(
+                                                                                    matchDetails
+                                                                                        .event
+                                                                                        .awayTeam
+                                                                                        .id,
+                                                                                    ''
+                                                                                )
+                                                                            "
+                                                                            @error="
+                                                                                $event.target.src =
+                                                                                    'https://ios.app99877.com//images/cricket/default/default-team.png'
                                                                             "
                                                                             alt="cl2"
                                                                             style="
@@ -944,11 +964,16 @@
                                                                                     >
                                                                                         <img
                                                                                             :src="
-                                                                                                'https://api.sofascore.app/api/v1/team/' +
-                                                                                                row
-                                                                                                    .team
-                                                                                                    .id +
-                                                                                                '/image/small'
+                                                                                                getImageUrl(
+                                                                                                    row
+                                                                                                        .team
+                                                                                                        .id,
+                                                                                                    '-small'
+                                                                                                )
+                                                                                            "
+                                                                                            @error="
+                                                                                                $event.target.src =
+                                                                                                    'https://ios.app99877.com//images/cricket/default/default-team-small.png'
                                                                                             "
                                                                                             alt="fbn"
                                                                                             style="
@@ -1187,6 +1212,20 @@ export default {
         },
         getPlayerDetails(playerId) {
             window.open("/cricket/players-list/" + playerId, "_blank");
+        },
+        getImageUrl(id, size) {
+            // Check if the actual image URL is available
+            if (id) {
+                return (
+                    "https://ios.app99877.com//images/cricket/teams/" +
+                    id +
+                    "/" +
+                    id +
+                    size +
+                    ".png"
+                );
+            }
+            return "https://ios.app99877.com//images/cricket/default/default-team.png";
         },
     },
 };

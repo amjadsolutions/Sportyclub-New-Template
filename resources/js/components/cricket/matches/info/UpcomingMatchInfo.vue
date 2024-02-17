@@ -65,7 +65,7 @@
                                 top: -165px;
                               "
                             >
-                              Match Is Starting In
+                              Match Is Starting In 
                               <br />
 
                               {{ updateTimer }}
@@ -111,11 +111,10 @@
                                   <!-- begin::home team Information -->
                                   <figure>
                                     <img
-                                      :src="
-                                        'https://api.sofascore.app/api/v1/team/' +
-                                        matchDetails.event.homeTeam.id +
-                                        '/image'
-                                      "
+                                    :src="getImageUrl(matchDetails.event.homeTeam.id,'')"
+                                    @error="
+                                        $event.target.src =
+                                          'https://ios.app99877.com//images/cricket/default/default-team.png'"
                                       alt="cl2"
                                       style="width: 48%; height: 31%"
                                     />
@@ -130,7 +129,7 @@
                                           white-space: pre-wrap;
                                         "
                                       >
-                                        {{ matchDetails.event.homeTeam.name }}
+                                        {{ matchDetails.event.homeTeam.name }} 
                                       </p>
                                     </figcaption>
                                   </figure>
@@ -144,11 +143,10 @@
                                   <!-- begin::away team Information -->
                                   <figure>
                                     <img
-                                      :src="
-                                        'https://api.sofascore.app/api/v1/team/' +
-                                        matchDetails.event.awayTeam.id +
-                                        '/image'
-                                      "
+                                    :src="getImageUrl(matchDetails.event.awayTeam.id,'')"
+                                    @error="
+                                        $event.target.src =
+                                          'https://ios.app99877.com//images/cricket/default/default-team.png'"
                                       alt="cl2"
                                       style="width: 48%; height: 31%"
                                     />
@@ -176,7 +174,8 @@
                           <div class="table-div-left mt-4">
                             <h4>
                               Head To Head of
-                              {{ matchDetails.event.homeTeam.shortName }} &
+                              {{ matchDetails.event.homeTeam.shortName }}
+                              &
                               {{ matchDetails.event.awayTeam.shortName }}
                             </h4>
                             <div id="seri1_wrapper" class="dataTables_wrapper">
@@ -203,11 +202,10 @@
                                         <td class="sorting_1">
                                           <div class="comon-ft-cl">
                                             <img
-                                              :src="
-                                                'https://api.sofascore.app/api/v1/team/' +
-                                                matchDetails.event.homeTeam.id +
-                                                '/image/small'
-                                              "
+                                              :src="getImageUrl(matchDetails.event.homeTeam.id,'')"
+                                    @error="
+                                        $event.target.src =
+                                          'https://ios.app99877.com//images/cricket/default/default-team.png'"
                                               alt="fbn"
                                               style="max-width: 20%"
                                             />&nbsp;&nbsp;
@@ -217,19 +215,22 @@
                                             }}
                                           </div>
                                         </td>
-                                        <td>{{ matchH2H.homeWins }}</td>
+                                        <td>
+                                          {{ matchH2H.homeWins }}
+                                        </td>
 
-                                        <td>{{ matchH2H.draws }}</td>
+                                        <td>
+                                          {{ matchH2H.draws }}
+                                        </td>
                                       </tr>
                                       <tr class="odd">
                                         <td class="sorting_1">
                                           <div class="comon-ft-cl">
                                             <img
-                                              :src="
-                                                'https://api.sofascore.app/api/v1/team/' +
-                                                matchDetails.event.awayTeam.id +
-                                                '/image/small'
-                                              "
+                                              :src="getImageUrl(matchDetails.event.awayTeam.id,'-small')"
+                                    @error="
+                                        $event.target.src =
+                                          'https://ios.app99877.com//images/cricket/default/default-team-small.png'"
                                               alt="fbn"
                                               style="max-width: 20%"
                                             />&nbsp;&nbsp;
@@ -239,9 +240,13 @@
                                             }}
                                           </div>
                                         </td>
-                                        <td>{{ matchH2H.awayWins }}</td>
+                                        <td>
+                                          {{ matchH2H.awayWins }}
+                                        </td>
 
-                                        <td>{{ matchH2H.draws }}</td>
+                                        <td>
+                                          {{ matchH2H.draws }}
+                                        </td>
                                       </tr>
                                     </tbody>
                                   </table>
@@ -313,12 +318,16 @@
                                 >
                                   <!-- begin::home team Information -->
                                   <figure>
-                                    <img
-                                      :src="
-                                        'https://api.sofascore.app/api/v1/team/' +
-                                        matchDetails.event.homeTeam.id +
-                                        '/image'
+
+                                
+                                     
                                       "
+                                    <img
+
+                                    :src="getImageUrl(matchDetails.event.homeTeam.id,'')"
+                                    @error="
+                                        $event.target.src =
+                                          'https://ios.app99877.com//images/cricket/default/default-team.png'"
                                       alt="cl2"
                                       style="width: 48%; height: 31%"
                                     />
@@ -347,11 +356,10 @@
                                   <!-- begin::away team Information -->
                                   <figure>
                                     <img
-                                      :src="
-                                        'https://api.sofascore.app/api/v1/team/' +
-                                        matchDetails.event.awayTeam.id +
-                                        '/image'
-                                      "
+                                    :src="getImageUrl(matchDetails.event.awayTeam.id,'')"
+                                    @error="
+                                        $event.target.src =
+                                          'https://ios.app99877.com//images/cricket/default/default-team.png'"
                                       alt="cl2"
                                       style="width: 48%; height: 31%"
                                     />
@@ -379,7 +387,8 @@
                           <div class="table-div-left mt-4">
                             <h4>
                               Head To Head of
-                              {{ matchDetails.event.homeTeam.shortName }} &
+                              {{ matchDetails.event.homeTeam.shortName }}
+                              &
                               {{ matchDetails.event.awayTeam.shortName }}
                             </h4>
                             <div id="seri1_wrapper" class="dataTables_wrapper">
@@ -406,11 +415,10 @@
                                         <td class="sorting_1">
                                           <div class="comon-ft-cl">
                                             <img
-                                              :src="
-                                                'https://api.sofascore.app/api/v1/team/' +
-                                                matchDetails.event.homeTeam.id +
-                                                '/image/small'
-                                              "
+                                             :src="getImageUrl(matchDetails.event.homeTeam.id,'-small')"
+                                    @error="
+                                        $event.target.src =
+                                          'https://ios.app99877.com//images/cricket/default/default-team-small.png'"
                                               alt="fbn"
                                               style="max-width: 20%"
                                             />&nbsp;&nbsp;
@@ -420,19 +428,27 @@
                                             }}
                                           </div>
                                         </td>
-                                        <td>{{ matchH2H.homeWins }}</td>
+                                        <td>
+                                          {{ matchH2H.homeWins }}
+                                        </td>
 
-                                        <td>{{ matchH2H.draws }}</td>
+                                        <td>
+                                          {{ matchH2H.draws }}
+                                        </td>
                                       </tr>
                                       <tr class="odd">
                                         <td class="sorting_1">
                                           <div class="comon-ft-cl">
                                             <img
-                                              :src="
-                                                'https://api.sofascore.app/api/v1/team/' +
-                                                matchDetails.event.awayTeam.id +
-                                                '/image/small'
-                                              "
+
+                                            :src="getImageUrl(matchDetails.event.awayTeam.id,'-small')"
+                                    @error="
+                                        $event.target.src =
+                                          'https://ios.app99877.com//images/cricket/default/default-team-small.png'"
+
+
+
+                                         
                                               alt="fbn"
                                               style="max-width: 20%"
                                             />&nbsp;&nbsp;
@@ -442,9 +458,13 @@
                                             }}
                                           </div>
                                         </td>
-                                        <td>{{ matchH2H.awayWins }}</td>
+                                        <td>
+                                          {{ matchH2H.awayWins }}
+                                        </td>
 
-                                        <td>{{ matchH2H.draws }}</td>
+                                        <td>
+                                          {{ matchH2H.draws }}
+                                        </td>
                                       </tr>
                                     </tbody>
                                   </table>
@@ -573,12 +593,10 @@
                                             class="d-flex align-items-center"
                                           >
                                             <img
-                                              :src="
-                                                'https://api.sofascore.app/api/v1/team/' +
-                                                row.team.id +
-                                                '/image/small'
-                                              "
-                                              alt="fbn"
+                                            :src="getImageUrl(row.team.id,'-small')"
+                                    @error="
+                                        $event.target.src =
+                                          'https://ios.app99877.com//images/cricket/default/default-team-small.png'"
                                               style="max-width: 20%"
                                             />&nbsp;&nbsp;
                                             {{ row.team.name }}
@@ -832,6 +850,19 @@ export default {
     getPlayerDetails(playerId) {
       window.open("/cricket/players-list/" + playerId, "_blank");
     },
+    getImageUrl(id,size) {
+      // Check if the actual image URL is available
+      if (id) {
+        return (
+          "https://ios.app99877.com//images/cricket/teams/" +
+          id +
+          "/" +
+          id + size+
+          ".png"
+        );
+      }
+      return "https://ios.app99877.com//images/cricket/default/default-team.png";
+    },
   },
 };
 </script>
@@ -843,11 +874,13 @@ export default {
 .m-date {
   width: 75px !important;
 }
+
 /* Extra Small Devices, Phones */
 @media only screen and (min-width: 480px) {
   .mobile-version {
     display: block;
   }
+
   .desktop-version {
     display: none;
   }
@@ -858,6 +891,7 @@ export default {
   .mobile-version {
     display: block;
   }
+
   .desktop-version {
     display: none;
   }
@@ -868,6 +902,7 @@ export default {
   .mobile-version {
     display: none;
   }
+
   .desktop-version {
     display: block;
   }
@@ -878,6 +913,7 @@ export default {
   .mobile-version {
     display: none;
   }
+
   .desktop-version {
     display: block;
   }
