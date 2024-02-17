@@ -19041,6 +19041,15 @@ __webpack_require__.r(__webpack_exports__);
       var w = window.open();
       w.document.location.href = basePath + "/cricket/" + slug + "/team/details/" + teamId;
       w.document.target = "_blank";
+    },
+    getImageUrl: function getImageUrl(row, size) {
+      // Check if the actual image URL is available
+      if (row && row.team && row.team.id) {
+        return "https://ios.app99877.com//images/cricket/teams/" + row.team.id + "/" + row.team.id + size + ".png";
+      }
+
+      // If actual image URL is not available, return the default image URL
+      return "https://ios.app99877.com//images/cricket/default/default-team-small.png";
     }
   }
 });
@@ -21160,7 +21169,7 @@ var _hoisted_9 = {
   "class": "comon-heading m-0",
   style: {
     "color": "rgb(7, 31, 64)",
-    "font-family": "Barlow Condensed, sans-seri0 !important",
+    "font-family": "Barlow Condensed,\r\n                                                sans-seri0 !important",
     "font-weight": "600 !important"
   }
 };
@@ -21183,7 +21192,7 @@ var _hoisted_13 = {
   "class": "comon-heading m-0",
   style: {
     "color": "rgb(7, 31, 64)",
-    "font-family": "Barlow Condensed, sans-seri0 !important",
+    "font-family": "Barlow\r\n                                                            Condensed,\r\n                                                        sans-seri0 !important",
     "font-weight": "600 !important"
   }
 };
@@ -21199,7 +21208,7 @@ var _hoisted_18 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
 var _hoisted_19 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", null, " Most Titles :", -1 /* HOISTED */);
 var _hoisted_20 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h2", {
   "class": "comon-heading mt-3 mb-3"
-}, "About League", -1 /* HOISTED */);
+}, " About League ", -1 /* HOISTED */);
 var _hoisted_21 = ["innerHTML"];
 var _hoisted_22 = {
   key: 2,
@@ -21279,7 +21288,7 @@ var _hoisted_31 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
 }, " Pts ")])], -1 /* HOISTED */);
 var _hoisted_32 = {
   style: {
-    "background-color": "rgb(7, 31, 64)",
+    "background-color": "rgb(\r\n                                                                                    7,\r\n                                                                                    31,\r\n                                                                                    64\r\n                                                                                )",
     "color": "white"
   }
 };
@@ -21303,7 +21312,7 @@ var _hoisted_39 = {
 };
 var _hoisted_40 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("tr", {
   "class": "odd"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, "Temporarily no data..")], -1 /* HOISTED */);
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, " Temporarily no data.. ")], -1 /* HOISTED */);
 var _hoisted_41 = [_hoisted_40];
 var _hoisted_42 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("br", null, null, -1 /* HOISTED */);
 var _hoisted_43 = {
@@ -21316,7 +21325,7 @@ var _hoisted_45 = {
   "class": "comon-heading m-0",
   style: {
     "color": "rgb(7, 31, 64)",
-    "font-family": "Barlow Condensed, sans-seri0 !important",
+    "font-family": "Barlow\r\n                                                                Condensed,\r\n                                                            sans-seri0 !important",
     "font-weight": "600 !important"
   }
 };
@@ -21438,12 +21447,15 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
           return $options.getTeamDetails(row.team.id, row.team.slug);
         }
       }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_35, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("figure", _hoisted_36, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
-        src: 'https://api.sofascore.app/api/v1/team/' + row.team.id + '/image/small',
-        alt: "fbn",
+        src: $options.getImageUrl(row, '-small'),
+        alt: "Team Image",
+        onError: _cache[1] || (_cache[1] = function ($event) {
+          return $event.target.src = 'https://ios.app99877.com//images/cricket/default/default-team-small.png';
+        }),
         style: {
           "max-width": "20%"
         }
-      }, null, 8 /* PROPS */, _hoisted_37), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("   " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(row.team.name) + " ", 1 /* TEXT */), _hoisted_38])])], 8 /* PROPS */, _hoisted_34), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(row.wins), 1 /* TEXT */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(row.losses), 1 /* TEXT */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(row.points), 1 /* TEXT */)]);
+      }, null, 40 /* PROPS, HYDRATE_EVENTS */, _hoisted_37), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("   " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(row.team.name) + " ", 1 /* TEXT */), _hoisted_38])])], 8 /* PROPS */, _hoisted_34), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(row.wins), 1 /* TEXT */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(row.losses), 1 /* TEXT */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(row.points), 1 /* TEXT */)]);
     }), 128 /* KEYED_FRAGMENT */))]);
   }), 128 /* KEYED_FRAGMENT */)) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("tbody", _hoisted_39, [].concat(_hoisted_41))), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" ebd::table body ")], 2 /* CLASS */)])])])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" end::match standings ")])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" end::standings ")]), _hoisted_42, $data.seasonStandingsDetails ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_teamplate, {
     key: 0
@@ -21462,16 +21474,19 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
           }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
             "class": "top-next-mc text-center",
             style: {
-              "background-color": "rgb(12, 26, 44)",
+              "background-color": "rgb(\r\n                                                            12,\r\n                                                            26,\r\n                                                            44\r\n                                                        )",
               "cursor": "pointer"
             },
             onClick: function onClick($event) {
               return $options.getTeamDetails(row.team.id, row.team.slug);
             }
           }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h5", _hoisted_49, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(row.team.name), 1 /* TEXT */), _hoisted_50, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_51, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
-            src: 'https://api.sofascore.app/api/v1/team/' + row.team.id + '/image',
-            alt: "image not found"
-          }, null, 8 /* PROPS */, _hoisted_52)])], 8 /* PROPS */, _hoisted_48)]);
+            src: $options.getImageUrl(row, ''),
+            alt: "Team Image",
+            onError: _cache[2] || (_cache[2] = function ($event) {
+              return $event.target.src = 'https://ios.app99877.com//images/cricket/default/default-team.png';
+            })
+          }, null, 40 /* PROPS, HYDRATE_EVENTS */, _hoisted_52)])], 8 /* PROPS */, _hoisted_48)]);
         }), 128 /* KEYED_FRAGMENT */))])]);
       }), 128 /* KEYED_FRAGMENT */))];
     }),
@@ -22775,7 +22790,7 @@ var _hoisted_100 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElemen
 var _hoisted_101 = {
   key: 1
 };
-var _hoisted_102 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("tr", null, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, "Temporarily no data")], -1 /* HOISTED */);
+var _hoisted_102 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("tr", null, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, " Temporarily no data ")], -1 /* HOISTED */);
 var _hoisted_103 = [_hoisted_102];
 var _hoisted_104 = {
   key: 0
@@ -26794,7 +26809,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.disabled-table {\r\n  pointer-events: none;\r\n  /* Disable interactions */\r\n  opacity: 0.7;\r\n  /* Adjust the opacity to visually indicate it's disabled */\r\n  /* You can also apply other styles to make it visually disabled */\r\n  /* For example, changing the background color or adding a border */\r\n  background-color: #f0f0f0;\r\n  border: 1px solid #ccc;\n}\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.disabled-table {\r\n    pointer-events: none;\r\n    /* Disable interactions */\r\n    opacity: 0.7;\r\n    /* Adjust the opacity to visually indicate it's disabled */\r\n    /* You can also apply other styles to make it visually disabled */\r\n    /* For example, changing the background color or adding a border */\r\n    background-color: #f0f0f0;\r\n    border: 1px solid #ccc;\n}\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -26866,7 +26881,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\ndiv #floater {\r\n  display: none !important;\n}\n.m-date {\r\n  width: 75px !important;\n}\n.accordion-button::after {\r\n  display: none;\n}\r\n\r\n/* Custom, iPhone Retina */\n@media only screen and (min-width: 320px) {\n.mobile-version {\r\n    display: block;\n}\n.desktop-version {\r\n    display: none;\n}\n}\r\n\r\n/* Extra Small Devices, Phones */\n@media only screen and (min-width: 480px) {\n.mobile-version {\r\n    display: block;\n}\n.desktop-version {\r\n    display: none;\n}\n}\r\n\r\n/* Small Devices, Tablets */\n@media only screen and (min-width: 768px) {\n.mobile-version {\r\n    display: block;\n}\n.desktop-version {\r\n    display: none;\n}\n}\r\n\r\n/* Medium Devices, Desktops */\n@media only screen and (min-width: 992px) {\n.mobile-version {\r\n    display: none;\n}\n}\r\n\r\n/* Large Devices, Wide Screens */\n@media only screen and (min-width: 1200px) {\n.mobile-version {\r\n    display: none;\n}\n}\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\ndiv #floater {\r\n    display: none !important;\n}\n.m-date {\r\n    width: 75px !important;\n}\n.accordion-button::after {\r\n    display: none;\n}\r\n\r\n/* Custom, iPhone Retina */\n@media only screen and (min-width: 320px) {\n.mobile-version {\r\n        display: block;\n}\n.desktop-version {\r\n        display: none;\n}\n}\r\n\r\n/* Extra Small Devices, Phones */\n@media only screen and (min-width: 480px) {\n.mobile-version {\r\n        display: block;\n}\n.desktop-version {\r\n        display: none;\n}\n}\r\n\r\n/* Small Devices, Tablets */\n@media only screen and (min-width: 768px) {\n.mobile-version {\r\n        display: block;\n}\n.desktop-version {\r\n        display: none;\n}\n}\r\n\r\n/* Medium Devices, Desktops */\n@media only screen and (min-width: 992px) {\n.mobile-version {\r\n        display: none;\n}\n}\r\n\r\n/* Large Devices, Wide Screens */\n@media only screen and (min-width: 1200px) {\n.mobile-version {\r\n        display: none;\n}\n}\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
