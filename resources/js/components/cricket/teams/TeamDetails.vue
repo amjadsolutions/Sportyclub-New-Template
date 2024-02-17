@@ -92,13 +92,27 @@
                             <figure>
                                 <img
                                     style="max-width: 50% !important"
-                                    :src="defaultPlayerPhoto"
+                                    :src="
+                                    'https://ios.app99877.com//images/cricket/players/' +
+                                    player.player.id +
+                                    '/' +
+                                    player.player.id +
+                                    '.png'
+                                "
+                                @error="$event.target.src = defaultPlayerPhoto"
                                     alt="gps1"
                                     class="mobile-version"
                                 />
                                 <img
                                     style="max-width: 80% !important"
-                                    :src="defaultPlayerPhoto"
+                                    :src="
+                                    'https://ios.app99877.com//images/cricket/players/' +
+                                    player.player.id +
+                                    '/' +
+                                    player.player.id +
+                                    '.png'
+                                "
+                                @error="$event.target.src = defaultPlayerPhoto"
                                     alt="gps1"
                                     class="desktop-version"
                                 />
