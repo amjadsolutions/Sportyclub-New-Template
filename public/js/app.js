@@ -19107,6 +19107,13 @@ __webpack_require__.r(__webpack_exports__);
         _this2.totlePages = response.data.totalPages;
         _this2.loading = false;
       });
+    },
+    getImageUrl: function getImageUrl(id) {
+      // Check if the actual image URL is available
+      if (id) {
+        return "https://ios.app99877.com//images/cricket/leagues/" + id + "/" + id + ".png";
+      }
+      return "https://ios.app99877.com//images/cricket/default/default-team.png";
     }
   }
 });
@@ -20787,6 +20794,13 @@ __webpack_require__.r(__webpack_exports__);
       var w = window.open();
       w.document.location.href = basePath + "/cricket/" + slug + "/team/details/" + teamId;
       w.document.target = "_blank";
+    },
+    getImageUrl: function getImageUrl(id) {
+      // Check if the actual image URL is available
+      if (id) {
+        return "https://ios.app99877.com//images/cricket/teams/" + id + "/" + id + ".png";
+      }
+      return "https://ios.app99877.com//images/cricket/default/default-team.png";
     }
   }
 });
@@ -20841,6 +20855,13 @@ __webpack_require__.r(__webpack_exports__);
       var w = window.open();
       w.document.location.href = basePath + "/cricket/" + slug + "/team/details/" + teamId;
       w.document.target = "_blank";
+    },
+    getImageUrl: function getImageUrl(id) {
+      // Check if the actual image URL is available
+      if (id) {
+        return "https://ios.app99877.com//images/cricket/teams/" + id + "/" + id + ".png";
+      }
+      return "https://ios.app99877.com//images/cricket/default/default-team.png";
     }
   }
 });
@@ -20895,6 +20916,13 @@ __webpack_require__.r(__webpack_exports__);
       var w = window.open();
       w.document.location.href = basePath + "/cricket/" + slug + "/team/details/" + teamId;
       w.document.target = "_blank";
+    },
+    getImageUrl: function getImageUrl(id) {
+      // Check if the actual image URL is available
+      if (id) {
+        return "https://ios.app99877.com//images/cricket/teams/" + id + "/" + id + ".png";
+      }
+      return "https://ios.app99877.com//images/cricket/default/default-team.png";
     }
   }
 });
@@ -20949,6 +20977,13 @@ __webpack_require__.r(__webpack_exports__);
       var w = window.open();
       w.document.location.href = basePath + "/cricket/" + slug + "/team/details/" + teamId;
       w.document.target = "_blank";
+    },
+    getImageUrl: function getImageUrl(id) {
+      // Check if the actual image URL is available
+      if (id) {
+        return "https://ios.app99877.com//images/cricket/teams/" + id + "/" + id + ".png";
+      }
+      return "https://ios.app99877.com//images/cricket/default/default-team.png";
     }
   }
 });
@@ -21003,6 +21038,13 @@ __webpack_require__.r(__webpack_exports__);
       var w = window.open();
       w.document.location.href = basePath + "/cricket/" + slug + "/team/details/" + teamId;
       w.document.target = "_blank";
+    },
+    getImageUrl: function getImageUrl(id) {
+      // Check if the actual image URL is available
+      if (id) {
+        return "https://ios.app99877.com//images/cricket/teams/" + id + "/" + id + ".png";
+      }
+      return "https://ios.app99877.com//images/cricket/default/default-team.png";
     }
   }
 });
@@ -21057,6 +21099,13 @@ __webpack_require__.r(__webpack_exports__);
       var w = window.open();
       w.document.location.href = basePath + "/cricket/" + slug + "/team/details/" + teamId;
       w.document.target = "_blank";
+    },
+    getImageUrl: function getImageUrl(id) {
+      // Check if the actual image URL is available
+      if (id) {
+        return "https://ios.app99877.com//images/cricket/teams/" + id + "/" + id + ".png";
+      }
+      return "https://ios.app99877.com//images/cricket/default/default-team.png";
     }
   }
 });
@@ -21111,6 +21160,13 @@ __webpack_require__.r(__webpack_exports__);
       var w = window.open();
       w.document.location.href = basePath + "/cricket/" + slug + "/team/details/" + teamId;
       w.document.target = "_blank";
+    },
+    getImageUrl: function getImageUrl(id) {
+      // Check if the actual image URL is available
+      if (id) {
+        return "https://ios.app99877.com//images/cricket/teams/" + id + "/" + id + ".png";
+      }
+      return "https://ios.app99877.com//images/cricket/default/default-team.png";
     }
   }
 });
@@ -21150,6 +21206,13 @@ __webpack_require__.r(__webpack_exports__);
     // method to get topLeague Details
     getTopLeagueDetails: function getTopLeagueDetails(leagueId, league) {
       window.open("/cricket/top/league/details/" + league + "/" + leagueId, "_blank");
+    },
+    getImageUrl: function getImageUrl(id) {
+      // Check if the actual image URL is available
+      if (id) {
+        return "https://ios.app99877.com//images/cricket/leagues/" + id + "/" + id + ".png";
+      }
+      return "https://ios.app99877.com//images/cricket/default/default-team.png";
     }
   }
 });
@@ -21661,9 +21724,12 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         return $options.getTopLeagueDetails(league.id, league.slug);
       }
     }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", _hoisted_14, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h5", _hoisted_15, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(league.nameEn), 1 /* TEXT */), _hoisted_16, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_17, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
-      src: 'https://api.sofascore.app/api/v1/unique-tournament/' + league.id + '/image',
+      src: $options.getImageUrl(league.id, '-small'),
+      onError: _cache[0] || (_cache[0] = function ($event) {
+        return $event.target.src = 'https://ios.app99877.com//images/cricket/default/default-team.png';
+      }),
       alt: "image not found"
-    }, null, 8 /* PROPS */, _hoisted_18)])])], 8 /* PROPS */, _hoisted_13);
+    }, null, 40 /* PROPS, HYDRATE_EVENTS */, _hoisted_18)])])], 8 /* PROPS */, _hoisted_13);
   }), 128 /* KEYED_FRAGMENT */))])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" begin::footer "), !$data.loading ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("span", _hoisted_19, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("footer", _hoisted_20, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_21, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Footer)])])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" end::footer ")], 64 /* STABLE_FRAGMENT */);
 }
 
@@ -26131,9 +26197,12 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
               return $options.getTeamDetails(row.team.id, row.team.slug);
             }
           }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h5", _hoisted_8, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(row.team.name), 1 /* TEXT */), _hoisted_9, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_10, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
-            src: 'https://api.sofascore.app/api/v1/team/' + row.team.id + '/image',
+            src: $options.getImageUrl(row.team.id, '-small'),
+            onError: _cache[0] || (_cache[0] = function ($event) {
+              return $event.target.src = 'https://ios.app99877.com//images/cricket/default/default-team.png';
+            }),
             alt: "image not found"
-          }, null, 8 /* PROPS */, _hoisted_11)])], 8 /* PROPS */, _hoisted_7)]);
+          }, null, 40 /* PROPS, HYDRATE_EVENTS */, _hoisted_11)])], 8 /* PROPS */, _hoisted_7)]);
         }), 128 /* KEYED_FRAGMENT */))])];
       }),
 
@@ -26211,9 +26280,12 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
               return $options.getTeamDetails(row.team.id, row.team.slug);
             }
           }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h5", _hoisted_8, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(row.team.name), 1 /* TEXT */), _hoisted_9, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_10, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
-            src: 'https://api.sofascore.app/api/v1/team/' + row.team.id + '/image',
+            src: $options.getImageUrl(row.team.id, '-small'),
+            onError: _cache[0] || (_cache[0] = function ($event) {
+              return $event.target.src = 'https://ios.app99877.com//images/cricket/default/default-team.png';
+            }),
             alt: "image not found"
-          }, null, 8 /* PROPS */, _hoisted_11)])], 8 /* PROPS */, _hoisted_7)]);
+          }, null, 40 /* PROPS, HYDRATE_EVENTS */, _hoisted_11)])], 8 /* PROPS */, _hoisted_7)]);
         }), 128 /* KEYED_FRAGMENT */))])];
       }),
 
@@ -26291,9 +26363,12 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
               return $options.getTeamDetails(row.team.id, row.team.slug);
             }
           }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h5", _hoisted_8, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(row.team.name), 1 /* TEXT */), _hoisted_9, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_10, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
-            src: 'https://api.sofascore.app/api/v1/team/' + row.team.id + '/image',
+            src: $options.getImageUrl(row.team.id, '-small'),
+            onError: _cache[0] || (_cache[0] = function ($event) {
+              return $event.target.src = 'https://ios.app99877.com//images/cricket/default/default-team.png';
+            }),
             alt: "image not found"
-          }, null, 8 /* PROPS */, _hoisted_11)])], 8 /* PROPS */, _hoisted_7)]);
+          }, null, 40 /* PROPS, HYDRATE_EVENTS */, _hoisted_11)])], 8 /* PROPS */, _hoisted_7)]);
         }), 128 /* KEYED_FRAGMENT */))])];
       }),
 
@@ -26371,9 +26446,12 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
               return $options.getTeamDetails(row.team.id, row.team.slug);
             }
           }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h5", _hoisted_8, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(row.team.name), 1 /* TEXT */), _hoisted_9, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_10, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
-            src: 'https://api.sofascore.app/api/v1/team/' + row.team.id + '/image',
+            src: $options.getImageUrl(row.team.id, '-small'),
+            onError: _cache[0] || (_cache[0] = function ($event) {
+              return $event.target.src = 'https://ios.app99877.com//images/cricket/default/default-team.png';
+            }),
             alt: "image not found"
-          }, null, 8 /* PROPS */, _hoisted_11)])], 8 /* PROPS */, _hoisted_7)]);
+          }, null, 40 /* PROPS, HYDRATE_EVENTS */, _hoisted_11)])], 8 /* PROPS */, _hoisted_7)]);
         }), 128 /* KEYED_FRAGMENT */))])];
       }),
 
@@ -26451,9 +26529,12 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
               return $options.getTeamDetails(row.team.id, row.team.slug);
             }
           }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h5", _hoisted_8, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(row.team.name), 1 /* TEXT */), _hoisted_9, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_10, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
-            src: 'https://api.sofascore.app/api/v1/team/' + row.team.id + '/image',
+            src: $options.getImageUrl(row.team.id, '-small'),
+            onError: _cache[0] || (_cache[0] = function ($event) {
+              return $event.target.src = 'https://ios.app99877.com//images/cricket/default/default-team.png';
+            }),
             alt: "image not found"
-          }, null, 8 /* PROPS */, _hoisted_11)])], 8 /* PROPS */, _hoisted_7)]);
+          }, null, 40 /* PROPS, HYDRATE_EVENTS */, _hoisted_11)])], 8 /* PROPS */, _hoisted_7)]);
         }), 128 /* KEYED_FRAGMENT */))])];
       }),
 
@@ -26531,9 +26612,12 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
               return $options.getTeamDetails(row.team.id, row.team.slug);
             }
           }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h5", _hoisted_8, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(row.team.name), 1 /* TEXT */), _hoisted_9, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_10, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
-            src: 'https://api.sofascore.app/api/v1/team/' + row.team.id + '/image',
+            src: $options.getImageUrl(row.team.id, '-small'),
+            onError: _cache[0] || (_cache[0] = function ($event) {
+              return $event.target.src = 'https://ios.app99877.com//images/cricket/default/default-team.png';
+            }),
             alt: "image not found"
-          }, null, 8 /* PROPS */, _hoisted_11)])], 8 /* PROPS */, _hoisted_7)]);
+          }, null, 40 /* PROPS, HYDRATE_EVENTS */, _hoisted_11)])], 8 /* PROPS */, _hoisted_7)]);
         }), 128 /* KEYED_FRAGMENT */))])];
       }),
 
@@ -26611,9 +26695,12 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
               return $options.getTeamDetails(row.team.id, row.team.slug);
             }
           }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h5", _hoisted_8, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(row.team.name), 1 /* TEXT */), _hoisted_9, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_10, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
-            src: 'https://api.sofascore.app/api/v1/team/' + row.team.id + '/image',
+            src: $options.getImageUrl(row.team.id, '-small'),
+            onError: _cache[0] || (_cache[0] = function ($event) {
+              return $event.target.src = 'https://ios.app99877.com//images/cricket/default/default-team.png';
+            }),
             alt: "image not found"
-          }, null, 8 /* PROPS */, _hoisted_11)])], 8 /* PROPS */, _hoisted_7)]);
+          }, null, 40 /* PROPS, HYDRATE_EVENTS */, _hoisted_11)])], 8 /* PROPS */, _hoisted_7)]);
         }), 128 /* KEYED_FRAGMENT */))])];
       }),
 
@@ -26678,9 +26765,12 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         "cursor": "pointer"
       }
     }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
-      src: 'https://api.sofascore.app/api/v1/unique-tournament/' + league.id + '/image',
+      src: $options.getImageUrl(league.id, '-small'),
+      onError: _cache[0] || (_cache[0] = function ($event) {
+        return $event.target.src = 'https://ios.app99877.com//images/cricket/default/default-team.png';
+      }),
       width: "40"
-    }, null, 8 /* PROPS */, _hoisted_9), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", _hoisted_10, "   " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(league.nameEn), 1 /* TEXT */), _hoisted_11], 8 /* PROPS */, _hoisted_8)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)], 64 /* STABLE_FRAGMENT */);
+    }, null, 40 /* PROPS, HYDRATE_EVENTS */, _hoisted_9), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", _hoisted_10, "   " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(league.nameEn), 1 /* TEXT */), _hoisted_11], 8 /* PROPS */, _hoisted_8)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)], 64 /* STABLE_FRAGMENT */);
   }), 128 /* KEYED_FRAGMENT */))])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" end::col 3 ")]), _hoisted_12, _hoisted_13], 64 /* STABLE_FRAGMENT */);
 }
 
@@ -26920,7 +27010,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n#floater[data-v-4b6c1cbe]{\r\n    display: none;\n}\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n#floater[data-v-4b6c1cbe] {\r\n    display: none;\n}\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 

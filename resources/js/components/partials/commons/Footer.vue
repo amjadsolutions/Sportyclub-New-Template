@@ -83,11 +83,11 @@
           >
             <li v-if="index < 5"  v-on:click="getTopLeagueDetails(league.id, league.slug)" style="cursor: pointer;">
               <img
-                :src="
-                  'https://api.sofascore.app/api/v1/unique-tournament/' +
-                  league.id +
-                  '/image'
-                "
+              :src="getImageUrl(league.id, '-small')"
+                                    @error="
+                                        $event.target.src =
+                                            'https://ios.app99877.com//images/cricket/default/default-team.png'
+                                    "
                 width="40"
               />
 
@@ -138,6 +138,19 @@ export default {
         "_blank"
       );
     },
+    getImageUrl(id) {
+            // Check if the actual image URL is available
+            if (id) {
+                return (
+                    "https://ios.app99877.com//images/cricket/leagues/" +
+                    id +
+                    "/" +
+                    id +
+                    ".png"
+                );
+            }
+            return "https://ios.app99877.com//images/cricket/default/default-team.png";
+        },
   },
 };
 </script>

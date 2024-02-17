@@ -1,5 +1,5 @@
 <template v-if="!loading">
-  <span v-if="odiTeamsList">
+    <span v-if="odiTeamsList">
         <teamplate v-for="standings in odiTeamsList" :key="standings.id">
             <div
                 class="row row-cols-1 row-cols-sm-2 row-cols-md-4 row-cols-lg-5 g-4 g-lg-5"
@@ -45,10 +45,10 @@
                             class="d-flex align-items-center justify-content-center mt-2"
                         >
                             <img
-                                :src="
-                                    'https://api.sofascore.app/api/v1/team/' +
-                                    row.team.id +
-                                    '/image'
+                                :src="getImageUrl(row.team.id, '-small')"
+                                @error="
+                                    $event.target.src =
+                                        'https://ios.app99877.com//images/cricket/default/default-team.png'
                                 "
                                 alt="image not found"
                             />
@@ -56,8 +56,8 @@
                     </a>
                 </div>
             </div>
-    </teamplate>
-  </span>
+        </teamplate>
+    </span>
 </template>
 <script>
 import axios from "axios";
@@ -105,6 +105,19 @@ export default {
             w.document.location.href =
                 basePath + "/cricket/" + slug + "/team/details/" + teamId;
             w.document.target = "_blank";
+        },
+        getImageUrl(id) {
+            // Check if the actual image URL is available
+            if (id) {
+                return (
+                    "https://ios.app99877.com//images/cricket/teams/" +
+                    id +
+                    "/" +
+                    id +
+                    ".png"
+                );
+            }
+            return "https://ios.app99877.com//images/cricket/default/default-team.png";
         },
     },
 };

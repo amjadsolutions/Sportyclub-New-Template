@@ -45,11 +45,11 @@
                               class="d-flex align-items-center justify-content-center mt-2"
                           >
                               <img
-                                  :src="
-                                      'https://api.sofascore.app/api/v1/team/' +
-                                      row.team.id +
-                                      '/image'
-                                  "
+                              :src="getImageUrl(row.team.id, '-small')"
+                                @error="
+                                    $event.target.src =
+                                        'https://ios.app99877.com//images/cricket/default/default-team.png'
+                                "
                                   alt="image not found"
                               />
                           </div>
@@ -106,6 +106,19 @@
                   basePath + "/cricket/" + slug + "/team/details/" + teamId;
               w.document.target = "_blank";
           },
+          getImageUrl(id) {
+            // Check if the actual image URL is available
+            if (id) {
+                return (
+                    "https://ios.app99877.com//images/cricket/teams/" +
+                    id +
+                    "/" +
+                    id +
+                    ".png"
+                );
+            }
+            return "https://ios.app99877.com//images/cricket/default/default-team.png";
+        },
       },
   };
   </script>
