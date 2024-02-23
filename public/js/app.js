@@ -19399,7 +19399,7 @@ __webpack_require__.r(__webpack_exports__);
       matchH2H: null,
       playerInfo: null,
       currentBatters: null,
-      currentServer: "https://crichdstreaming.xyz/embed2.php?id=ptvsp",
+      currentServer: "https://crichdstreaming.xyz/embed2.php?id=skysp2&q=Sky Sports Cricket",
       liveMatches: [20, 21, 22, 45]
     };
   },
@@ -22919,7 +22919,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     "class": "nav-item",
     role: "presentation",
     onClick: _cache[0] || (_cache[0] = function ($event) {
-      return $options.changeServer('https://crichdstreaming.xyz/embed2.php?id=ptvsp');
+      return $options.changeServer('https://crichdstreaming.xyz/embed2.php?id=skysp2&q=Sky Sports Cricket');
     })
   }, [].concat(_hoisted_13)), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", {
     "class": "nav-item",
