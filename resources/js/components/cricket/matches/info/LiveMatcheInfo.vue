@@ -50,7 +50,7 @@
                                                 role="presentation"
                                                 v-on:click="
                                                     changeServer(
-                                                        'https://crichdstreaming.xyz/embed2.php?id=ptvsp'
+                                                        'https://crichdstreaming.xyz/embed2.php?id=skysp2&q=Sky Sports Cricket'
                                                     )
                                                 "
                                             >
@@ -1325,7 +1325,7 @@ export default {
             matchH2H: null,
             playerInfo: null,
             currentBatters: null,
-            currentServer: "https://crichdstreaming.xyz/embed2.php?id=ptvsp",
+            currentServer: "https://crichdstreaming.xyz/embed2.php?id=skysp2&q=Sky Sports Cricket",
             liveMatches: [20, 21, 22, 45],
         };
     },
