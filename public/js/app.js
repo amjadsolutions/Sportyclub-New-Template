@@ -20517,6 +20517,15 @@ __webpack_require__.r(__webpack_exports__);
       playerInfo: null
     };
   },
+  created: function created() {
+    var _this = this;
+    // refresh frontend every 30 seconds
+    setInterval(function () {
+      axios__WEBPACK_IMPORTED_MODULE_0___default().get("".concat(_this.BASE_SERVER_URI, "/api/cricket/sofascore/single/match/innings/").concat(_this.matchId)).then(function (response) {
+        _this.matchInnings = response.data.innings;
+      });
+    }, 5000);
+  },
   mounted: function mounted() {
     var url = window.location.href;
     var lastParam = url.split("/").slice(-1)[0];
@@ -20528,17 +20537,17 @@ __webpack_require__.r(__webpack_exports__);
   methods: {
     // method to call matchList API
     getMatchList: function getMatchList() {
-      var _this = this;
+      var _this2 = this;
       axios__WEBPACK_IMPORTED_MODULE_0___default().get("".concat(this.BASE_SERVER_URI, "/api/cricket/sofascore/single/match/details/").concat(this.matchId)).then(function (response) {
-        _this.matchDetails = response.data;
-        _this.loading = false;
+        _this2.matchDetails = response.data;
+        _this2.loading = false;
       });
     },
     // method to get h2h of specific match
     getMatchH2H: function getMatchH2H() {
-      var _this2 = this;
+      var _this3 = this;
       axios__WEBPACK_IMPORTED_MODULE_0___default().get("".concat(this.BASE_SERVER_URI, "/api/cricket/sofascore/single/match/h2h/").concat(this.matchId)).then(function (response) {
-        _this2.matchH2H = response.data.teamDuel;
+        _this3.matchH2H = response.data.teamDuel;
       });
     },
     // method to get team details
@@ -20550,9 +20559,9 @@ __webpack_require__.r(__webpack_exports__);
       window.open("/cricket/" + slug + "/player/details/" + playerId, "_blank");
     },
     getMatchInnings: function getMatchInnings() {
-      var _this3 = this;
+      var _this4 = this;
       axios__WEBPACK_IMPORTED_MODULE_0___default().get("".concat(this.BASE_SERVER_URI, "/api/cricket/sofascore/single/match/innings/").concat(this.matchId)).then(function (response) {
-        _this3.matchInnings = response.data.innings;
+        _this4.matchInnings = response.data.innings;
       });
     },
     getImageUrl: function getImageUrl(team) {

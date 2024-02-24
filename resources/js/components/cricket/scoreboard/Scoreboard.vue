@@ -416,6 +416,18 @@ export default {
       playerInfo: null,
     };
   },
+  created() {
+        // refresh frontend every 30 seconds
+        setInterval(() => {
+          axios
+        .get(
+          `${this.BASE_SERVER_URI}/api/cricket/sofascore/single/match/innings/${this.matchId}`
+        )
+        .then((response) => {
+          this.matchInnings = response.data.innings;
+        });
+        }, 5000);
+    },
   mounted() {
     const url = window.location.href;
     const lastParam = url.split("/").slice(-1)[0];
