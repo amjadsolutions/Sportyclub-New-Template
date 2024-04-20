@@ -73,7 +73,7 @@
                                                 role="presentation"
                                                 v-on:click="
                                                     changeServer(
-                                                        '//stream.crichd.vip/update/skys1.php'
+                                                        'https://crichdstreaming.xyz/embed2.php?id=asports'
                                                     )
                                                 "
                                             >
@@ -1329,7 +1329,7 @@ export default {
             liveMatches: [20, 21, 22, 45],
         };
     },
-
+    
     created() {
         // refresh frontend every 30 seconds
         setInterval(() => {

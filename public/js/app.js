@@ -22934,7 +22934,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     "class": "nav-item",
     role: "presentation",
     onClick: _cache[1] || (_cache[1] = function ($event) {
-      return $options.changeServer('//stream.crichd.vip/update/skys1.php');
+      return $options.changeServer('https://crichdstreaming.xyz/embed2.php?id=asports');
     })
   }, [].concat(_hoisted_15)), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", {
     "class": "nav-item",
