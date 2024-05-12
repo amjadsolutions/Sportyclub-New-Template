@@ -19399,7 +19399,7 @@ __webpack_require__.r(__webpack_exports__);
       matchH2H: null,
       playerInfo: null,
       currentBatters: null,
-      currentServer: "https://crichdstreaming.xyz/embed2.php?id=skysp2&q=Sky Sports Cricket",
+      currentServer: "https://player002.vip/embed2.php?id=ptvsp",
       liveMatches: [20, 21, 22, 45]
     };
   },
