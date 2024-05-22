@@ -792,24 +792,9 @@ export default defineComponent({
         });
     },
 
-    // method to get match time
-    getMatchTime(timeStamp) {
-      const date = new Date(timeStamp * 1000);
 
-      return date.toLocaleTimeString("en-US", {
-        hour: "2-digit",
-        minute: "2-digit",
-      });
-    },
-    // method to get match date
-    getMatchDate(timeStamp) {
-      const date = new Date(timeStamp * 1000);
-      const options = { year: "numeric", month: "long", day: "numeric" };
-      return new Intl.DateTimeFormat("en-US", options).format(date);
-    },
-
-    // method to get yesterday matchList
-    getFinishedMatchList() {
+      // method to get yesterday matchList
+      getFinishedMatchList() {
       // get yeasterday date
       const date = new Date();
       const previous = new Date(date.getTime());
@@ -828,6 +813,24 @@ export default defineComponent({
         });
     },
 
+
+    // method to get match time
+    getMatchTime(timeStamp) {
+      const date = new Date(timeStamp * 1000);
+
+      return date.toLocaleTimeString("en-US", {
+        hour: "2-digit",
+        minute: "2-digit",
+      });
+    },
+    // method to get match date
+    getMatchDate(timeStamp) {
+      const date = new Date(timeStamp * 1000);
+      const options = { year: "numeric", month: "long", day: "numeric" };
+      return new Intl.DateTimeFormat("en-US", options).format(date);
+    },
+
+  
     // method to return top leagues list
     getTopLeaguesList() {
       axios
