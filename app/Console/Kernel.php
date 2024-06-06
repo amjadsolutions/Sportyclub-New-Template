@@ -33,7 +33,6 @@ class Kernel extends ConsoleKernel
         $schedule->command('seasonStandings:refresh')->hourly()->withoutOverlapping();
         $schedule->command('matchPlayers:refresh')->hourly()->withoutOverlapping();
         $schedule->command('pastAndNextMatchList:refresh')->hourly()->withoutOverlapping();
-
     }
 
     /**
